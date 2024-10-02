@@ -4,6 +4,13 @@ import service from "../appwrite/configAppwrite";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import {
+    LinkedinShareButton,
+    TwitterShareButton,
+    WhatsappShareButton
+  } from "react-share";
+import { faLinkedin, faWhatsapp, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Post() {
     const [post, setPost] = useState(null);
@@ -60,7 +67,19 @@ export default function Post() {
                 </div>
                 <div className="browser-css">
                     {parse(post.content)}
-                    </div>
+                </div>
+                <h2 className="text-2xl">Share with your friends!</h2>
+                <div className="flex gap-5 w-full justify-center items-center py-2">
+                    <LinkedinShareButton url="https://mega-blog-8587.vercel.app/">
+                        <FontAwesomeIcon className="text-[#0072b1] hover:text-[#34B7F1] text-4xl transition-colors duration-300" icon={faLinkedin} />
+                    </LinkedinShareButton>
+                    <WhatsappShareButton url="https://mega-blog-8587.vercel.app/">
+                        <FontAwesomeIcon className="text-[#1ca04c] hover:text-[#25D366] text-4xl transition-colors duration-300" icon={faWhatsapp} />
+                    </WhatsappShareButton>
+                    <TwitterShareButton url="https://mega-blog-8587.vercel.app/">
+                        <FontAwesomeIcon className="text-gray-600 hover:text-black text-4xl transition-colors duration-300" icon={faXTwitter} />
+                    </TwitterShareButton>
+                </div>
             </Container>
         </div>
     ) : null;
