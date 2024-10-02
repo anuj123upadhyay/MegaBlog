@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, PostForm } from '../componenets'
+import { Container, PostForm } from '../components'
 
 function AddPost() {
   return (
