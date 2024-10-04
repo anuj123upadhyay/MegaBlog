@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import service from "../appwrite/configAppwrite";
 import {Container, PostCard} from '../components'
+import Hero from '../components/Hero/hero';
 
 function Home() {
     const [posts, setPosts] = useState([])
@@ -15,15 +16,16 @@ function Home() {
   
     if (posts.length === 0) {
         return (
-            <div className="w-full py-8 mt-4 text-center">
+            <div className="w-full text-center">
                 <Container>
-                    <div className="flex flex-wrap">
+                    <Hero/>
+                    {/* <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
                                 Login to read posts
                             </h1>
                         </div>
-                    </div>
+                    </div> */}
                 </Container>
             </div>
         )

@@ -41,7 +41,7 @@ function Header() {
     <header className='py-2 shadow bg-gray-200'>
       <Container>
         <nav className='flex'>
-          <div className='mr-4'>
+          <div className='mr-4 ml-10'>
             <Link to='/'>
               <Logo width='70px'   />
 

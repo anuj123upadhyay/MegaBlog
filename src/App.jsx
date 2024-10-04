@@ -5,6 +5,7 @@ import authService from "./appwrite/auth"
 import { login, logout } from "./store/authSlice"
 import { Footer, Header } from './components'
 import { Outlet } from 'react-router-dom'
+import Hero from './components/Hero/hero'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -28,7 +29,9 @@ function App() {
         <Header />
         <main>
           <div className='text-center'>
-            TODO:  <Outlet />
+            {/* <Hero/> */}
+            {/* TODO:   */}
+            <Outlet />
           </div>
         </main>
         <Footer />
