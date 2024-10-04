@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import './App.css'
 import authService from "./appwrite/auth"
@@ -26,7 +26,7 @@ function App() {
     <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
       <div className='w-full block'>
         <Header />
-        <main>
+        <main className='md:min-h-[30vw]'>
         TODO:  <Outlet />
         </main>
         <Footer />

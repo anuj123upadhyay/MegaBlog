@@ -1,11 +1,16 @@
-import React from 'react'
+import PropTypes from "prop-types"
 
-function Logo({width = '100px'}) {
+function Logo({ classNames }) {
   return (
-    <div>
-     Logo
+    <div className={`${classNames} font-bold`}>
+      MERN<span className="text-orange-400">blog</span>
     </div>
   )
 }
 
+
+Logo.propTypes = {
+  children: PropTypes.string,
+  classNames: PropTypes.string
+}
 export default Logo
