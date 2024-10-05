@@ -55,5 +55,8 @@
 .white-color, .black-color {
   transition: color 0.3s ease; 
 }
+/* .black-bg{
+  background-color: black;
+} */
 /* Toggle Text Color */
 
