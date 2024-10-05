@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+.white-color{
+  color: white;
+}
+
+/* Toggle Text Color */
+.black-color{
+  color: black;
+}
+.text-alice-blue-900{
+  color: aliceblue;
+  font-weight: 900;
+}
+.white-color, .black-color {
+  transition: color 0.3s ease; 
+}
+/* Toggle Text Color */
+
