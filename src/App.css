@@ -44,19 +44,20 @@
   color: white;
 }
 
-/* Toggle Text Color */
-.black-color{
-  color: black;
+/* New classes for background and text color toggling */
+.dark-mode-bg {
+  background-color: rgba(0, 0, 0, 0.612) !important; /* Dark mode background */
 }
-.text-alice-blue-900{
-  color: aliceblue;
-  font-weight: 900;
+
+.light-text {
+  color: white !important; /* Light text */
 }
-.white-color, .black-color {
-  transition: color 0.3s ease; 
+
+/* Transition effect */
+.dark-mode-bg, .light-text {
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
-/* .black-bg{
-  background-color: black;
-} */
-/* Toggle Text Color */
+
+/* Toggle Theme */
+
 
