@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import service from "../appwrite/configAppwrite";
-import {Container, PostCard} from '../Components'
-import Hero from '../Components/Hero/Hero';
+import {Container, PostCard} from '../componenets'
+import Hero from '../componenets/Hero/Hero';
 
 function Home() {
     const [posts, setPosts] = useState([])
