@@ -1,12 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { Container, Logo, LogoutBtn } from '../index'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Container, Logo, LogoutBtn } from '../index';
 
 function Header() {
-  const authStatus = useSelector((state) => state.auth.status)
-  const navigate = useNavigate()
+  const authStatus = useSelector((state) => state.auth.status);
+  const navigate = useNavigate();
+  
+  // State to track theme mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   /* Toggle Text Color */
   const toggleTextColor = () => {
@@ -27,12 +30,11 @@ function Header() {
       screenElement.classList.toggle('dark-mode-bg'); // Toggle background color
       screenElement.classList.toggle('light-text');   // Toggle text color
     });
+
+    // Toggle between dark and light mode
+    setIsDarkMode(!isDarkMode);
   };
   
-  
-  
-/* Toggle Text Color */
-
   const navItems = [
     {
       name: 'Home',
@@ -59,7 +61,7 @@ function Header() {
       slug: "/add-post",
       active: authStatus,
     },
-  ]
+  ];
 
   return (
     <header className='custom-theme header-custom-theme py-3 shadow bg-gray-500'>
@@ -75,7 +77,7 @@ function Header() {
               <button
                 onClick={toggleTextColor}
                 className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'>
-                Toggle Text Color
+                {isDarkMode ? 'LightMode' : 'DarkMode'}
               </button>
             </li>
             {navItems.map((item) => 
