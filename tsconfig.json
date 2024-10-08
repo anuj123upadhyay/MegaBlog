@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "target": "es5", // For broader browser compatibility
+      "module": "commonjs", // For Node.js compatibility
+      "outDir": "./dist", // Output directory for compiled JavaScript
+      "esModuleInterop": true, // Interoperability between CommonJS and ES modules
+      "forceConsistentCasingInFileNames": true, // Consistent casing in file names
+      "strict": true, // Strict type checking
+      "skipLibCheck": true, // Skip type checking for library declarations
+      "resolveJsonModule": true, // Resolve JSON modules
+      "baseUrl": ".", // Base URL for imports (adjust if needed)
+      "paths": {
+        "@/*": ["./src/*"], // Alias for components and utils within src directory
+        "~/*": ["./lib/*"] // Optional alias for a custom "lib" directory
+      }
+    },
+    "include": ["./src/**/*.{ts,tsx}"], // Include TypeScript files within the "src" directory
+    "exclude": ["node_modules", "dist"] // Exclude unnecessary directories
+  }
