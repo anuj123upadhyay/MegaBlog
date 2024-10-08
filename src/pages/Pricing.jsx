@@ -1,8 +1,8 @@
 function Pricing() {
     return (
         <>
-        <div className="text-center mt-2 sm:mt-4">
-            <p className="font-bold text-5xl">Pricing</p>
+            <div className="text-center mt-2 sm:mt-4">
+                <p className="font-bold text-5xl">Pricing</p>
             </div>
             <div>
                 <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
