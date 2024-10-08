@@ -32,18 +32,6 @@ function App() {
           <Outlet />
         </main>
         <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
-        <Footer />
       </div>
     </div>
   ) : null
