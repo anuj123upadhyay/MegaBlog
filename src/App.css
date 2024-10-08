@@ -1,8 +1,8 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
+  /* text-align: center; */
 }
 
 .logo {
@@ -57,7 +57,12 @@
 .dark-mode-bg, .light-text {
   transition: color 0.3s ease, background-color 0.3s ease;
 }
-
+.dark-bg{
+  background-color: #0000004f;
+}
+.black-text{
+  color: black;
+}
 /* Toggle Theme */
 
 

@@ -13,6 +13,8 @@ import Signup from './pages/Signup.jsx'
 import Post from './pages/Post.jsx'
 import Home from './pages/Home.jsx'
 import AddPost from './pages/AddPost.jsx'
+import Pricing from './pages/Pricing.jsx'
+import AffiliateProgram from './pages/AffiliateProgram.jsx'
 
 const router = createBrowserRouter([
   {
@@ -69,6 +71,14 @@ const router = createBrowserRouter([
         {
             path: "/post/:slug",
             element: <Post />,
+        },
+        {
+            path: "/pricing",
+            element: <Pricing />,
+        },
+        {
+            path: "/affiliate-program",
+            element: <AffiliateProgram />,
         },
     ],
 },

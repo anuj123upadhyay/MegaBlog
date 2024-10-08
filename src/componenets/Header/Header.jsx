@@ -13,24 +13,25 @@ function Header() {
 
   /* Toggle Text Color */
   const toggleTextColor = () => {
+
+    
     const rootElement = document.getElementById('root');
-  
     // Toggle text color for the root
     rootElement.classList.toggle('white-color');
-  
+    
     const footerLinks = document.getElementsByClassName('toggle');
     Array.from(footerLinks).forEach(link => {
       link.classList.toggle('text-gray-900');
       link.classList.toggle('text-alice-blue-900');
     });
-  
+    
     // Toggle background and text color for custom screen elements
     const screenElements = document.querySelectorAll('.custom-theme');
     screenElements.forEach(screenElement => {
       screenElement.classList.toggle('dark-mode-bg'); // Toggle background color
       screenElement.classList.toggle('light-text');   // Toggle text color
     });
-
+    
     // Toggle between dark and light mode
     setIsDarkMode(!isDarkMode);
   };
@@ -64,10 +65,10 @@ function Header() {
   ];
 
   return (
-    <header className='custom-theme header-custom-theme py-3 shadow bg-gray-500'>
+    <header className='custom-theme header-custom-theme py-3 shadow bg-gray-200'>
       <Container>
         <nav className='flex'>
-          <div className='mr-4'>
+          <div className='mr-4 ml-10'>
             <Link to='/'>
               <Logo width='70px' />
             </Link>
