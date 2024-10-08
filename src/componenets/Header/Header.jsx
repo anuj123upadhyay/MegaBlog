@@ -64,10 +64,12 @@ function Header() {
   ];
 
   return (
+
     <header className='custom-theme header-custom-theme py-3 shadow bg-gray-500'>
+
       <Container>
         <nav className='flex'>
-          <div className='mr-4'>
+          <div className='mr-4 ml-10'>
             <Link to='/'>
               <Logo width='70px' />
             </Link>
