@@ -5,6 +5,7 @@ import authService from "./appwrite/auth"
 import { login, logout } from "./store/authSlice"
 import { Footer, Header } from './componenets'
 import { Outlet } from 'react-router-dom'
+import BackToTopButton from './components/ui/BackToTopButton'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -25,6 +26,7 @@ function App() {
   return !loading ? (
     <div className='min-h-screen flex flex-wrap content-between '>
       <div className='w-full block'>
+        <BackToTopButton />
         <Header />
         <main>
           <Outlet />
