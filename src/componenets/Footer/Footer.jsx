@@ -62,7 +62,7 @@ function Footer() {
           </div>
           <div className="p-6 md:w-1/2 lg:w-2/12">
             <div className="h-full">
-              <h3 className="toggle tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
+              <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
                 Support
               </h3>
               <ul>
@@ -84,7 +84,7 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/contactus"
                   >
                     Contact Us
