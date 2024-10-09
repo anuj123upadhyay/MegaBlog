@@ -15,6 +15,7 @@ import Home from './pages/Home.jsx'
 import AddPost from './pages/AddPost.jsx'
 import Pricing from './pages/Pricing.jsx'
 import AffiliateProgram from './pages/AffiliateProgram.jsx'
+import TermsAndConditions from './pages/TermsAndCondition.jsx'
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
         {
             path: "/affiliate-program",
             element: <AffiliateProgram />,
+        },
+        {
+            path: "/termsandconditions",
+            element: <TermsAndConditions />,
         },
     ],
 },
