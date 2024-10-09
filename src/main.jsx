@@ -15,7 +15,11 @@ import Home from './pages/Home.jsx'
 import AddPost from './pages/AddPost.jsx'
 import Pricing from './pages/Pricing.jsx'
 import AffiliateProgram from './pages/AffiliateProgram.jsx'
+
+import ContactPage from './componenets/ContactPage.jsx'
+
 import PrivacyPolicy from './componenets/PrivacyPolicy.jsx'
+
 
 const router = createBrowserRouter([
     {
@@ -44,6 +48,16 @@ const router = createBrowserRouter([
                 ),
             },
             {
+
+                path: "/contactus",
+                element: (
+                    <AuthLayout authentication={false}>
+                        <ContactPage />
+                    </AuthLayout>
+                ),
+            },
+            {
+
                 path: "/all-posts",
                 element: (
                     <AuthLayout authentication>
@@ -79,10 +93,12 @@ const router = createBrowserRouter([
                 element: <Pricing />,
             },
             {
+
                 path: "/privacypolicy",
                 element: <PrivacyPolicy />,
             },
             {
+
                 path: "/affiliate-program",
                 element: <AffiliateProgram />,
             },
