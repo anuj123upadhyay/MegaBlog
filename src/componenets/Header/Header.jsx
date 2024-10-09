@@ -81,11 +81,7 @@ useEffect(() => {
       slug: "/signup",
       active: !authStatus,
     },
-    {
-      name: "Contact Us",
-      slug: "/contactus",
-      active: authStatus,
-    },
+  
     {
 
       name: "All Posts",
