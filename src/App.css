@@ -40,3 +40,29 @@
 .read-the-docs {
   color: #888;
 }
+.white-color{
+  color: white;
+}
+
+/* New classes for background and text color toggling */
+.dark-mode-bg {
+  background-color: rgba(0, 0, 0, 0.612) !important; /* Dark mode background */
+}
+
+.light-text {
+  color: white !important; /* Light text */
+}
+
+/* Transition effect */
+.dark-mode-bg, .light-text {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.dark-bg{
+  background-color: #0000004f;
+}
+.black-text{
+  color: black;
+}
+/* Toggle Theme */
+
+
