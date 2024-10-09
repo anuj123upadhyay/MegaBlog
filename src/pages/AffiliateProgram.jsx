@@ -11,7 +11,7 @@ import {
 function AffiliateProgram() {
     return (
         <>
-            <div className="text-center mt-2 mb-2 sm:mt-4">
+            <div className="toggle text-center mt-2 mb-2 sm:mt-4">
                 <p className="font-bold text-5xl">Join Our Affiliate Program and Start Earning Today!</p>
             </div>
 
