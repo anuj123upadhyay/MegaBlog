@@ -1,11 +1,31 @@
-import React from 'react'
+import {useEffect} from 'react'
+import gsap from 'gsap'
+
 
 function Hero() {
+    useEffect(() => {
+        gsap.fromTo(
+            '.hero',
+            // From: starting state
+            {
+              scale: 0,
+              opacity: 0,  // Start invisible
+            },
+            // To: end state
+            {
+              scale: 1,    // End at original size
+              opacity: 1,  // Fully visible
+              delay:2 ,
+              duration: 1,
+              ease: "bounce.out",
+            }
+          );
+      }, []);
     return (
-        <div>
+        <div >
             <section className="bg-gray-50">
                 <div className="mx-auto  px-4 py-32 lg:flex lg:items-center">
-                    <div className="mx-auto max-w-xl text-center toggleBg">
+                    <div className="mx-auto max-w-xl text-center toggleBg hero">
                         <h1 className="toggle text-3xl font-extrabold sm:text-5xl">
                             Understand the World.
                             <strong className="font-extrabold  text-indigo-900 sm:block"> Let's Read.📖 </strong>
