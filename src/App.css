@@ -11,11 +11,9 @@
   will-change: filter;
   transition: filter 300ms;
 }
-
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -24,7 +22,6 @@
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
@@ -43,70 +40,29 @@
 .read-the-docs {
   color: #888;
 }
-
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-20px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes float-reverse {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(20px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-float-reverse {
-  animation: float-reverse 4s ease-in-out infinite;
-}
-
-.white-color {
+.white-color{
   color: white;
 }
 
 /* New classes for background and text color toggling */
 .dark-mode-bg {
-  background-color: rgba(0, 0, 0, 0.612) !important;
-  /* Dark mode background */
+  background-color: rgba(0, 0, 0, 0.612) !important; /* Dark mode background */
 }
 
 .light-text {
-  color: white !important;
-  /* Light text */
+  color: white !important; /* Light text */
 }
 
 /* Transition effect */
-.dark-mode-bg,
-.light-text {
+.dark-mode-bg, .light-text {
   transition: color 0.3s ease, background-color 0.3s ease;
 }
-
-.dark-bg {
+.dark-bg{
   background-color: #0000004f;
 }
-
-.black-text {
+.black-text{
   color: black;
 }
-
 /* Toggle Theme */
+
+
