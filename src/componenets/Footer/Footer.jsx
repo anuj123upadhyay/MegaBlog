@@ -4,7 +4,7 @@ import Logo from '../Logo';
 
 function Footer() {
   return (
-    <footer className="w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">
+    <footer className="custom-theme w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">
       <div className="z-10 mx-auto px-4">
         <div className="-m-6 flex flex-wrap">
           <div className="p-6 md:w-1/2 lg:w-5/12">
@@ -27,7 +27,7 @@ function Footer() {
               <ul>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
                   >
                     Features
@@ -35,7 +35,7 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/pricing"
                   >
                     Pricing
@@ -43,7 +43,7 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/affiliate-program"
                   >
                     Affiliate Program
@@ -51,7 +51,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
                   >
                     Press Kit
@@ -62,13 +62,13 @@ function Footer() {
           </div>
           <div className="p-6 md:w-1/2 lg:w-2/12">
             <div className="h-full">
-              <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
+              <h3 className="toggle tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
                 Support
               </h3>
               <ul>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
                   >
                     Account
@@ -76,7 +76,7 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
                   >
                     Help
@@ -85,15 +85,15 @@ function Footer() {
                 <li className="mb-4">
                   <Link
                     className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
+                    to="/contactus"
                   >
                     Contact Us
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/customer-support"
                   >
                     Customer Support
                   </Link>
@@ -117,15 +117,17 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
+
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/privacypolicy"
+
                   >
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
                   >
                     Licensing
