@@ -19,6 +19,7 @@ import AffiliateProgram from './pages/AffiliateProgram.jsx'
 import ContactPage from './componenets/ContactPage.jsx'
 
 import PrivacyPolicy from './componenets/PrivacyPolicy.jsx'
+import SupportPage from './componenets/SupportPage.jsx'
 
 
 const router = createBrowserRouter([
@@ -98,9 +99,12 @@ const router = createBrowserRouter([
                 element: <PrivacyPolicy />,
             },
             {
-
                 path: "/affiliate-program",
                 element: <AffiliateProgram />,
+            },
+            {
+                path: "/customer-support",
+                element: <SupportPage />,
             },
         ],
     },
