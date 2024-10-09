@@ -27,7 +27,7 @@ function Header() {
     {
       name: "Contact Us",
       slug: "/contactus",
-      active: !authStatus,
+      active: authStatus,
     },
     {
       name: "All Posts",
