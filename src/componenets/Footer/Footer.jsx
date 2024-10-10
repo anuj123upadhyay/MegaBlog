@@ -128,7 +128,7 @@ function Footer() {
                 <li>
                   <Link
                     className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
+                    to="/licensing"
                   >
                     Licensing
                   </Link>
