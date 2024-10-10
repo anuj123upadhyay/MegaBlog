@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 
 const SupportPage = () => {
     // Dummy data for support cards
@@ -36,10 +35,10 @@ const SupportPage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 text-blue-900">
-            <header className="bg-[#111b30] p-8 shadow-md">
-                <h1 className="text-4xl font-extrabold text-white text-center">Customer Support</h1>
-            </header>
+        <div className="min-h-screen ">
+            {/* <header className="p-8">
+                <h1 className="text-4xl font-bold text-black text-center">Customer Support</h1>
+            </header> */}
 
             <section className="py-12 px-6">
                 <div className="max-w-3xl mx-auto text-center">
@@ -47,12 +46,17 @@ const SupportPage = () => {
                     <p className="text-lg text-gray-700 mb-8">
                         We&apos;re here to assist you with any questions or concerns you may have. Explore the options below, or reach out to us directly.
                     </p>
-                    <Link className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg transition duration-300 ease-in-out shadow-md hover:shadow-lg" to={"/contactus"}>
-                        Contact Us
-                    </Link>
+                    <div className="flex justify-center items-center">
+                        <a
+                            className="block w-[350px] items-center rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-black focus:outline-none focus:ring active:bg-indigo-600 "
+                            href="/contactus"
+                        >
+                            Contact Us
+                        </a>
+                    </div>
                 </div>
 
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-12">
                     {supportOptions.map((option, index) => (
                         <SupportCard
                             key={index}
@@ -68,10 +72,12 @@ const SupportPage = () => {
 };
 
 const SupportCard = ({ title, description, icon }) => (
-    <div className="bg-white rounded-xl shadow-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 ease-in-out cursor-pointer">
-        <div className="text-6xl mb-4">{icon}</div>
-        <h3 className="text-xl font-bold text-blue-600 mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+    <div className="bg-white rounded-xl shadow-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 ease-in-out cursor-pointer text-center flex flex-col items-center justify-center">
+        <div className="text-6xl mb-4 text-indigo-900">{icon}</div>
+        
+        <h3 className="text-xl font-bold text-black mb-2">{title}</h3>
+        
+        <p className="text-sm text-gray-500">{description}</p>
     </div>
 );
 

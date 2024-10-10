@@ -22,6 +22,10 @@ import ContactPage from "./componenets/ContactPage.jsx";
 
 import PrivacyPolicy from "./componenets/PrivacyPolicy.jsx";
 import SupportPage from "./componenets/SupportPage.jsx";
+import LicensingPage from "./pages/LicensingPage.jsx";
+
+import PrivacyPolicy from "./componenets/PrivacyPolicy.jsx";
+import SupportPage from "./componenets/SupportPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +115,18 @@ const router = createBrowserRouter([
       {
         path: "/frequently-asked-questions",
         element: <FAQ />,
+      },
+      {
+        path: "/contactus",
+        element: (
+          <AuthLayout authentication={false}>
+            <ContactPage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/licensing",
+        element: <LicensingPage />,
       },
     ],
   },
