@@ -21,6 +21,7 @@ import ContactPage from './componenets/ContactPage.jsx'
 
 import PrivacyPolicy from './componenets/PrivacyPolicy.jsx'
 import SupportPage from './componenets/SupportPage.jsx'
+import HelpPage from './pages/HelpPage.jsx'
 
 
 const router = createBrowserRouter([
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
             {
             path: "/termsandconditions",
             element: <TermsAndConditions />,
+            },
+            {
+            path: "/helpPage",
+            element: <HelpPage />,
             },
         ],
     },
