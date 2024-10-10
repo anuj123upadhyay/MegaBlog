@@ -1,34 +1,36 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import { Provider } from 'react-redux'
-import store from './store/store.js'
-import './index.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { AuthLayout, Login } from './componenets/index.js'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import { Provider } from "react-redux";
+import store from "./store/store.js";
+import "./index.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { AuthLayout, Login } from "./componenets/index.js";
 
-import AllPosts from './pages/AllPost.jsx'
-import EditPost from './pages/EditPost.jsx'
-import Signup from './pages/Signup.jsx'
-import Post from './pages/Post.jsx'
-import Home from './pages/Home.jsx'
-import AddPost from './pages/AddPost.jsx'
-import Pricing from './pages/Pricing.jsx'
-import AffiliateProgram from './pages/AffiliateProgram.jsx'
-import TermsAndConditions from './pages/TermsAndCondition.jsx'
-
+import AllPosts from "./pages/AllPost.jsx";
+import EditPost from "./pages/EditPost.jsx";
+import Signup from "./pages/Signup.jsx";
+import Post from "./pages/Post.jsx";
+import Home from "./pages/Home.jsx";
+import AddPost from "./pages/AddPost.jsx";
+import Pricing from "./pages/Pricing.jsx";
+import AffiliateProgram from "./pages/AffiliateProgram.jsx";
+import TermsAndConditions from "./pages/TermsAndCondition.jsx";
+import FAQ from "./pages/FAQ.jsx";
 import ContactPage from './componenets/ContactPage.jsx'
-
 import PrivacyPolicy from './componenets/PrivacyPolicy.jsx'
 import SupportPage from './componenets/SupportPage.jsx'
-
 import HelpPage from './pages/HelpPage.jsx'
-import LicensingPage from './pages/LicensingPage.jsx'
-
+import LicensingPage from "./pages/LicensingPage.jsx";
 
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        store,
         path: "/",
         element: <App />,
         children: [
@@ -119,11 +121,11 @@ const router = createBrowserRouter([
             {
             path: "/helpPage",
             element: <HelpPage />,
-
-           
-
-
-
+            },
+            {
+              path: "/frequently-asked-questions",
+              element: <FAQ />,
+            },
             {
             path: "/licensing",
             element: <LicensingPage />,
@@ -133,11 +135,10 @@ const router = createBrowserRouter([
     },
 ])
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <RouterProvider router={router} />
-        </Provider>
-    </React.StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </React.StrictMode>
+);
