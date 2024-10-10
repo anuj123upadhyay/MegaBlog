@@ -109,8 +109,8 @@ function Footer() {
               <ul>
                 <li className="mb-4">
                   <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/termsandconditions"
                   >
                     Terms &amp; Conditions
                   </Link>

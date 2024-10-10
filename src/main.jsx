@@ -15,6 +15,7 @@ import Home from './pages/Home.jsx'
 import AddPost from './pages/AddPost.jsx'
 import Pricing from './pages/Pricing.jsx'
 import AffiliateProgram from './pages/AffiliateProgram.jsx'
+import TermsAndConditions from './pages/TermsAndCondition.jsx'
 
 import ContactPage from './componenets/ContactPage.jsx'
 
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
             {
                 path: "/customer-support",
                 element: <SupportPage />,
+            },
+            {
+            path: "/termsandconditions",
+            element: <TermsAndConditions />,
             },
         ],
     },
