@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Logo from '../Logo';
+import React from "react";
+import { Link } from "react-router-dom";
+import Logo from "../Logo";
 
 function Footer() {
   return (
@@ -90,12 +90,20 @@ function Footer() {
                     Contact Us
                   </Link>
                 </li>
-                <li>
+                <li className="mb-4">
                   <Link
                     className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/customer-support"
                   >
                     Customer Support
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/frequently-asked-questions"
+                  >
+                    FAQ
                   </Link>
                 </li>
               </ul>
@@ -117,10 +125,8 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <Link
-
                     className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/privacypolicy"
-
                   >
                     Privacy Policy
                   </Link>

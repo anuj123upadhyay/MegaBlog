@@ -63,6 +63,11 @@ function Header() {
       slug: "/add-post",
       active: authStatus,
     },
+    {
+      name: "FAQ",
+      slug: "/frequently-asked-questions",
+      active: true,
+    },
   ];
 
   // Toggle the hamburger menu

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import service from "../appwrite/configAppwrite";
 import { Container, PostCard } from "../componenets";
 import Hero from "../componenets/Hero/Hero";
-import FAQ from "../componenets/FAQ";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -27,7 +26,6 @@ function Home() {
                             </h1>
                         </div>
                     </div> */}
-          <FAQ />
         </Container>
       </div>
     );
@@ -42,7 +40,6 @@ function Home() {
             </div>
           ))}
         </div>
-        <FAQ />
       </Container>
     </div>
   );
