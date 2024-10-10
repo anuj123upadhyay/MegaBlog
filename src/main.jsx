@@ -24,9 +24,6 @@ import PrivacyPolicy from "./componenets/PrivacyPolicy.jsx";
 import SupportPage from "./componenets/SupportPage.jsx";
 import LicensingPage from "./pages/LicensingPage.jsx";
 
-import PrivacyPolicy from "./componenets/PrivacyPolicy.jsx";
-import SupportPage from "./componenets/SupportPage.jsx";
-
 const router = createBrowserRouter([
   {
     path: "/",
