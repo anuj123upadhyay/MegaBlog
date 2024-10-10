@@ -1,9 +1,9 @@
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Container, Logo, LogoutBtn } from '../index';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Container, Logo, LogoutBtn } from "../index";
+import { FaBars, FaTimes } from "react-icons/fa"; // For hamburger icon
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -11,26 +11,25 @@ function Header() {
 
   // State to track theme mode
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // State for hamburger menu
 
   /* Toggle Text Color */
   const toggleTextColor = () => {
-
-
-    const rootElement = document.getElementById('root');
+    const rootElement = document.getElementById("root");
     // Toggle text color for the root
-    rootElement.classList.toggle('white-color');
+    rootElement.classList.toggle("white-color");
 
-    const footerLinks = document.getElementsByClassName('toggle');
-    Array.from(footerLinks).forEach(link => {
-      link.classList.toggle('text-gray-900');
-      link.classList.toggle('text-alice-blue-900');
+    const footerLinks = document.getElementsByClassName("toggle");
+    Array.from(footerLinks).forEach((link) => {
+      link.classList.toggle("text-gray-900");
+      link.classList.toggle("text-alice-blue-900");
     });
 
     // Toggle background and text color for custom screen elements
-    const screenElements = document.querySelectorAll('.custom-theme');
-    screenElements.forEach(screenElement => {
-      screenElement.classList.toggle('dark-mode-bg'); // Toggle background color
-      screenElement.classList.toggle('light-text');   // Toggle text color
+    const screenElements = document.querySelectorAll(".custom-theme");
+    screenElements.forEach((screenElement) => {
+      screenElement.classList.toggle("dark-mode-bg"); // Toggle background color
+      screenElement.classList.toggle("light-text"); // Toggle text color
     });
 
     // Toggle between dark and light mode
@@ -39,9 +38,9 @@ function Header() {
 
   const navItems = [
     {
-      name: 'Home',
+      name: "Home",
       slug: "/",
-      active: true
+      active: true,
     },
     {
       name: "Login",
@@ -53,9 +52,8 @@ function Header() {
       slug: "/signup",
       active: !authStatus,
     },
-  
-    {
 
+    {
       name: "All Posts",
       slug: "/all-posts",
       active: authStatus,
@@ -65,25 +63,34 @@ function Header() {
       slug: "/add-post",
       active: authStatus,
     },
-
   ];
 
-  return (
-    <header className='custom-theme header-custom-theme py-3 shadow bg-gray-200'>
-      <Container>
-        <nav className='flex'>
-          <div className='mr-4 ml-10'>
-            <Link to='/'>
-              <Logo width='70px' />
+  // Toggle the hamburger menu
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  return (
+    <header className="custom-theme header-custom-theme py-3 shadow bg-gray-200">
+      <Container>
+        <nav className="flex justify-between items-center p-2">
+          <div className="mr-4 ml-10">
+            <Link to="/">
+              <Logo width="70px" />
             </Link>
           </div>
-          <ul className='flex ml-auto'>
+
+          {/* Hamburger Icon for smaller screens */}
+          <button className="text-2xl md:hidden" onClick={toggleMenu}>
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+
+          {/* Navbar items for large screens */}
+          <ul className="hidden md:flex ml-auto">
             <li>
               <button
                 onClick={toggleTextColor}
-                className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'>
-                {isDarkMode ? 'LightMode' : 'DarkMode'}
+                className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full"
+              >
+                {isDarkMode ? "LightMode" : "DarkMode"}
               </button>
             </li>
             {navItems.map((item) =>
@@ -91,8 +98,7 @@ function Header() {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-
-                    className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+                    className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full"
                   >
                     {item.name}
                   </button>
@@ -105,10 +111,44 @@ function Header() {
               </li>
             )}
           </ul>
+
+          {/* Hamburger Menu items for small screens */}
+          {menuOpen && (
+            <ul className="md:hidden flex flex-col absolute top-16 right-0 bg-gray-200 w-full text-center shadow-lg z-10">
+              <li className="p-4">
+                <button
+                  onClick={toggleTextColor}
+                  className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full"
+                >
+                  {isDarkMode ? "LightMode" : "DarkMode"}
+                </button>
+              </li>
+              {navItems.map((item) =>
+                item.active ? (
+                  <li key={item.name} className="p-4">
+                    <button
+                      onClick={() => {
+                        navigate(item.slug);
+                        setMenuOpen(false); // Close menu after navigation
+                      }}
+                      className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full"
+                    >
+                      {item.name}
+                    </button>
+                  </li>
+                ) : null
+              )}
+              {authStatus && (
+                <li className="p-4">
+                  <LogoutBtn />
+                </li>
+              )}
+            </ul>
+          )}
         </nav>
       </Container>
     </header>
-  )
+  );
 }
 
 export default Header;
