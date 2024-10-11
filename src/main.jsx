@@ -19,9 +19,9 @@ import TermsAndConditions from './pages/TermsAndCondition.jsx'
 
 import ContactPage from './componenets/ContactPage.jsx'
 
-import PrivacyPolicy from './componenets/PrivacyPolicy.jsx'
 import SupportPage from './componenets/SupportPage.jsx'
 import LicensingPage from './pages/LicensingPage.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 
 
 const router = createBrowserRouter([
