@@ -6,21 +6,21 @@ function Footer() {
   return (
     <footer className="custom-theme w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">
       <div className="z-10 mx-auto px-4">
-        <div className="-m-6 flex flex-wrap">
-          <div className="p-6 md:w-1/2 lg:w-5/12">
-            <div className="flex h-full flex-col justify-between ml-4">
+        <div className="-m-6 flex flex-wrap justify-center text-center md:text-left">
+          <div className="p-6 w-full md:w-3/12 lg:w-5/12">
+            <div className="flex h-full flex-col justify-between items-center md:items-start">
               <div className="mb-4 inline-flex items-center">
                 <Logo width="100px" />
               </div>
-              <div>
+              {/* <div>
                 <p className="text-sm text-gray-600">
                   &copy; Copyright 2023. All Rights Reserved by DevUI.
                 </p>
-              </div>
+              </div> */}
             </div>
-          </div>
-          <div className="p-6 md:w-1/2 lg:w-2/12">
-            <div className="h-full">
+          </div>  
+          <div className="p-6 w-full md:w-3/12 lg:w-2/12">
+            <div className="h-full flex flex-col items-center md:items-start">
               <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
                 Company
               </h3>
@@ -60,9 +60,9 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className="p-6 md:w-1/2 lg:w-2/12">
-            <div className="h-full">
-              <h3 className="toggle tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
+          <div className="p-6 w-full md:w-3/12 lg:w-2/12">
+            <div className="h-full flex flex-col items-center md:items-start">
+              <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
                 Support
               </h3>
               <ul>
@@ -84,7 +84,7 @@ function Footer() {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/contactus"
                   >
                     Contact Us
@@ -109,15 +109,15 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className="p-6 md:w-1/2 lg:w-3/12">
-            <div className="h-full">
+          <div className="p-6 w-full md:w-3/12 lg:w-3/12">
+            <div className="h-full flex flex-col items-center md:items-start">
               <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
                 Legals
               </h3>
               <ul>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/termsandconditions"
                   >
                     Terms &amp; Conditions
@@ -141,6 +141,11 @@ function Footer() {
                 </li>
               </ul>
             </div>
+          </div>
+          <div>
+            <p className="text-sm text-gray-600">
+              &copy; Copyright 2023. All Rights Reserved by DevUI.
+            </p>
           </div>
         </div>
       </div>

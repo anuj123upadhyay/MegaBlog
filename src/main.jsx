@@ -17,11 +17,11 @@ import Pricing from "./pages/Pricing.jsx";
 import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
-import ContactPage from './componenets/ContactPage.jsx'
-import PrivacyPolicy from './componenets/PrivacyPolicy.jsx'
+import ContactPage from "./componenets/ContactPage.jsx";
 import SupportPage from './componenets/SupportPage.jsx'
+import LicensingPage from './pages/LicensingPage.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import HelpPage from './pages/HelpPage.jsx'
-import LicensingPage from "./pages/LicensingPage.jsx";
 
 
 const router = createBrowserRouter([
