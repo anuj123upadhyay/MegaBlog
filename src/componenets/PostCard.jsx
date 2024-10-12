@@ -33,7 +33,7 @@ function PostCard({ $id, title, featuredImage }) {
         </div>
       </Link> */}
 
-      <div className="p-6 mt-6 flex flex-wrap gap-4">
+      <div className="p-2 mt-6 flex flex-wrap gap-2">
         <Card className="bg-white shadow-lg hover:shadow-2xl transition-shadow duration-300 rounded-lg overflow-hidden">
           <CardHeader className="p-6">
             <CardTitle className="text-3xl font-bold text-gray-900">
@@ -47,9 +47,9 @@ function PostCard({ $id, title, featuredImage }) {
             <img
               src={service.getFilePreview(featuredImage)}
               alt={title}
-              className="rounded-xl w-100 h-80"
+              className="rounded-xl "
             />
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mt-2 mb-2">
               Don&apos;t miss out on Reading!!!
             </p>
             <div className="flex justify-center">
