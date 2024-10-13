@@ -4,6 +4,7 @@ import service from "../appwrite/configAppwrite";
 
 
 function AllPosts() {
+
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     service.getPosts([]).then((posts) => {
@@ -13,6 +14,7 @@ function AllPosts() {
       });
   }, []);
   
+
   return (
     <div className="w-full py-8">
       <Container>

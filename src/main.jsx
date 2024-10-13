@@ -23,6 +23,7 @@ import ContactPage from "./componenets/ContactPage.jsx";
 import SupportPage from './componenets/SupportPage.jsx'
 import LicensingPage from './pages/LicensingPage.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import ProfilePage from "./componenets/ProfilePage.jsx";
 
 
 const router = createBrowserRouter([
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
       {
         path: "/licensing",
         element: <LicensingPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
       },
     ],
   },
