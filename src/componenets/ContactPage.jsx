@@ -23,9 +23,9 @@ const ContactPage = () => {
     };
 
     return (
-        <div className="flex flex-col lg:flex-row items-center bg-[#e5e7eb] p-10 px-32 justify-between">
+        <div className="flex flex-col lg:flex-row items-center bg-[#e5e7eb] p-10 px-4 sm:px-10 lg:px-32 justify-between">
             {/* Left-side image */}
-            <div className="lg:w-[45%] w-full flex justify-center h-[640px]">
+            <div className="lg:w-[45%] w-full flex justify-center h-[320px] sm:h-[480px] lg:h-[640px]">
                 <img
                     src={contactPageBg}
                     alt="Side Visual"
@@ -34,14 +34,14 @@ const ContactPage = () => {
             </div>
 
             {/* Form Section */}
-            <div className="lg:w-[45%] w-full p-8 bg-white">
+            <div className="lg:w-[45%] w-full p-4 sm:p-8 bg-white">
                 <h2 className="text-3xl font-bold mb-6 text-gray-800">Contact us</h2>
                 <p className="text-gray-600 mb-4">
                     Use this form for all general enquiries. We monitor these responses constantly during working hours. If you are looking to partner with us, please complete the new customer application form instead.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="flex flex-col lg:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4">
                         {/* Full Name Input */}
                         <div className="w-full">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -100,11 +100,11 @@ const ContactPage = () => {
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
                             MESSAGE <span className="text-red-500">*</span>
                         </label>
-                        <textarea
+                        <textarea 
                             id="message"
                             name="message"
                             placeholder="Enter your message"
-                            className="w-full p-3 border rounded-md h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-600 text-gray-800 transition"
+                            className="w-full p-3 border rounded-md h-24 sm:h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-600 text-gray-800 transition"
                             value={formData.message}
                             onChange={handleChange}
                             required
@@ -112,7 +112,7 @@ const ContactPage = () => {
                     </div>
 
                     {/* reCAPTCHA & Submit Button */}
-                    <div className="flex flex-col space-y-4">
+                    <div className="flex flex-col space-y-4 mt-4">
                         <div>
                             {/* Placeholder for reCAPTCHA */}
                             <div className="flex items-center space-x-2">

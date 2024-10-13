@@ -12,11 +12,11 @@ function Footer() {
               <div className="mb-4 inline-flex items-center">
                 <Logo width="100px" />
               </div>
-              {/* <div>
+              <div>
                 <p className="text-sm text-gray-600">
                   &copy; Copyright 2023. All Rights Reserved by DevUI.
                 </p>
-              </div> */}
+              </div>
             </div>
           </div>  
           <div className="p-6 w-full md:w-3/12 lg:w-2/12">
@@ -26,36 +26,16 @@ function Footer() {
               </h3>
               <ul>
                 <li className="mb-4">
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Features
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/">Features</Link>
                 </li>
                 <li className="mb-4">
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/pricing"
-                  >
-                    Pricing
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/pricing">Pricing</Link>
                 </li>
                 <li className="mb-4">
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/affiliate-program"
-                  >
-                    Affiliate Program
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/affiliate-program">Affiliate Program</Link>
                 </li>
                 <li>
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Press Kit
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/">Press Kit</Link>
                 </li>
               </ul>
             </div>
@@ -67,12 +47,7 @@ function Footer() {
               </h3>
               <ul>
                 <li className="mb-4">
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Account
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/">Account</Link>
                 </li>
                 <li className="mb-4">
                   <Link
@@ -83,28 +58,13 @@ function Footer() {
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/contactus"
-                  >
-                    Contact Us
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/contactus">Contact Us</Link>
                 </li>
                 <li className="mb-4">
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/customer-support"
-                  >
-                    Customer Support
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/customer-support">Customer Support</Link>
                 </li>
                 <li>
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/frequently-asked-questions"
-                  >
-                    FAQ
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/frequently-asked-questions">FAQ</Link>
                 </li>
               </ul>
             </div>
@@ -116,36 +76,35 @@ function Footer() {
               </h3>
               <ul>
                 <li className="mb-4">
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/termsandconditions"
-                  >
-                    Terms &amp; Conditions
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/termsandconditions">Terms &amp; Conditions</Link>
                 </li>
                 <li className="mb-4">
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/privacypolicy"
-                  >
-                    Privacy Policy
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/privacypolicy">Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/licensing"
-                  >
-                    Licensing
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/licensing">Licensing</Link>
                 </li>
               </ul>
             </div>
           </div>
-          <div>
-            <p className="text-sm text-gray-600">
-              &copy; Copyright 2023. All Rights Reserved by DevUI.
-            </p>
+          <div className="p-6 w-full flex justify-center items-center">
+            <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
+              Follow Us
+            </h3>
+            <div className="flex space-x-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-facebook text-gray-900 hover:text-gray-700"></i>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-twitter text-gray-900 hover:text-gray-700"></i>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-instagram text-gray-900 hover:text-gray-700"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-linkedin text-gray-900 hover:text-gray-700"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
