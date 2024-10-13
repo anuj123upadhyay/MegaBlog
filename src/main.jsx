@@ -20,10 +20,13 @@ import FAQ from "./pages/FAQ.jsx";
 
 import ContactPage from "./componenets/ContactPage.jsx";
 
+
 import SupportPage from "./componenets/SupportPage.jsx";
 import LicensingPage from "./pages/LicensingPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import Features from "./pages/Features.jsx";
+
+import ProfilePage from "./componenets/ProfilePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -127,8 +130,13 @@ const router = createBrowserRouter([
         element: <LicensingPage />,
       },
       {
+
         path: "/features",
         element: <Features />,
+
+        path: "/profile",
+        element: <ProfilePage />,
+
       },
     ],
   },
