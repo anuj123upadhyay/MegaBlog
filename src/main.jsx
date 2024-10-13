@@ -21,7 +21,11 @@ import ContactPage from "./componenets/ContactPage.jsx";
 import SupportPage from './componenets/SupportPage.jsx'
 import LicensingPage from './pages/LicensingPage.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+
 import HelpPage from './pages/HelpPage.jsx'
+
+import ProfilePage from "./componenets/ProfilePage.jsx";
+
 
 
 const router = createBrowserRouter([
@@ -32,6 +36,7 @@ const router = createBrowserRouter([
       {
         store,
         path: "/",
+
         element: <App />,
         children: [
             {
@@ -131,9 +136,14 @@ const router = createBrowserRouter([
             element: <LicensingPage />,
 
             },
+            {
+        path: "/profile",
+        element: <ProfilePage />,
+      },
         ],
     },
-])
+]);
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
