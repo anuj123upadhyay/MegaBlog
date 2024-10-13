@@ -70,7 +70,11 @@ function Header() {
       slug: "/signup",
       active: !authStatus,
     },
-
+    {
+      name: "Profile",
+      slug: "/profile",
+      active: !authStatus,
+    },
     {
       name: "All Posts",
       slug: "/all-posts",
@@ -110,9 +114,8 @@ function Header() {
         `}
       </style>
       <header
-        className={`custom-theme header-custom-theme py-3 shadow bg-gray-200 ${
-          isSticky ? "sticky" : ""
-        }`}
+        className={`custom-theme header-custom-theme py-3 shadow bg-gray-200 ${isSticky ? "sticky" : ""
+          }`}
       >
         <Container>
           <nav className='flex justify-between items-center p-2'>
