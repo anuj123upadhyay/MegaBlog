@@ -20,10 +20,10 @@ import FAQ from "./pages/FAQ.jsx";
 
 import ContactPage from "./componenets/ContactPage.jsx";
 
-import SupportPage from './componenets/SupportPage.jsx'
-import LicensingPage from './pages/LicensingPage.jsx'
-import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
-
+import SupportPage from "./componenets/SupportPage.jsx";
+import LicensingPage from "./pages/LicensingPage.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import Features from "./pages/Features.jsx";
 
 const router = createBrowserRouter([
   {
@@ -125,6 +125,10 @@ const router = createBrowserRouter([
       {
         path: "/licensing",
         element: <LicensingPage />,
+      },
+      {
+        path: "/features",
+        element: <Features />,
       },
     ],
   },
