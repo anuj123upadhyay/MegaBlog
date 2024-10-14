@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Container, PostCard } from "../componenets";
 import service from "../appwrite/configAppwrite";
 
-
 function AllPosts() {
-
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     service.getPosts([]).then((posts) => {
-        if (posts) {
-          setPosts(posts.documents);
-        }
-      });
+      if (posts) {
+        setPosts(posts.documents);
+      }
+    });
   }, []);
-  
 
   return (
     <div className="w-full py-8">
@@ -30,17 +27,17 @@ function AllPosts() {
           </div>
 
           <div className="p-4">
-            
-            <div className="flex flex-wrap ">
+            <div className="flex flex-wrap justify-around">
               {posts.map((post) => (
-                <div key={post.$id} className="p-2 w-1/4">
+                <div
+                  key={post.$id}
+                  className="p-2 flex flex-wrap sm:w-[350px] w-[300px]"
+                >
                   <PostCard {...post} />
                 </div>
               ))}
             </div>
           </div>
-
-          
         </div>
       </Container>
     </div>
