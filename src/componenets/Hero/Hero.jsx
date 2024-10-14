@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function Hero() {
     return (
         <div>
@@ -17,19 +17,19 @@ function Hero() {
                         </p>
 
                         <div className="mt-8 flex flex-wrap justify-center gap-4">
-                            <a
+                            <Link
                                 className="block w-full rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-black focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
-                                href="#"
+                                to="/add-post"
                             >
                                 Get Started
-                            </a>
+                            </Link>
 
-                            <a
+                            <Link
                                 className="block w-full rounded px-12 py-3 text-sm font-medium text-indigo-600 shadow hover:text-black-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
-                                href="#"
+                               to="/all-posts"
                             >
                                 Learn More
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
