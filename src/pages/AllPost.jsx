@@ -13,7 +13,6 @@ function AllPosts() {
       }
     });
   }, []);
-
   // Helper function to group posts by category
   const groupPostsByCategory = (posts) => {
     return posts.reduce((acc, post) => {
@@ -52,6 +51,7 @@ function AllPosts() {
                       <PostCard {...post} />
                     </div>
                   ))}
+
                 </div>
               </div>
             ))}
