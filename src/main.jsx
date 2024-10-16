@@ -33,122 +33,116 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      {
-        store,
-        path: "/",
+        {
+            store,
+            path: "/",
+            element: <Home />,
+        },
+        {
+            path: "/login",
+            element: (
+                <AuthLayout authentication={false}>
+                    <Login />
+                </AuthLayout>
+            ),
+        },
+        {
+            path: "/signup",
+            element: (
+                <AuthLayout authentication={false}>
+                    <Signup />
+                </AuthLayout>
+            ),
+        },
+        {
 
-        element: <App />,
-        children: [
-            {
-                store,
-                path: "/",
-                element: <Home />,
-            },
-            {
-                path: "/login",
-                element: (
-                    <AuthLayout authentication={false}>
-                        <Login />
-                    </AuthLayout>
-                ),
-            },
-            {
-                path: "/signup",
-                element: (
-                    <AuthLayout authentication={false}>
-                        <Signup />
-                    </AuthLayout>
-                ),
-            },
-            {
+            path: "/contactus",
+            element: (
+                <AuthLayout authentication={false}>
+                    <ContactPage />
+                </AuthLayout>
+            ),
+        },
+        {
 
-                path: "/contactus",
-                element: (
-                    <AuthLayout authentication={false}>
-                        <ContactPage />
-                    </AuthLayout>
-                ),
-            },
-            {
+            path: "/all-posts",
+            element: (
+                <AuthLayout authentication>
+                    {" "}
+                    <AllPosts />
+                </AuthLayout>
+            ),
+        },
+        {
+            path: "/add-post",
+            element: (
+                <AuthLayout authentication>
+                    {" "}
+                    <AddPost />
+                </AuthLayout>
+            ),
+        },
+        {
+            path: "/edit-post/:slug",
+            element: (
+                <AuthLayout authentication>
+                    {" "}
+                    <EditPost />
+                </AuthLayout>
+            ),
+        },
+        {
+            path: "/post/:slug",
+            element: <Post />,
+        },
+        {
+            path: "/pricing",
+            element: <Pricing />,
+        },
+        {
 
-                path: "/all-posts",
-                element: (
-                    <AuthLayout authentication>
-                        {" "}
-                        <AllPosts />
-                    </AuthLayout>
-                ),
-            },
-            {
-                path: "/add-post",
-                element: (
-                    <AuthLayout authentication>
-                        {" "}
-                        <AddPost />
-                    </AuthLayout>
-                ),
-            },
-            {
-                path: "/edit-post/:slug",
-                element: (
-                    <AuthLayout authentication>
-                        {" "}
-                        <EditPost />
-                    </AuthLayout>
-                ),
-            },
-            {
-                path: "/post/:slug",
-                element: <Post />,
-            },
-            {
-                path: "/pricing",
-                element: <Pricing />,
-            },
-            {
+            path: "/privacypolicy",
+            element: <PrivacyPolicy />,
+        },
+        {
+            path: "/affiliate-program",
+            element: <AffiliateProgram />,
+        },
+        {
+            path: "/customer-support",
+            element: <SupportPage />,
+        },
+        {
+        path: "/termsandconditions",
+        element: <TermsAndConditions />,
+        },
 
-                path: "/privacypolicy",
-                element: <PrivacyPolicy />,
-            },
-            {
-                path: "/affiliate-program",
-                element: <AffiliateProgram />,
-            },
-            {
-                path: "/customer-support",
-                element: <SupportPage />,
-            },
-            {
-            path: "/termsandconditions",
-            element: <TermsAndConditions />,
-            },
+        {
+        path: "/helpPage",
+        element: <HelpPage />,
+        },
+        {
+          path: "/frequently-asked-questions",
+          element: <FAQ />,
+        },
+        {
+        path: "/licensing",
+        element: <LicensingPage />,
 
-            {
-            path: "/helpPage",
-            element: <HelpPage />,
-            },
-            {
-              path: "/frequently-asked-questions",
-              element: <FAQ />,
-            },
-            {
-            path: "/licensing",
-            element: <LicensingPage />,
-
-            },
-            {
-        path: "/profile",
-        element: <ProfilePage />,
-      },
-        ],
-    },
+        },
+        {
+    path: "/profile",
+    element: <ProfilePage />,
+  },
+    ],
+}
 ]);
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
+  <React.StrictMode>
   <Provider store={store}>
     <RouterProvider router={router} />
   </Provider>
-  //</React.StrictMode>
+  </React.StrictMode>
 );

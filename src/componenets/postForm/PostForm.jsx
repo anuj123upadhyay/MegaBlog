@@ -1,20 +1,35 @@
 import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, RTE, Select } from "../index";
+import { Button, Input, RTE } from "../index";
 import service from "../../appwrite/configAppwrite";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Textarea } from "../../components/ui/textarea";
+import { Label } from "../../components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/ui/select";
 
 export default function PostForm({ post }) {
-  const { register, handleSubmit, watch, setValue, control, getValues } =
-    useForm({
-      defaultValues: {
-        title: post?.title || "",
-        slug: post?.$id || "",
-        content: post?.content || "",
-        status: post?.status || "active",
-      },
-    });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    control,
+    getValues,
+  } = useForm({
+    defaultValues: {
+      title: post?.title || "",
+      slug: post?.$id || "",
+      content: post?.content || "",
+      status: post?.status || "active",
+    },
+  });
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
@@ -96,23 +111,34 @@ export default function PostForm({ post }) {
       className="flex flex-wrap md:flex-row flex-col"
     >
       <div className="md:w-2/3 md:px-2 px-4">
-        <Input
-          label="Title :"
-          placeholder="Title"
-          className="mb-4"
-          {...register("title", { required: true })}
-        />
-        <Input
-          label="Slug :"
-          placeholder="Slug"
-          className="mb-4"
-          {...register("slug", { required: true })}
-          onInput={(e) => {
-            setValue("slug", slugTransform(e.currentTarget.value), {
-              shouldValidate: true,
-            });
-          }}
-        />
+        <div className="grid w-full gap-2">
+          <Label htmlFor="message-2 ">Title</Label>
+          <Textarea
+            label="Title :"
+            placeholder="Title"
+            className="mb-4"
+            {...register("title", { required: true })}
+          />
+          <p className="text-sm text-muted-foreground -mt-4 mb-2">
+            Your given Title will be Displayed everywhere.
+          </p>
+        </div>
+
+        <div className="grid w-full gap-2">
+          <Label htmlFor="message-2 ">Slug</Label>
+          <Textarea
+            label="Slug :"
+            placeholder="Slug"
+            className="mb-4"
+            {...register("slug", { required: true })}
+            onInput={(e) => {
+              setValue("slug", slugTransform(e.currentTarget.value), {
+                shouldValidate: true,
+              });
+            }}
+          />
+        </div>
+
         <RTE
           label="Content :"
           name="content"
@@ -185,12 +211,25 @@ export default function PostForm({ post }) {
           </div>
         )}
 
-        <Select
+        <div className="grid w-full gap-2">
+          <Label htmlFor="message-2 ">Post Now/Save as Draft:</Label>
+          <Select {...register("status", { required: true })} className="mb-4">
+            <SelectTrigger className="w-full mb-4">
+              <SelectValue placeholder="Status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="active">Post Now</SelectItem>
+              <SelectItem value="inactive">Draft</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* <Select
           options={["active", "inactive"]}
           label="Status"
           className="mb-4"
           {...register("status", { required: true })}
-        />
+        /> */}
         <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
