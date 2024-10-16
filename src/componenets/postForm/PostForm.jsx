@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "../index";
 import service from "../../appwrite/configAppwrite";
@@ -19,6 +19,20 @@ export default function PostForm({ post }) {
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  const [imagePreview, setImagePreview] = useState(null); // State for image preview
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result); // Set the image preview URL
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null); // Clear preview if no image is selected
+    }
+  };
 
   const submit = async (data) => {
     if (post) {
@@ -107,7 +121,8 @@ export default function PostForm({ post }) {
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="md:w-1/3 md:px-2 px-4 ">
+
+      {/* <div className="md:w-1/3 md:px-2 px-4 ">
         <Input
           label="Featured Image :"
           type="file"
@@ -131,6 +146,53 @@ export default function PostForm({ post }) {
           className="mb-4"
           {...register("category", { required: true })}
         />
+
+        <Select
+          options={["active", "inactive"]}
+          label="Status"
+          className="mb-4"
+          {...register("status", { required: true })}
+        />
+        <Button
+          type="submit"
+          bgColor={post ? "bg-green-500" : undefined}
+          className="w-full"
+        >
+          {post ? "Update" : "Submit"}
+        </Button>
+      </div> */}
+
+      <div className="md:w-1/3 md:px-2 px-4">
+        <Input
+          label="Featured Image :"
+          type="file"
+          className="mb-4"
+          accept="image/png, image/jpg, image/jpeg, image/gif"
+          {...register("image", { required: !post })}
+          onChange={handleImageChange} // Handle image selection
+        />
+        {post && (
+          <div className="w-full mb-4">
+            <img
+              src={service.getFilePreview(post.featuredImage)}
+              alt={post.title}
+              className="rounded-lg shadow-md"
+            />
+          </div>
+        )}
+
+        {imagePreview && (
+          <div className="w-full mb-4">
+            <h3 className="text-sm font-semibold mb-2">
+              Selected Image Preview:
+            </h3>
+            <img
+              src={imagePreview}
+              alt="Selected"
+              className="rounded-lg shadow-lg"
+            />
+          </div>
+        )}
 
         <Select
           options={["active", "inactive"]}

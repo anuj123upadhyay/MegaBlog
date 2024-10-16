@@ -3,7 +3,7 @@ import { Container, PostForm } from '../componenets'
 
 function AddPost() {
   return (
-    <div className='py-8'>
+    <div className='py-8 px-12'>
         <Container>
             <PostForm />
         </Container>
