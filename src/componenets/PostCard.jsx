@@ -44,7 +44,7 @@ function PostCard({ $id, title, featuredImage }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <img src={image} alt={title} className="rounded-xl w-[280px]" />
+          <img src={service.getFilePreview(featuredImage)} alt={title} className="rounded-xl w-[280px]" />
           <p className="text-gray-700 mt-2 mb-2 text-center">
             Don&apos;t miss out on Reading!!!
           </p>
@@ -56,63 +56,6 @@ function PostCard({ $id, title, featuredImage }) {
         </CardContent>
       </Card>
 
-      {/* <section class="p-8 px-4 lg:px-0 bg-purple-500">
-        <div class="flex flex-wrap items-center md:max-w-6xl mx-auto">
-          <div class="w-full md:w-1/2 flex items-center justify-center md:justify-start space-x-4 mb-8 md:mb-0">
-            <h5 class="text-sm font-arvo uppercase tracking-widest text-white">
-              Follow Us
-            </h5>
-            <a
-              target="_blank"
-              class="block w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-50 bg-white text-purple-500"
-              href="https://www.instagram.com/pinchofyum"
-              rel="noopener"
-            >
-              <svg class="w-8 h-8">
-                <title>INSTAGRAM</title>
-                <desc>INSTAGRAM icon</desc>
-                <use xlink:href="#sprite-icon-instagram"></use>
-              </svg>
-            </a>
-            <a
-              target="_blank"
-              class="block w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-50 bg-white text-purple-500"
-              href="https://www.pinterest.com/pinchofyum/_created/"
-              rel="noopener"
-            >
-              <svg class="w-8 h-8">
-                <title>PINTEREST</title>
-                <desc>PINTEREST icon</desc>
-                <use xlink:href="#sprite-icon-pinterest"></use>
-              </svg>
-            </a>
-            <a
-              target="_blank"
-              class="block w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-50 bg-white text-purple-500"
-              href="https://www.facebook.com/pinchofyum"
-              rel="noopener"
-            >
-              <svg class="w-8 h-8">
-                <title>FACEBOOK</title>
-                <desc>FACEBOOK icon</desc>
-                <use xlink:href="#sprite-icon-facebook"></use>
-              </svg>
-            </a>
-            <a
-              target="_blank"
-              class="block w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-50 bg-white text-purple-500"
-              href="https://twitter.com/pinchofyum"
-              rel="noopener"
-            >
-              <svg class="w-8 h-8">
-                <title>TWITTER</title>
-                <desc>TWITTER icon</desc>
-                <use xlink:href="#sprite-icon-twitter"></use>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }
