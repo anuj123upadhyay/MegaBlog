@@ -50,7 +50,12 @@ function Footer() {
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/">Account</Link>
                 </li>
                 <li className="mb-4">
-                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/">Help</Link>
+                  <Link
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/helpPage"
+                  >
+                    Help
+                  </Link>
                 </li>
                 <li className="mb-4">
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/contactus">Contact Us</Link>
