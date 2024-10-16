@@ -18,15 +18,14 @@ import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
 import ContactPage from "./componenets/ContactPage.jsx";
-import SupportPage from './componenets/SupportPage.jsx'
-import LicensingPage from './pages/LicensingPage.jsx'
-import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import SupportPage from "./componenets/SupportPage.jsx";
+import LicensingPage from "./pages/LicensingPage.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
-import HelpPage from './pages/HelpPage.jsx'
+import HelpPage from "./pages/HelpPage.jsx";
 
 import ProfilePage from "./componenets/ProfilePage.jsx";
-
-
+import SignIn from "./pages/SignIn.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,114 +35,107 @@ const router = createBrowserRouter([
       {
         store,
         path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: (
+          <AuthLayout authentication={false}>
+            <Login />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/signup",
+        element: (
+          <AuthLayout authentication={false}>
+            <Signup />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/contactus",
+        element: (
+          <AuthLayout authentication={false}>
+            <ContactPage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/all-posts",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <AllPosts />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/add-post",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <AddPost />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/edit-post/:slug",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <EditPost />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/post/:slug",
+        element: <Post />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+      },
+      {
+        path: "/privacypolicy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/affiliate-program",
+        element: <AffiliateProgram />,
+      },
+      {
+        path: "/customer-support",
+        element: <SupportPage />,
+      },
+      {
+        path: "/termsandconditions",
+        element: <TermsAndConditions />,
+      },
 
-        element: <App />,
-        children: [
-            {
-                store,
-                path: "/",
-                element: <Home />,
-            },
-            {
-                path: "/login",
-                element: (
-                    <AuthLayout authentication={false}>
-                        <Login />
-                    </AuthLayout>
-                ),
-            },
-            {
-                path: "/signup",
-                element: (
-                    <AuthLayout authentication={false}>
-                        <Signup />
-                    </AuthLayout>
-                ),
-            },
-            {
-
-                path: "/contactus",
-                element: (
-                    <AuthLayout authentication={false}>
-                        <ContactPage />
-                    </AuthLayout>
-                ),
-            },
-            {
-
-                path: "/all-posts",
-                element: (
-                    <AuthLayout authentication>
-                        {" "}
-                        <AllPosts />
-                    </AuthLayout>
-                ),
-            },
-            {
-                path: "/add-post",
-                element: (
-                    <AuthLayout authentication>
-                        {" "}
-                        <AddPost />
-                    </AuthLayout>
-                ),
-            },
-            {
-                path: "/edit-post/:slug",
-                element: (
-                    <AuthLayout authentication>
-                        {" "}
-                        <EditPost />
-                    </AuthLayout>
-                ),
-            },
-            {
-                path: "/post/:slug",
-                element: <Post />,
-            },
-            {
-                path: "/pricing",
-                element: <Pricing />,
-            },
-            {
-
-                path: "/privacypolicy",
-                element: <PrivacyPolicy />,
-            },
-            {
-                path: "/affiliate-program",
-                element: <AffiliateProgram />,
-            },
-            {
-                path: "/customer-support",
-                element: <SupportPage />,
-            },
-            {
-            path: "/termsandconditions",
-            element: <TermsAndConditions />,
-            },
-
-            {
-            path: "/helpPage",
-            element: <HelpPage />,
-            },
-            {
-              path: "/frequently-asked-questions",
-              element: <FAQ />,
-            },
-            {
-            path: "/licensing",
-            element: <LicensingPage />,
-
-            },
-            {
+      {
+        path: "/helpPage",
+        element: <HelpPage />,
+      },
+      {
+        path: "/frequently-asked-questions",
+        element: <FAQ />,
+      },
+      {
+        path: "/licensing",
+        element: <LicensingPage />,
+      },
+      {
         path: "/profile",
         element: <ProfilePage />,
       },
-        ],
-    },
+      {
+        path: '/test',
+        element: <SignIn />,
+      },
+    ],
+  },
 ]);
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
