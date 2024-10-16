@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion'; // Import motion from framer-motion
 import contactPageBg from '../assets/contactPageBg.jpg';
 
 const ContactPage = () => {
@@ -24,17 +25,27 @@ const ContactPage = () => {
 
     return (
         <div className="flex flex-col lg:flex-row items-center bg-[#e5e7eb] p-10 px-4 sm:px-10 lg:px-32 justify-between">
-            {/* Left-side image */}
-            <div className="lg:w-[45%] w-full flex justify-center h-[320px] sm:h-[480px] lg:h-[640px]">
+            {/* Left-side image with animation */}
+            <motion.div
+                className="lg:w-[45%] w-full flex justify-center h-[320px] sm:h-[480px] lg:h-[640px]"
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ duration: 0.5 }} 
+            >
                 <img
                     src={contactPageBg}
                     alt="Side Visual"
                     className="w-full object-cover h-full"
                 />
-            </div>
+            </motion.div>
 
-            {/* Form Section */}
-            <div className="lg:w-[45%] w-full p-4 sm:p-8 bg-white">
+            {/* Form Section with animation */}
+            <motion.div
+                className="lg:w-[45%] w-full p-4 sm:p-8 bg-white"
+                initial={{ opacity: 0, y: 20 }}  
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.5 }} 
+            >
                 <h2 className="text-3xl font-bold mb-6 text-gray-800">Contact us</h2>
                 <p className="text-gray-600 mb-4">
                     Use this form for all general enquiries. We monitor these responses constantly during working hours. If you are looking to partner with us, please complete the new customer application form instead.
@@ -131,7 +142,7 @@ const ContactPage = () => {
                         </button>
                     </div>
                 </form>
-            </div>
+            </motion.div>
         </div>
     );
 };
