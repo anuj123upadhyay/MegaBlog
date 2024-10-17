@@ -38,22 +38,6 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/login",
-        element: (
-          <AuthLayout authentication={false}>
-            <Login />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
-      },
-      {
         path: "/contactus",
         element: (
           <AuthLayout authentication={false}>
@@ -133,7 +117,32 @@ const router = createBrowserRouter([
         path: '/test',
         element: <SignIn />,
       },
+      {
+        path: "/signup",
+        element: (
+          <AuthLayout authentication={false}>
+            <Signup />
+          </AuthLayout>
+        ),
+      },
     ],
+  },
+  {
+    path: "/login",
+    element: (
+      <AuthLayout authentication={false}>
+        <Login />
+      </AuthLayout>
+    ),
+  },
+
+  {
+    path: "/signin",
+    element: (
+      <AuthLayout authentication={false}>
+        <SignIn />
+      </AuthLayout>
+    ),
   },
 ]);
 

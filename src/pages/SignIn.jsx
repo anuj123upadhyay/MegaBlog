@@ -1,6 +1,56 @@
+import React, { useState } from "react";
 import { ShellIcon } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import authService from "../appwrite/auth";
+import { Button, Input, Logo } from "../componenets/index";
+import { useDispatch } from "react-redux";
+import { login } from "../store/authSlice";
+import { useForm } from "react-hook-form";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 export default function SignIn() {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const { register, handleSubmit, watch } = useForm();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState("");
+
+  const create = async (data) => {
+    setError("");
+    if (data.password !== data.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    try {
+      const userData = await authService.createAccount(data);
+      if (userData) {
+        const currentUser = await authService.getCurrentUser();
+        if (currentUser) dispatch(login(currentUser));
+        navigate("/");
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const password = e.target.value;
+    if (password.length < 6) {
+      setPasswordStrength("Weak");
+    } else if (
+      password.length >= 6 &&
+      /\d/.test(password) &&
+      /[A-Z]/.test(password)
+    ) {
+      setPasswordStrength("Strong");
+    } else {
+      setPasswordStrength("Medium");
+    }
+  };
+
   return (
     <>
       <section className="bg-white">
@@ -39,7 +89,14 @@ export default function SignIn() {
                 Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
               </p>
 
-              <form action="#" className="mt-8 grid grid-cols-6 gap-6">
+              {error && (
+                <p className="text-red-600 mt-8 text-center">{error}</p>
+              )}
+
+              <form
+                onSubmit={handleSubmit(create)}
+                className="mt-8 grid grid-cols-6 gap-6"
+              >
                 <div className="col-span-6 sm:col-span-3">
                   <label
                     htmlFor="FirstName"
@@ -48,15 +105,16 @@ export default function SignIn() {
                     First Name
                   </label>
 
-                  <input
-                    type="text"
-                    id="FirstName"
-                    name="first_name"
+                  <Input
+                    placeholder="Enter your full name"
+                    {...register("name", {
+                      required: true,
+                    })}
                     className="mt-1 w-full border border-black rounded-md bg-white text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                   />
                 </div>
 
-                <div className="col-span-6 sm:col-span-3">
+                {/* <div className="col-span-6 sm:col-span-3">
                   <label
                     htmlFor="LastName"
                     className="block text-sm font-medium text-gray-700"
@@ -70,7 +128,7 @@ export default function SignIn() {
                     name="last_name"
                     className="mt-1 w-full border border-black rounded-md bg-white text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                   />
-                </div>
+                </div> */}
 
                 <div className="col-span-6">
                   <label
@@ -81,10 +139,18 @@ export default function SignIn() {
                     Email{" "}
                   </label>
 
-                  <input
+                  <Input
+                    placeholder="Enter your email"
                     type="email"
-                    id="Email"
-                    name="email"
+                    {...register("email", {
+                      required: true,
+                      validate: {
+                        matchPattern: (value) =>
+                          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+                            value
+                          ) || "Email address must be a valid address",
+                      },
+                    })}
                     className="mt-1 w-full border border-black rounded-md bg-white text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                   />
                 </div>
@@ -94,16 +160,46 @@ export default function SignIn() {
                     htmlFor="Password"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    {" "}
-                    Password{" "}
+                    Password
                   </label>
+                  <div className="relative flex flex-col">
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Enter your password"
+                      {...register("password", {
+                        required: true,
+                        onChange: handlePasswordChange,
+                      })}
+                      className="mt-1 w-full border border-black rounded-md bg-white text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 pr-10" // Add padding to the right
+                    />
+                    <button
+                      type="button"
+                      className="absolute right-3 top-1/3 transform -translate-y-1/2" // Center the button vertically
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                      ) : (
+                        <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                      )}
+                    </button>
 
-                  <input
-                    type="password"
-                    id="Password"
-                    name="password"
-                    className="mt-1 w-full border border-black rounded-md bg-white text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  />
+                    {/* Use min-h to reserve space for the strength message */}
+                    <p
+                      className={`mt-1 text-sm ${
+                        passwordStrength === "Strong"
+                          ? "text-green-500"
+                          : passwordStrength === "Medium"
+                          ? "text-yellow-500"
+                          : "text-red-500"
+                      }`}
+                      style={{ minHeight: "20px", transition: "opacity 0.3s" }} // Adjust min-height as needed
+                    >
+                      {watch("password")?.length > 0
+                        ? `Strength: ${passwordStrength}`
+                        : ""}
+                    </p>
+                  </div>
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
@@ -113,16 +209,32 @@ export default function SignIn() {
                   >
                     Password Confirmation
                   </label>
-
-                  <input
-                    type="password"
-                    id="PasswordConfirmation"
-                    name="password_confirmation"
-                    className="mt-1 w-full border border-black rounded-md bg-white text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  />
+                  <div className="relative flex flex-col">
+                    <Input
+                      type={showConfirmPassword ? "text" : "password"}
+                      placeholder="Confirm your password"
+                      {...register("confirmPassword", {
+                        required: true,
+                      })}
+                      className="mt-1 w-full border border-black rounded-md bg-white text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 pr-10" // Add padding to the right
+                    />
+                    <button
+                      type="button"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2" // Center the button vertically
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                    >
+                      {showConfirmPassword ? (
+                        <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                      ) : (
+                        <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                      )}
+                    </button>
+                  </div>
                 </div>
 
-                <div className="col-span-6">
+                {/* <div className="col-span-6">
                   <label htmlFor="MarketingAccept" className="flex gap-4">
                     <input
                       type="checkbox"
@@ -136,10 +248,10 @@ export default function SignIn() {
                       company announcements.
                     </span>
                   </label>
-                </div>
+                </div> */}
 
                 <div className="col-span-6">
-                  <p className="text-sm text-gray-500">
+                  {/* <p className="text-sm text-gray-500">
                     By creating an account, you agree to our
                     <a href="#" className="text-gray-700 underline">
                       {" "}
@@ -150,21 +262,20 @@ export default function SignIn() {
                       privacy policy
                     </a>
                     .
-                  </p>
-                </div>
-
-                <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                  <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
-                    Create an account
-                  </button>
-
+                  </p> */}
                   <p className="mt-4 text-sm text-gray-500 sm:mt-0">
                     Already have an account?
-                    <a href="#" className="text-gray-700 underline">
+                    <a href="/login" className="text-gray-700 underline">
                       Log in
                     </a>
                     .
                   </p>
+                </div>
+
+                <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
+                  <Button type="submit" className="w-full">
+                    Create Account
+                  </Button>
                 </div>
               </form>
             </div>
