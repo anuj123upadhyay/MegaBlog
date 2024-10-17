@@ -19,7 +19,7 @@ function Footer() {
                 </p>
               </div>
             </div>
-          </div>  
+          </div>
           <div className="p-6 w-full md:w-3/12 lg:w-2/12">
             <div className="h-full flex flex-col items-center md:items-start">
               <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
@@ -27,7 +27,14 @@ function Footer() {
               </h3>
               <ul>
                 <li className="mb-4">
-                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/">Features</Link>
+
+                  <Link
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/features"
+                  >
+                    Features
+                  </Link>
+
                 </li>
                 <li className="mb-4">
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/pricing">Pricing</Link>

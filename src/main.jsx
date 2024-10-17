@@ -18,6 +18,7 @@ import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
 import ContactPage from "./componenets/ContactPage.jsx";
+
 import SupportPage from './componenets/SupportPage.jsx'
 import LicensingPage from './pages/LicensingPage.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
@@ -27,16 +28,17 @@ import HelpPage from './pages/HelpPage.jsx'
 import ProfilePage from "./componenets/ProfilePage.jsx";
 
 
+import SupportPage from "./componenets/SupportPage.jsx";
+import LicensingPage from "./pages/LicensingPage.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import Features from "./pages/Features.jsx";
+
+import ProfilePage from "./componenets/ProfilePage.jsx";
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-    children: [
-      {
-        store,
-        path: "/",
-
         element: <App />,
         children: [
             {
@@ -137,9 +139,14 @@ const router = createBrowserRouter([
 
             },
             {
-        path: "/profile",
-        element: <ProfilePage />,
-      },
+              path: "/profile",
+              element: <ProfilePage />,
+            },
+              {
+
+        path: "/features",
+        element: <Features />,
+              }
         ],
     },
 ]);
