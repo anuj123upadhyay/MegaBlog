@@ -63,10 +63,9 @@ const router = createBrowserRouter([
 
         path: "/contactus",
         element: (
-          <AuthLayout }>
-            <ContactPage />
-          </AuthLayout>
-
+            <AuthLayout authentication={false}>
+             <ContactPage />
+          </AuthLayout>           
         ),
       },
       {
