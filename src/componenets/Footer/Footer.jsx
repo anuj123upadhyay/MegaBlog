@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo";
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="custom-theme w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">
       <div className="z-10 mx-auto px-4">
@@ -14,7 +15,7 @@ function Footer() {
               </div>
               <div>
                 <p className="text-sm text-gray-600">
-                  &copy; Copyright 2023. All Rights Reserved by DevUI.
+                  &copy; Copyright {currentYear}. All Rights Reserved by DevUI.
                 </p>
               </div>
             </div>
@@ -57,7 +58,12 @@ function Footer() {
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/">Account</Link>
                 </li>
                 <li className="mb-4">
-                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/">Help</Link>
+                  <Link
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/helpPage"
+                  >
+                    Help
+                  </Link>
                 </li>
                 <li className="mb-4">
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/contactus">Contact Us</Link>

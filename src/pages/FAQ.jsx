@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const FAQ = () => {
   const [open, setOpen] = useState(null);
@@ -40,36 +41,55 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">
-        Frequently Asked Questions
-      </h2>
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className="border-b border-gray-300 pb-4 cursor-pointer"
-            onClick={() => toggleFAQ(index)}
-          >
-            <h3 className="faq-qeustion text-xl sm:text-2xl font-semibold flex justify-between items-center">
-              {faq.question}
-              <span
-                className={`transition-transform duration-300 transform ${
-                  open === index ? "rotate-180" : "rotate-0"
-                }`}
-              >
-                ⌄
-              </span>
-            </h3>
-            {open === index && (
-              <p className="faq-answer mt-2 text-sm text-left sm:text-base">
-                {faq.answer}
-              </p>
-            )}
-          </div>
-        ))}
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, type: "spring" }}
+        className="text-center mt-2 mb-2 sm:mt-4"
+      >
+        <p className="font-bold text-4xl">Frequently Asked Questions</p>
+        <p className="text-gray-500 text-sm mt-2 mx-16 ">
+          Thank you for visiting our website! We are here to help answer your queries.
+        </p>
+      </motion.div>
+      
+      <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              className="border-b border-gray-300 pb-4 cursor-pointer"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              onClick={() => toggleFAQ(index)}
+            >
+              <h3 className="faq-question text-xl sm:text-2xl font-semibold flex justify-between items-center">
+                {faq.question}
+                <span
+                  className={`transition-transform duration-300 transform ${
+                    open === index ? "rotate-180" : "rotate-0"
+                  }`}
+                >
+                  ⌄
+                </span>
+              </h3>
+              {open === index && (
+                <motion.p
+                  className="faq-answer mt-2 text-sm text-left sm:text-base"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {faq.answer}
+                </motion.p>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
