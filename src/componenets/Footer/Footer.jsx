@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
 
+
+
 function Footer() {
   return (
     <footer className="custom-theme w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">

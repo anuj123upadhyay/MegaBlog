@@ -10,6 +10,8 @@ import BackToTopButton from './components/ui/BackToTopButton'
 import Chatbot from './componenets/Chatbot'
 import PressKit from './componenets/Presskit'
 
+
+
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
@@ -45,5 +47,7 @@ function App() {
   </Router> 
   ) : null;
 }
+
+
 
 export default App
