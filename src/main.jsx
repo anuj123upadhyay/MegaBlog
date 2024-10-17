@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/contactus",
+        path: "/contact-us",
         element: (
             <AuthLayout authentication={false}>
              <ContactPage />
