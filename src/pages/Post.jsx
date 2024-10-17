@@ -104,6 +104,10 @@ export default function Post() {
               className="rounded-xl text-center items-center border-2 border-gray-300"
             />
           </div>
+           {/* Display the post content */}
+           <div className="lg:w-11/12 w-full bg-white p-6 rounded-lg shadow-md">
+            {post.content && parse(post.content)}
+          </div>
         
           <div className="bg-gray-100 w-full">
             <h2 className="text-3xl font-bold text-center my-8">
