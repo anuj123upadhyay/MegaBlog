@@ -18,8 +18,8 @@ import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
 
-import ContactPage from "./componenets/ContactPage.jsx";
-import SupportPage from "./componenets/SupportPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+import SupportPage from "./pages/SupportPage.jsx";
 
 
 import LicensingPage from "./pages/LicensingPage.jsx";
@@ -28,8 +28,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import HelpPage from "./pages/HelpPage.jsx";
 
 
-import ProfilePage from "./componenets/ProfilePage.jsx";
-import SignIn from "./pages/SignIn.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
+import SignUp from "./pages/SignUpp.jsx";
 
 
 const router = createBrowserRouter([
@@ -124,11 +124,6 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
-
-      {
-        path: '/test',
-        element: <SignIn />,
-      },
       {
         path: "/signup",
         element: (
@@ -149,10 +144,10 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/signin",
+    path: "/signUp",
     element: (
       <AuthLayout authentication={false}>
-        <SignIn />
+        <SignUp />
       </AuthLayout>
     ),
   },

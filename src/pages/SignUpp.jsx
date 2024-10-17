@@ -8,7 +8,7 @@ import { login } from "../store/authSlice";
 import { useForm } from "react-hook-form";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
-export default function SignIn() {
+export default function SignUp() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const dispatch = useDispatch();
