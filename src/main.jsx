@@ -17,18 +17,17 @@ import Pricing from "./pages/Pricing.jsx";
 import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
-import ContactPage from "./componenets/ContactPage.jsx";
-import SupportPage from './componenets/SupportPage.jsx'
-import LicensingPage from './pages/LicensingPage.jsx'
-import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import ContactPage from "./pages/ContactPage.jsx";
+import SupportPage from "./pages/SupportPage.jsx";
+import LicensingPage from "./pages/LicensingPage.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
-import HelpPage from './pages/HelpPage.jsx'
+import HelpPage from "./pages/HelpPage.jsx";
 
-import ProfilePage from "./componenets/ProfilePage.jsx";
-
-
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 const router = createBrowserRouter([
+
   {
     path: "/",
     element: <App />,
@@ -141,8 +140,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
