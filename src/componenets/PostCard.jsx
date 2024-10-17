@@ -21,18 +21,7 @@ function PostCard({ $id, title, featuredImage }) {
 
   return (
     <>
-      {/* <Link to={`/post/${$id}`}>
-        <div className="w-full bg-gray-100 rounded-xl p-4 ">
-          <div className="w-full justify-center mb-4">
-            <img
-              src={service.getFilePreview(featuredImage)}
-              alt={title}
-              className="rounded-xl"
-            />
-          </div>
-          <h2 className=" text-xl font-bold">{title}</h2>
-        </div>
-      </Link> */}
+      
 
       <Card className="bg-white shadow-lg hover:shadow-2xl transition-shadow duration-300 rounded-lg overflow-hidden w-full flex flex-col items-center sm:mt-2 mt-5">
         <CardHeader className="p-6">
@@ -55,6 +44,7 @@ function PostCard({ $id, title, featuredImage }) {
           </div>
         </CardContent>
       </Card>
+
 
     </>
   );

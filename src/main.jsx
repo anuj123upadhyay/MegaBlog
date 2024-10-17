@@ -27,6 +27,7 @@ import HelpPage from "./pages/HelpPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 
 const router = createBrowserRouter([
+
   {
     path: "/",
     element: <App />,
@@ -136,6 +137,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
