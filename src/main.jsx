@@ -17,14 +17,20 @@ import Pricing from "./pages/Pricing.jsx";
 import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
+
 import ContactPage from "./pages/ContactPage.jsx";
 import SupportPage from "./pages/SupportPage.jsx";
+
+
 import LicensingPage from "./pages/LicensingPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 import HelpPage from "./pages/HelpPage.jsx";
 
+
 import ProfilePage from "./pages/ProfilePage.jsx";
+import SignUp from "./pages/SignUpp.jsx";
+
 
 const router = createBrowserRouter([
 
@@ -38,28 +44,11 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/login",
-        element: (
-          <AuthLayout authentication={false}>
-            <Login />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/contact-us",
+        path: "/contactus",
         element: (
             <AuthLayout authentication={false}>
              <ContactPage />
-          </AuthLayout>
-           
+          </AuthLayout>           
         ),
       },
       {
@@ -135,10 +124,34 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
+      {
+        path: "/signup",
+        element: (
+          <AuthLayout authentication={false}>
+            <Signup />
+          </AuthLayout>
+        ),
+      },
     ],
   },
-]);
+  {
+    path: "/login",
+    element: (
+      <AuthLayout authentication={false}>
+        <Login />
+      </AuthLayout>
+    ),
+  },
 
+  {
+    path: "/signUp",
+    element: (
+      <AuthLayout authentication={false}>
+        <SignUp />
+      </AuthLayout>
+    ),
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
