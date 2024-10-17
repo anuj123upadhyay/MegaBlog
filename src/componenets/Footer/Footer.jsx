@@ -4,7 +4,6 @@ import Logo from "../Logo";
 import GoogleTranslate from "../GoogleTranslator";
 
 function Footer() {
-  const currentYear = new Date().getFullYear();
   return (
     <footer className="custom-theme w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">
       <div className="z-10 mx-auto px-4">
@@ -18,7 +17,7 @@ function Footer() {
               </div>
               <div>
                 <p className="text-sm text-gray-600">
-                  &copy; Copyright {currentYear}. All Rights Reserved by DevUI.
+                  &copy; Copyright 2024. All Rights Reserved by DevUI.
                 </p>
               </div>
             </div>
