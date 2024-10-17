@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo";
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="custom-theme w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">
       <div className="z-10 mx-auto px-4">
@@ -12,11 +13,11 @@ function Footer() {
               <div className="mb-4 inline-flex items-center">
                 <Logo width="100px" />
               </div>
-              {/* <div>
+              <div>
                 <p className="text-sm text-gray-600">
-                  &copy; Copyright 2023. All Rights Reserved by DevUI.
+                  &copy; Copyright {currentYear}. All Rights Reserved by DevUI.
                 </p>
-              </div> */}
+              </div>
             </div>
           </div>
           <div className="p-6 w-full md:w-3/12 lg:w-2/12">
@@ -77,7 +78,7 @@ function Footer() {
                 <li className="mb-4">
                   <Link
                     className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
+                    to="/helpPage"
                   >
                     Help
                   </Link>
@@ -142,10 +143,40 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div>
-            <p className="text-sm text-gray-600">
-              &copy; Copyright 2023. All Rights Reserved by DevUI.
-            </p>
+          <div className="p-6 w-full flex justify-center items-center">
+            <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
+              Follow Us
+            </h3>
+            <div className="flex space-x-4">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-facebook text-gray-900 hover:text-gray-700"></i>
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-twitter text-gray-900 hover:text-gray-700"></i>
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-instagram text-gray-900 hover:text-gray-700"></i>
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-linkedin text-gray-900 hover:text-gray-700"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>

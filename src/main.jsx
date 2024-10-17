@@ -17,7 +17,6 @@ import Pricing from "./pages/Pricing.jsx";
 import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
-
 import ContactPage from "./componenets/ContactPage.jsx";
 
 import SupportPage from "./componenets/SupportPage.jsx";
@@ -25,9 +24,14 @@ import LicensingPage from "./pages/LicensingPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import Features from "./pages/Features.jsx";
 
+import HelpPage from "./pages/HelpPage.jsx";
+
+import ProfilePage from "./componenets/ProfilePage.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
+
     element: <App />,
     children: [
       {
@@ -110,21 +114,22 @@ const router = createBrowserRouter([
         path: "/termsandconditions",
         element: <TermsAndConditions />,
       },
+
+      {
+        path: "/helpPage",
+        element: <HelpPage />,
+      },
       {
         path: "/frequently-asked-questions",
         element: <FAQ />,
       },
       {
-        path: "/contactus",
-        element: (
-          <AuthLayout authentication={false}>
-            <ContactPage />
-          </AuthLayout>
-        ),
-      },
-      {
         path: "/licensing",
         element: <LicensingPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
       },
       {
         path: "/features",
@@ -135,9 +140,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+  //</React.StrictMode>
 );
