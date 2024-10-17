@@ -28,7 +28,7 @@ function App() {
     <div className='custom-theme min-h-screen flex flex-wrap content-between '>
       <div className='w-full block'>
         <BackToTopButton />
-        <Chatbot />
+        {/* <Chatbot /> */}
         <Header />
         <main>
           <Outlet />
@@ -36,7 +36,7 @@ function App() {
         <Footer />
       </div>
     </div>
-  ) : null
+  ) : null;
 }
 
 export default App

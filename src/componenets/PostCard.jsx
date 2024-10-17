@@ -33,7 +33,7 @@ function PostCard({ $id, title, featuredImage }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <img src={image} alt={title} className="rounded-xl w-[280px]" />
+          <img src={service.getFilePreview(featuredImage)} alt={title} className="rounded-xl w-[280px]" />
           <p className="text-gray-700 mt-2 mb-2 text-center">
             Don&apos;t miss out on Reading!!!
           </p>
@@ -45,7 +45,7 @@ function PostCard({ $id, title, featuredImage }) {
         </CardContent>
       </Card>
 
-      
+
     </>
   );
 }
