@@ -4,8 +4,14 @@ import { Button, Input, RTE } from "../index";
 import service from "../../appwrite/configAppwrite";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Textarea } from "../../components/ui/textarea";
-import { Label } from "../../components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../../components/ui/dialog";
 import {
   Select,
   SelectContent,
@@ -13,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../components/ui/select";
+import { Label } from "../../components/ui/label";
 
 export default function PostForm({ post }) {
   const {
@@ -111,34 +118,23 @@ export default function PostForm({ post }) {
       className="flex flex-wrap md:flex-row flex-col"
     >
       <div className="md:w-2/3 md:px-2 px-4">
-        <div className="grid w-full gap-2">
-          <Label htmlFor="message-2 ">Title</Label>
-          <Textarea
-            label="Title :"
-            placeholder="Title"
-            className="mb-4"
-            {...register("title", { required: true })}
-          />
-          <p className="text-sm text-muted-foreground -mt-4 mb-2">
-            Your given Title will be Displayed everywhere.
-          </p>
-        </div>
-
-        <div className="grid w-full gap-2">
-          <Label htmlFor="message-2 ">Slug</Label>
-          <Textarea
-            label="Slug :"
-            placeholder="Slug"
-            className="mb-4"
-            {...register("slug", { required: true })}
-            onInput={(e) => {
-              setValue("slug", slugTransform(e.currentTarget.value), {
-                shouldValidate: true,
-              });
-            }}
-          />
-        </div>
-
+        <Input
+          label="Title :"
+          placeholder="Title"
+          className="mb-4"
+          {...register("title", { required: true })}
+        />
+        <Input
+          label="Slug :"
+          placeholder="Slug"
+          className="mb-4"
+          {...register("slug", { required: true })}
+          onInput={(e) => {
+            setValue("slug", slugTransform(e.currentTarget.value), {
+              shouldValidate: true,
+            });
+          }}
+        />
         <RTE
           label="Content :"
           name="content"
@@ -180,63 +176,84 @@ export default function PostForm({ post }) {
       </div> */}
 
       <div className="md:w-1/3 md:px-2 px-4">
-        <Input
-          label="Featured Image :"
-          type="file"
-          className="mb-4"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("image", { required: !post })}
-          onChange={handleImageChange} // Handle image selection
-        />
-        {post && (
-          <div className="w-full mb-4">
-            <img
-              src={service.getFilePreview(post.featuredImage)}
-              alt={post.title}
-              className="rounded-lg shadow-md"
-            />
-          </div>
-        )}
+        <Dialog>
+          <DialogTrigger variant="outline">
+            <Button variant="outline">Submit</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Are you absolutely sure?</DialogTitle>
+              <DialogDescription>
+                This action is to post the blog.
+                <Input
+                  label="Featured Image :"
+                  type="file"
+                  className="mb-4"
+                  accept="image/png, image/jpg, image/jpeg, image/gif"
+                  {...register("image", { required: !post })}
+                  onChange={handleImageChange} // Handle image selection
+                />
+                {post && (
+                  <div className="w-full mb-4">
+                    <img
+                      src={service.getFilePreview(post.featuredImage)}
+                      alt={post.title}
+                      className="rounded-lg shadow-md"
+                    />
+                  </div>
+                )}
+                {imagePreview && (
+                  <div className="w-full mb-4">
+                    <h3 className="text-sm font-semibold mb-2">
+                      Selected Image Preview:
+                    </h3>
+                    <img
+                      src={imagePreview}
+                      alt="Selected"
+                      className="rounded-lg shadow-lg"
+                    />
+                  </div>
+                )}
+                {/* <Select
+                  options={["active", "inactive"]}
+                  label="Status"
+                  className="mb-4"
+                  {...register("status", { required: true })}
+                /> */}
+                <div className="grid w-full gap-2">
+                  <Label htmlFor="message-2 ">Post Now/Save as Draft:</Label>
+                  <Select
+                    {...register("status", { required: true })}
+                    className="mb-4"
+                  >
+                    <SelectTrigger className="w-full mb-4">
+                      <SelectValue placeholder="Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="active">Post Now</SelectItem>
+                      <SelectItem value="inactive">Draft</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <Button
+                  type="submit"
+                  bgColor={post ? "bg-green-500" : undefined}
+                  className="w-full"
+                >
+                  {post ? "Update" : "Submit"}
+                </Button>
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
 
-        {imagePreview && (
-          <div className="w-full mb-4">
-            <h3 className="text-sm font-semibold mb-2">
-              Selected Image Preview:
-            </h3>
-            <img
-              src={imagePreview}
-              alt="Selected"
-              className="rounded-lg shadow-lg"
-            />
-          </div>
-        )}
-
-        <div className="grid w-full gap-2">
-          <Label htmlFor="message-2 ">Post Now/Save as Draft:</Label>
-          <Select {...register("status", { required: true })} className="mb-4">
-            <SelectTrigger className="w-full mb-4">
-              <SelectValue placeholder="Status" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="active">Post Now</SelectItem>
-              <SelectItem value="inactive">Draft</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        {/* <Select
-          options={["active", "inactive"]}
-          label="Status"
-          className="mb-4"
-          {...register("status", { required: true })}
-        /> */}
-        <Button
+        {/* <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
           className="w-full"
         >
           {post ? "Update" : "Submit"}
-        </Button>
+        </Button> */}
       </div>
     </form>
   );
