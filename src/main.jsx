@@ -17,14 +17,18 @@ import Pricing from "./pages/Pricing.jsx";
 import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
-import ContactPage from "./componenets/ContactPage.jsx";
 
-import SupportPage from "./componenets/SupportPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+import SupportPage from "./pages/SupportPage.jsx";
+
 import LicensingPage from "./pages/LicensingPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
-import Features from "./pages/Features.jsx";
 
 import HelpPage from "./pages/HelpPage.jsx";
+
+import ProfilePage from "./pages/ProfilePage.jsx";
+import SignUp from "./pages/SignUpp.jsx";
+import Features from "./pages/Features.jsx";
 
 import ProfilePage from "./componenets/ProfilePage.jsx";
 
@@ -38,22 +42,6 @@ const router = createBrowserRouter([
         store,
         path: "/",
         element: <Home />,
-      },
-      {
-        path: "/login",
-        element: (
-          <AuthLayout authentication={false}>
-            <Login />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
       },
       {
         path: "/contactus",
@@ -127,22 +115,52 @@ const router = createBrowserRouter([
         path: "/licensing",
         element: <LicensingPage />,
       },
+
       {
-        path: "/profile",
-        element: <ProfilePage />,
+        path: "/helpPage",
+        element: <HelpPage />,
       },
       {
         path: "/features",
         element: <Features />,
       },
+      {
+        path: "/profile",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <ProfilePage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/signup",
+        element: (
+          <AuthLayout authentication={false}>
+            <Signup />
+          </AuthLayout>
+        ),
+      },
     ],
+  },
+  {
+    path: "/login",
+    element: (
+      <AuthLayout authentication={false}>
+        <Login />
+      </AuthLayout>
+    ),
+  },
+  {
+    path: "/features",
+    element: <Features />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
-  //</React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </React.StrictMode>
 );

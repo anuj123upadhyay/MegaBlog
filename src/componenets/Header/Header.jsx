@@ -63,7 +63,7 @@ export default function Header() {
     },
     {
       name: "Signup",
-      slug: "/signup",
+      slug: "/signUp",
       active: !authStatus,
       description: "Sign up for an account",
     },
