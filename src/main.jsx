@@ -32,111 +32,109 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      {
-        store,
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/login",
-        element: (
-          <AuthLayout authentication={false}>
-            <Login />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/contact-us",
-        element: (
-            <AuthLayout authentication={false}>
-             <ContactPage />
-          </AuthLayout>
-           
-        ),
-      },
-      {
-        path: "/all-posts",
-        element: (
-          <AuthLayout authentication>
-            {" "}
-            <AllPosts />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/add-post",
-        element: (
-          <AuthLayout authentication>
-            {" "}
-            <AddPost />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/edit-post/:slug",
-        element: (
-          <AuthLayout authentication>
-            {" "}
-            <EditPost />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/post/:slug",
-        element: <Post />,
-      },
-      {
-        path: "/pricing",
-        element: <Pricing />,
-      },
-      {
-        path: "/privacypolicy",
-        element: <PrivacyPolicy />,
-      },
-      {
-        path: "/affiliate-program",
-        element: <AffiliateProgram />,
-      },
-      {
-        path: "/customer-support",
-        element: <SupportPage />,
-      },
-      {
+        {
+            store,
+            path: "/",
+            element: <Home />,
+        },
+        {
+            path: "/login",
+            element: (
+                <AuthLayout authentication={false}>
+                    <Login />
+                </AuthLayout>
+            ),
+        },
+        {
+            path: "/signup",
+            element: (
+                <AuthLayout authentication={false}>
+                    <Signup />
+                </AuthLayout>
+            ),
+        },
+        {
+
+            path: "/contactus",
+            element: (
+                <AuthLayout authentication={false}>
+                    <ContactPage />
+                </AuthLayout>
+            ),
+        },
+        {
+
+            path: "/all-posts",
+            element: (
+                <AuthLayout authentication>
+                    {" "}
+                    <AllPosts />
+                </AuthLayout>
+            ),
+        },
+        {
+            path: "/add-post",
+            element: (
+                <AuthLayout authentication>
+                    {" "}
+                    <AddPost />
+                </AuthLayout>
+            ),
+        },
+        {
+            path: "/edit-post/:slug",
+            element: (
+                <AuthLayout authentication>
+                    {" "}
+                    <EditPost />
+                </AuthLayout>
+            ),
+        },
+        {
+            path: "/post/:slug",
+            element: <Post />,
+        },
+        {
+            path: "/pricing",
+            element: <Pricing />,
+        },
+        {
+
+            path: "/privacypolicy",
+            element: <PrivacyPolicy />,
+        },
+        {
+            path: "/affiliate-program",
+            element: <AffiliateProgram />,
+        },
+        {
+            path: "/customer-support",
+            element: <SupportPage />,
+        },
+        {
         path: "/termsandconditions",
         element: <TermsAndConditions />,
-      },
+        },
 
-      {
+        {
         path: "/helpPage",
         element: <HelpPage />,
-      },
-      {
-        path: "/frequently-asked-questions",
-        element: <FAQ />,
-      },
-      {
+        },
+        {
+          path: "/frequently-asked-questions",
+          element: <FAQ />,
+        },
+        {
         path: "/licensing",
         element: <LicensingPage />,
-      },
-      {
-        path: "/profile",
-        element: (
-          <AuthLayout authentication>
-            {" "}
-            <ProfilePage />
-          </AuthLayout>
-        ),
-      },
-    ],
+
+        },
+        {
+    path: "/profile",
+    element: <ProfilePage />,
   },
+    ],
+}
 ]);
 
 
