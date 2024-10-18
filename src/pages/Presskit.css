@@ -1,0 +1,205 @@
+/* PressKit.css */
+
+
+
+/* Main Container */
+.presskit-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+  }
+  
+  /* Title Styles */
+  .presskit-title {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    background: linear-gradient(to right, #00090c, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 5px rgba(1, 9, 17, 0.5);
+    animation: zoomIn 1s ease-in-out;
+  }
+
+  .btn-div{
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Section Styles */
+  .presskit-section {
+    margin-bottom: 40px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #e6f2ff 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .presskit-section:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Loading Animation */
+  .loading-animation {
+    font-size: 2rem;
+    color: #0073e6;
+    text-align: center;
+    padding: 100px;
+    animation: fadeIn 1.5s ease-in-out infinite alternate;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  /* Social Media Links */
+  .social-links {
+    display: flex;
+    justify-content: center; /* Center-align the links */
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .social-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background-color: #0073e6; /* Default background color */
+    border-radius: 50px; /* Rounded corners */
+    transition: transform 0.3s ease, background-color 0.3s ease,
+      box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Hover effect: change background, scale up slightly, and add shadow */
+  .social-link:hover {
+    background-color: #005bb5;
+    transform: translateY(-3px) scale(1.05); /* Slightly lift and enlarge the link */
+    box-shadow: 0 6px 12px rgba(0, 115, 230, 0.3); /* More pronounced shadow */
+  }
+  
+  /* Different colors for each platform */
+  .social-link.twitter {
+    background-color: #1da1f2;
+  }
+  
+  .social-link.facebook {
+    background-color: #1877f2;
+  }
+  
+  .social-link.linkedin {
+    background-color: #0077b5;
+  }
+  
+  .social-link:hover.twitter {
+    background-color: #0d95e8;
+  }
+  
+  .social-link:hover.facebook {
+    background-color: #145dbf;
+  }
+  
+  .social-link:hover.linkedin {
+    background-color: #005582;
+  }
+  
+  /* General Link Styles */
+  .presskit-link {
+    display: inline-block;
+    color: #0073e6;
+    font-weight: normal;
+    text-decoration: none;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+  }
+  
+  /* Hover Effect: Change color and increase font-weight */
+  .presskit-link:hover {
+    color: #005bb5;
+    font-weight: bold;
+  }
+  
+  /* Underline Effect on Hover */
+  .presskit-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #005bb5;
+    transition: width 0.3s ease;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  
+  /* On Hover, underline grows from left to right */
+  .presskit-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Download Button Styling */
+  .download-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(90deg, #0073e6, #00d4ff);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+  
+  /* Hover Effect: change color, elevate, and subtle glow */
+  .download-btn:hover {
+    background: linear-gradient(90deg, #005bb5, #00a3cc);
+    color: white;
+    transform: translateY(-3px) scale(1.05); /* Slight lift and enlarge */
+    box-shadow: 0 8px 15px rgba(0, 115, 230, 0.4); /* Glow effect */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .section-title {
+    text-align: center;          /* Centers the title text */
+    font-size: 2rem;             /* Adjust the font size as needed */
+    margin-bottom: 1rem;
+    color: #333;                 /* Text color */
+    transition: transform 0.3s ease, color 0.3s ease; /* Transition effect for hover */
+  }
+  
+  /* Hover effect for section titles */
+  .section-title:hover {
+    transform: scale(1.1);       /* Scale up the title slightly on hover */
+    color: #007bff;              /* Change text color on hover (blue in this case) */
+  }
+
+
+
+  
+  
