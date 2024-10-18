@@ -33,6 +33,9 @@ import ProfilePage from "./pages/ProfilePage.jsx";
 import SignUp from "./pages/SignUpp.jsx";
 
 
+
+
+
 const router = createBrowserRouter([
 
 
@@ -50,7 +53,7 @@ const router = createBrowserRouter([
         path: "/presskit",
         element: <PressKit />,
       },
-      
+
       {
         path: "/contactus",
         element: (
