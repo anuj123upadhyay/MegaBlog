@@ -38,6 +38,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+
       {
         store,
         path: "/",
@@ -99,21 +100,23 @@ const router = createBrowserRouter([
         element: <SupportPage />,
       },
       {
+
         path: "/termsandconditions",
         element: <TermsAndConditions />,
-      },
+        },
 
-      {
+        {
         path: "/helpPage",
         element: <HelpPage />,
-      },
-      {
-        path: "/frequently-asked-questions",
-        element: <FAQ />,
-      },
-      {
+        },
+        {
+          path: "/frequently-asked-questions",
+          element: <FAQ />,
+        },
+        {
         path: "/licensing",
         element: <LicensingPage />,
+
       },
       {
         path: "/profile",
@@ -142,6 +145,7 @@ const router = createBrowserRouter([
       </AuthLayout>
     ),
   },
+
 
   {
     path: "/signUp",
