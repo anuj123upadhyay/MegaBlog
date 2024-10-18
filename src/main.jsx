@@ -17,14 +17,20 @@ import Pricing from "./pages/Pricing.jsx";
 import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
+
 import ContactPage from "./pages/ContactPage.jsx";
 import SupportPage from "./pages/SupportPage.jsx";
+
+
 import LicensingPage from "./pages/LicensingPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 import HelpPage from "./pages/HelpPage.jsx";
 
+
 import ProfilePage from "./pages/ProfilePage.jsx";
+import SignUp from "./pages/SignUpp.jsx";
+
 
 const router = createBrowserRouter([
 
@@ -32,86 +38,69 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-        {
-            store,
-            path: "/",
-            element: <Home />,
-        },
-        {
-            path: "/login",
-            element: (
-                <AuthLayout authentication={false}>
-                    <Login />
-                </AuthLayout>
-            ),
-        },
-        {
-            path: "/signup",
-            element: (
-                <AuthLayout authentication={false}>
-                    <Signup />
-                </AuthLayout>
-            ),
-        },
-        {
 
-            path: "/contactus",
-            element: (
-                <AuthLayout authentication={false}>
-                    <ContactPage />
-                </AuthLayout>
-            ),
-        },
-        {
+      {
+        store,
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/contactus",
+        element: (
+            <AuthLayout authentication={false}>
+             <ContactPage />
+          </AuthLayout>           
+        ),
+      },
+      {
+        path: "/all-posts",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <AllPosts />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/add-post",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <AddPost />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/edit-post/:slug",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <EditPost />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/post/:slug",
+        element: <Post />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+      },
+      {
+        path: "/privacypolicy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/affiliate-program",
+        element: <AffiliateProgram />,
+      },
+      {
+        path: "/customer-support",
+        element: <SupportPage />,
+      },
+      {
 
-            path: "/all-posts",
-            element: (
-                <AuthLayout authentication>
-                    {" "}
-                    <AllPosts />
-                </AuthLayout>
-            ),
-        },
-        {
-            path: "/add-post",
-            element: (
-                <AuthLayout authentication>
-                    {" "}
-                    <AddPost />
-                </AuthLayout>
-            ),
-        },
-        {
-            path: "/edit-post/:slug",
-            element: (
-                <AuthLayout authentication>
-                    {" "}
-                    <EditPost />
-                </AuthLayout>
-            ),
-        },
-        {
-            path: "/post/:slug",
-            element: <Post />,
-        },
-        {
-            path: "/pricing",
-            element: <Pricing />,
-        },
-        {
-
-            path: "/privacypolicy",
-            element: <PrivacyPolicy />,
-        },
-        {
-            path: "/affiliate-program",
-            element: <AffiliateProgram />,
-        },
-        {
-            path: "/customer-support",
-            element: <SupportPage />,
-        },
-        {
         path: "/termsandconditions",
         element: <TermsAndConditions />,
         },
@@ -128,15 +117,45 @@ const router = createBrowserRouter([
         path: "/licensing",
         element: <LicensingPage />,
 
-        },
-        {
-    path: "/profile",
-    element: <ProfilePage />,
-  },
+      },
+      {
+        path: "/profile",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <ProfilePage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/signup",
+        element: (
+          <AuthLayout authentication={false}>
+            <Signup />
+          </AuthLayout>
+        ),
+      },
     ],
-}
-]);
+  },
+  {
+    path: "/login",
+    element: (
+      <AuthLayout authentication={false}>
+        <Login />
+      </AuthLayout>
+    ),
+  },
 
+
+  {
+    path: "/signUp",
+    element: (
+      <AuthLayout authentication={false}>
+        <SignUp />
+      </AuthLayout>
+    ),
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
