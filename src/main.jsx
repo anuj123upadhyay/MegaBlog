@@ -50,11 +50,6 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/presskit",
-        element: <PressKit />,
-      },
-
-      {
         path: "/contactus",
         element: (
 
@@ -91,6 +86,10 @@ const router = createBrowserRouter([
             <EditPost />
           </AuthLayout>
         ),
+      },
+      {
+        path: "/presskit",
+        element: <PressKit />,
       },
       {
         path: "/post/:slug",
