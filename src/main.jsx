@@ -34,6 +34,7 @@ import SignUp from "./pages/SignUpp.jsx";
 
 const router = createBrowserRouter([
 
+
   {
     path: "/",
     element: <App />,
@@ -47,9 +48,12 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: (
-            <AuthLayout authentication={false}>
-             <ContactPage />
-          </AuthLayout>           
+
+          <AuthLayout authentication={false}>
+            <ContactPage />
+          </AuthLayout>
+
+
         ),
       },
       {
@@ -158,6 +162,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
