@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
+import GoogleTranslate from "../GoogleTranslator";
 
 function Footer() {
-  const currentYear = new Date().getFullYear();
   return (
     <footer className="custom-theme w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">
       <div className="z-10 mx-auto px-4">
@@ -12,14 +12,16 @@ function Footer() {
             <div className="flex h-full flex-col justify-between items-center md:items-start">
               <div className="mb-4 inline-flex items-center">
                 <Logo width="100px" />
+                <div className="border-l-2 border-gray-800 h-10 mx-4"></div>
+                <GoogleTranslate />
               </div>
               <div>
                 <p className="text-sm text-gray-600">
-                  &copy; Copyright {currentYear}. All Rights Reserved by DevUI.
+                  &copy; Copyright 2024. All Rights Reserved by DevUI.
                 </p>
               </div>
             </div>
-          </div>  
+          </div>
           <div className="p-6 w-full md:w-3/12 lg:w-2/12">
             <div className="h-full flex flex-col items-center md:items-start">
               <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
