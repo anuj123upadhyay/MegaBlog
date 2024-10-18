@@ -27,10 +27,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import HelpPage from "./pages/HelpPage.jsx";
 
 import ProfilePage from "./pages/ProfilePage.jsx";
-import SignUp from "./pages/SignUpp.jsx";
 import Features from "./pages/Features.jsx";
-
-import ProfilePage from "./componenets/ProfilePage.jsx";
 
 const router = createBrowserRouter([
   {
