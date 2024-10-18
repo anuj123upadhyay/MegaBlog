@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
+import GoogleTranslate from "../GoogleTranslator";
 
 
 
@@ -13,6 +14,8 @@ function Footer() {
             <div className="flex h-full flex-col justify-between items-center md:items-start">
               <div className="mb-4 inline-flex items-center">
                 <Logo width="100px" />
+                <div className="border-l-2 border-gray-800 h-10 mx-4"></div>
+                <GoogleTranslate />
               </div>
               <div>
                 <p className="text-sm text-gray-600">
@@ -20,7 +23,7 @@ function Footer() {
                 </p>
               </div>
             </div>
-          </div>  
+          </div>
           <div className="p-6 w-full md:w-3/12 lg:w-2/12">
             <div className="h-full flex flex-col items-center md:items-start">
               <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">

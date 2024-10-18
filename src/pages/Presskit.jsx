@@ -29,9 +29,12 @@ const PressKit = () => {
           Download our brand assets such as logos, fonts, and official imagery.
           These can be used for media coverage and press mentions.
         </p>
-        <a href="/path/to/brand-assets.zip" download className="download-btn">
-          Download Brand Assets
-        </a>
+        <div  className="btn-div">
+          <a href="/path/to/brand-assets.zip" download className="download-btn">
+            Download Brand Assets
+          </a>
+        </div>
+       
       </section>
 
       {/* Press Releases Section */}
