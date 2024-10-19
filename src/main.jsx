@@ -17,6 +17,7 @@ import Pricing from "./pages/Pricing.jsx";
 import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
+import PressKit from "./pages/Presskit.jsx";
 
 import ContactPage from "./pages/ContactPage.jsx";
 import SupportPage from "./pages/SupportPage.jsx";
@@ -28,6 +29,9 @@ import HelpPage from "./pages/HelpPage.jsx";
 
 import ProfilePage from "./pages/ProfilePage.jsx";
 import Features from "./pages/Features.jsx";
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -74,6 +78,10 @@ const router = createBrowserRouter([
             <EditPost />
           </AuthLayout>
         ),
+      },
+      {
+        path: "/presskit",
+        element: <PressKit />,
       },
       {
         path: "/post/:slug",

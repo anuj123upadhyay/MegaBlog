@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import GoogleTranslate from "../GoogleTranslator";
 
+
+
 function Footer() {
   return (
     <footer className="custom-theme w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">
@@ -53,12 +55,7 @@ function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Press Kit
-                  </Link>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/presskit">Press Kit</Link>
                 </li>
               </ul>
             </div>

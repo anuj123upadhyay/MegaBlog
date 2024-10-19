@@ -160,6 +160,14 @@ export default function PostForm({ post }) {
             />
           </div>
         )}
+
+        <Input
+          label="Category :"
+          placeholder="Category"
+          className="mb-4"
+          {...register("category", { required: true })}
+        />
+
         <Select
           options={["active", "inactive"]}
           label="Status"
