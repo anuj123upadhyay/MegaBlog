@@ -31,14 +31,10 @@ import HelpPage from "./pages/HelpPage.jsx";
 
 import ProfilePage from "./pages/ProfilePage.jsx";
 import SignUp from "./pages/SignUpp.jsx";
-
-
-
+import SignIn from "./pages/SignIn.jsx";
 
 
 const router = createBrowserRouter([
-
-
   {
     path: "/",
     element: <App />,
@@ -52,12 +48,9 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: (
-
           <AuthLayout authentication={false}>
             <ContactPage />
           </AuthLayout>
-
-
         ),
       },
       {
@@ -139,28 +132,27 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
-      },
+      // {
+      //   path: "/signup",
+      //   element: (
+      //     <AuthLayout authentication={false}>
+      //       <Signup />
+      //     </AuthLayout>
+      //   ),
+      // },
     ],
   },
   {
     path: "/login",
     element: (
       <AuthLayout authentication={false}>
-        <Login />
+        {/* <Login /> */}
+        <SignIn/>
       </AuthLayout>
     ),
   },
-
-
   {
-    path: "/signUp",
+    path: "/signup",
     element: (
       <AuthLayout authentication={false}>
         <SignUp />
