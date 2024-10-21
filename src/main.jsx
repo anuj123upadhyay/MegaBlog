@@ -43,7 +43,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-
       {
         store,
         path: "/",
@@ -139,14 +138,14 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
-      },
+      // {
+      //   path: "/signup",
+      //   element: (
+      //     <AuthLayout authentication={false}>
+      //       <Signup />
+      //     </AuthLayout>
+      //   ),
+      // },
     ],
   },
   {
@@ -157,10 +156,8 @@ const router = createBrowserRouter([
       </AuthLayout>
     ),
   },
-
-
   {
-    path: "/signUp",
+    path: "/signup",
     element: (
       <AuthLayout authentication={false}>
         <SignUp />
