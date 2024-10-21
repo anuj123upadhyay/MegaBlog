@@ -17,12 +17,21 @@ import Pricing from "./pages/Pricing.jsx";
 import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
 import FAQ from "./pages/FAQ.jsx";
+import PressKit from "./pages/Presskit.jsx";
 
-import ContactPage from "./componenets/ContactPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+import SupportPage from "./pages/SupportPage.jsx";
 
-import SupportPage from './componenets/SupportPage.jsx'
-import LicensingPage from './pages/LicensingPage.jsx'
-import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+
+import LicensingPage from "./pages/LicensingPage.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+
+import HelpPage from "./pages/HelpPage.jsx";
+
+
+import ProfilePage from "./pages/ProfilePage.jsx";
+import SignUp from "./pages/SignUpp.jsx";
+import SignIn from "./pages/SignIn.jsx";
 
 
 const router = createBrowserRouter([
@@ -34,22 +43,6 @@ const router = createBrowserRouter([
         store,
         path: "/",
         element: <Home />,
-      },
-      {
-        path: "/login",
-        element: (
-          <AuthLayout authentication={false}>
-            <Login />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
       },
       {
         path: "/contactus",
@@ -87,6 +80,10 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/presskit",
+        element: <PressKit />,
+      },
+      {
         path: "/post/:slug",
         element: <Post />,
       },
@@ -107,30 +104,64 @@ const router = createBrowserRouter([
         element: <SupportPage />,
       },
       {
+
         path: "/termsandconditions",
         element: <TermsAndConditions />,
+        },
+
+        {
+        path: "/helpPage",
+        element: <HelpPage />,
+        },
+        {
+          path: "/frequently-asked-questions",
+          element: <FAQ />,
+        },
+        {
+        path: "/licensing",
+        element: <LicensingPage />,
+
       },
       {
-        path: "/frequently-asked-questions",
-        element: <FAQ />,
-      },
-      {
-        path: "/contactus",
+        path: "/profile",
         element: (
-          <AuthLayout authentication={false}>
-            <ContactPage />
+          <AuthLayout authentication>
+            {" "}
+            <ProfilePage />
           </AuthLayout>
         ),
       },
-      {
-        path: "/licensing",
-        element: <LicensingPage />,
-      },
+      // {
+      //   path: "/signup",
+      //   element: (
+      //     <AuthLayout authentication={false}>
+      //       <Signup />
+      //     </AuthLayout>
+      //   ),
+      // },
     ],
+  },
+  {
+    path: "/login",
+    element: (
+      <AuthLayout authentication={false}>
+        {/* <Login /> */}
+        <SignIn/>
+      </AuthLayout>
+    ),
+  },
+  {
+    path: "/signup",
+    element: (
+      <AuthLayout authentication={false}>
+        <SignUp />
+      </AuthLayout>
+    ),
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />

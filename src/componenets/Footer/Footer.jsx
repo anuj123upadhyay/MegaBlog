@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
+import GoogleTranslate from "../GoogleTranslator";
+
+
 
 function Footer() {
   return (
+ 
     <footer className="custom-theme w-full bg-gray-300 border-t-1 border-t-black py-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center md:text-left">
@@ -28,6 +32,7 @@ function Footer() {
                   <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/">
                     Features
                   </Link>
+ 
                 </li>
                 <li>
                   <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/pricing">
@@ -40,9 +45,11 @@ function Footer() {
                   </Link>
                 </li>
                 <li>
+ 
                   <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/">
                     Press Kit
                   </Link>
+ 
                 </li>
               </ul>
             </nav>
@@ -60,8 +67,10 @@ function Footer() {
                     Account
                   </Link>
                 </li>
+ 
                 <li>
                   <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/">
+ 
                     Help
                   </Link>
                 </li>
