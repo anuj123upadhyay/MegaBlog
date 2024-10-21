@@ -29,8 +29,8 @@ import HelpPage from "./pages/HelpPage.jsx";
 
 import ProfilePage from "./pages/ProfilePage.jsx";
 import Features from "./pages/Features.jsx";
-
-
+import SignUp from "./pages/SignUpp.jsx";
+import SignIn from "./pages/SignIn.jsx";
 
 
 const router = createBrowserRouter([
@@ -138,27 +138,36 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
-      },
+      // {
+      //   path: "/signup",
+      //   element: (
+      //     <AuthLayout authentication={false}>
+      //       <Signup />
+      //     </AuthLayout>
+      //   ),
+      // },
     ],
   },
   {
     path: "/login",
     element: (
       <AuthLayout authentication={false}>
-        <Login />
+        {/* <Login /> */}
+        <SignIn/>
       </AuthLayout>
     ),
   },
   {
     path: "/features",
     element: <Features />,
+  },
+ {
+    path: "/signup",
+    element: (
+      <AuthLayout authentication={false}>
+        <SignUp />
+      </AuthLayout>
+    ),
   },
 ]);
 
