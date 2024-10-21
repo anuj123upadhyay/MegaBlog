@@ -22,14 +22,13 @@ import PressKit from "./pages/Presskit.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import SupportPage from "./pages/SupportPage.jsx";
 
-
 import LicensingPage from "./pages/LicensingPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 import HelpPage from "./pages/HelpPage.jsx";
 
-
 import ProfilePage from "./pages/ProfilePage.jsx";
+import Features from "./pages/Features.jsx";
 import SignUp from "./pages/SignUpp.jsx";
 import SignIn from "./pages/SignIn.jsx";
 
@@ -37,6 +36,7 @@ import SignIn from "./pages/SignIn.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
+
     element: <App />,
     children: [
       {
@@ -104,23 +104,30 @@ const router = createBrowserRouter([
         element: <SupportPage />,
       },
       {
-
         path: "/termsandconditions",
         element: <TermsAndConditions />,
-        },
+      },
 
-        {
+      {
         path: "/helpPage",
         element: <HelpPage />,
-        },
-        {
-          path: "/frequently-asked-questions",
-          element: <FAQ />,
-        },
-        {
+      },
+      {
+        path: "/frequently-asked-questions",
+        element: <FAQ />,
+      },
+      {
         path: "/licensing",
         element: <LicensingPage />,
+      },
 
+      {
+        path: "/helpPage",
+        element: <HelpPage />,
+      },
+      {
+        path: "/features",
+        element: <Features />,
       },
       {
         path: "/profile",
@@ -151,6 +158,10 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/features",
+    element: <Features />,
+  },
+ {
     path: "/signup",
     element: (
       <AuthLayout authentication={false}>
@@ -161,7 +172,6 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
