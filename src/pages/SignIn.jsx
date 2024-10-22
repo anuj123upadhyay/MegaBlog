@@ -11,14 +11,14 @@ import ForgotPasswordModal from "../componenets/ForgotPasswordModal";
 export default function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // Added loading state
-  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false); // Added state for modal
+  const [loading, setLoading] = useState(false);
+  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
 
   const login = async (data) => {
     setError("");
-    setLoading(true); // Set loading to true when the request starts
+    setLoading(true);
     try {
       const session = await authService.login(data);
       if (session) {
@@ -29,13 +29,14 @@ export default function SignIn() {
     } catch (error) {
       setError(error.message);
     } finally {
-      setLoading(false); // Set loading to false after the request completes
+      setLoading(false);
     }
   };
 
   const handleForgotPassword = () => {
     setIsForgotPasswordOpen(true);
   };
+
   return (
     <>
       <section className="bg-white">
@@ -53,37 +54,33 @@ export default function SignIn() {
               <h1 className="mt-6 text-2xl font-bold text-gray-900 flex gap-2 sm:text-3xl md:text-4xl">
                 Welcome to
                 <a href="/" className="text-gray-700 underline">
-                MegaBlog
-                    </a>  
-                    <ShellIcon size={40} />
+                  MegaBlog
+                </a>
+                <ShellIcon size={40} />
               </h1>
 
-              {/* <p className="mt-4 leading-relaxed text-gray-500">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
-              </p> */}
               <p className="mt-4 text-sm text-gray-500 sm:mt-2">
-                    Don't have an account?
-                    <a href="/signup" className="text-gray-700 underline">
-                      Sign Up
-                    </a>
-                    .
-                  </p>
+                Don't have an account?
+                <a href="/signup" className="text-gray-700 underline">
+                  Sign Up
+                </a>
+                .
+              </p>
+
               {error && (
                 <p className="text-red-600 mt-8 text-center">{error}</p>
               )}
 
               <form
                 onSubmit={handleSubmit(login)}
-                className="mt-8 grid grid-cols-6 gap-6"
+                className="mt-8 grid grid-cols-6 gap-6 border border-gray-300 p-6 rounded-lg" // Added border, padding, and rounded corners
               >
                 <div className="col-span-6">
                   <label
                     htmlFor="Email"
                     className="block text-sm font-bold text-gray-700"
                   >
-                    {" "}
-                    Email{" "}
+                    Email
                   </label>
 
                   <input
@@ -95,7 +92,7 @@ export default function SignIn() {
                     {...register("email", {
                       required: true,
                       validate: {
-                        matchPatern: (value) =>
+                        matchPattern: (value) =>
                           /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
                             value
                           ) || "Email address must be a valid address",
@@ -109,14 +106,14 @@ export default function SignIn() {
                     htmlFor="Password"
                     className="block text-sm font-bold text-gray-700"
                   >
-                    {" "}
-                    Password{" "}
+                    Password
                   </label>
 
                   <input
                     type="password"
                     id="Password"
                     name="password"
+                    placeholder="Enter your password"
                     className="mt-1 w-full border p-2 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                     {...register("password", {
                       required: true,
@@ -125,13 +122,10 @@ export default function SignIn() {
                 </div>
 
                 <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                  {/* <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
-                    Login
-                  </button> */}
                   <Button
                     type="submit"
                     className="w-full rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
-                    disabled={loading} // Disable the button during loading
+                    disabled={loading}
                   >
                     {loading ? (
                       <div className="flex items-center justify-center">
@@ -168,15 +162,22 @@ export default function SignIn() {
                   >
                     Forgot Password
                   </button>
-
-                  
                 </div>
               </form>
+
+              <div className="text-center mt-6">
+                <Link to="/">
+                  <Button className="w-auto px-8 py-2 border border-gray-600 bg-blue-900 text-white hover:bg-gray-300 hover:text-blue-900 transition rounded-lg">
+                    Back to Home
+                  </Button>
+                </Link>
+              </div>
+
+              <ForgotPasswordModal
+                isOpen={isForgotPasswordOpen}
+                onClose={() => setIsForgotPasswordOpen(false)}
+              />
             </div>
-            <ForgotPasswordModal
-              isOpen={isForgotPasswordOpen}
-              onClose={() => setIsForgotPasswordOpen(false)}
-            />
           </main>
         </div>
       </section>
