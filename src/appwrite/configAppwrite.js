@@ -97,6 +97,42 @@ export class Service{
         }
     }
 
+    async getCurrentUsersPosts(userId) {
+        try {
+            const queries = [Query.equal("userId", userId)];
+            console.log('first appwrite id',queries);
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                queries
+            );
+
+        } catch (error) {
+            console.log("Appwrite service :: getCurrentUsersPosts :: error", error);
+            return false;
+        }
+    }
+
+    async getCurrentUsersDraftPosts(userId) {
+        try {
+            const queries = [
+                Query.equal("userId", userId),
+                Query.equal("status", "inactive"),
+            ];
+            console.log('first appwrite id',queries);
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                queries
+            );
+
+        } catch (error) {
+            console.log("Appwrite service :: getCurrentUsersDraftPosts :: error", error);
+            return false;
+        }
+    }
+    
+
     // file upload service
 
     async uploadFile(file){
