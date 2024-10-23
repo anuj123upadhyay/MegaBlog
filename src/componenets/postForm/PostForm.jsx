@@ -247,6 +247,7 @@ export default function PostForm({ post }) {
                   type="submit"
                   bgColor={post ? "bg-green-500" : undefined}
                   className="w-full"
+                  onClick={handleSubmit(submit)}
                 >
                   {post ? "Update" : "Submit"}
                 </Button>
