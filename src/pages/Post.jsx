@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import service from "../appwrite/configAppwrite";
-import { Button, Container } from "../componenets";
+import { Container } from "../componenets";
+import { Button } from "../components/ui/button";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
@@ -24,6 +25,9 @@ import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 export default function Post() {
   const [post, setPost] = useState(null);
   const { slug } = useParams();
+  const [blogId, setBlogId] = useState("");
+  const [userId, setUserId] = useState("");
+
   const navigate = useNavigate();
 
   const userData = useSelector((state) => state.auth.userData);
@@ -33,19 +37,31 @@ export default function Post() {
   useEffect(() => {
     if (slug) {
       service.getPost(slug).then((post) => {
-        if (post) setPost(post);
-        else navigate("/");
+        if (post) {
+          setPost(post);
+          console.log("postinfo", post);
+          setBlogId(post.$id);
+          console.log("postinfo", post.$id);
+          setUserId(userId);
+          console.log("user", post.userId);
+        } else navigate("/");
       });
     } else navigate("/");
   }, [slug, navigate]);
 
-  const deletePost = () => {
-    service.deletePost(post.$id).then((status) => {
-      if (status) {
-        service.deleteFile(post.featuredImage);
-        navigate("/");
+  const deletePost = async (blogId, userId) => {
+    console.log("Deleting post with blogId:", blogId, "by userId:", userId);
+    if (!blogId) return;
+
+    const deletionSuccess = await service.deletePost(blogId);
+    if (deletionSuccess) {
+      if (post.featuredImage) {
+        await service.deleteFile(post.featuredImage); // Call to delete the associated file
       }
-    });
+      navigate("/"); // Redirect after deletion
+    } else {
+      console.error("Failed to delete the post");
+    }
   };
 
   const toPascalCase = (str) => {
@@ -67,9 +83,15 @@ export default function Post() {
                   Edit
                 </Button>
               </Link>
-              <Button bgColor="bg-red-500" onClick={deletePost}>
+              <button
+                className="bg-red-500 p-2 rounded-md text-white font-medium px-3"
+                onClick={() => {
+                  console.log("Delete button clicked"); // Test if click works
+                  deletePost(blogId, userData.$id);
+                }}
+              >
                 Delete
-              </Button>
+              </button>
             </div>
           )}
           <div className="lg:w-11/12 w-full rounded-lg">
@@ -104,11 +126,11 @@ export default function Post() {
               className="rounded-xl text-center items-center border-2 border-gray-300"
             />
           </div>
-           {/* Display the post content */}
-           <div className="lg:w-11/12 w-full bg-white p-6 rounded-lg shadow-md">
+          {/* Display the post content */}
+          <div className="lg:w-11/12 w-full bg-white p-6 rounded-lg shadow-md">
             {post.content && parse(post.content)}
           </div>
-        
+
           <div className="bg-gray-100 w-full">
             <h2 className="text-3xl font-bold text-center my-8">
               Share with your friends!
