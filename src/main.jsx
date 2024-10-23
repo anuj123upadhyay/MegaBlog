@@ -32,7 +32,7 @@ import HelpPage from "./pages/HelpPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import SignUp from "./pages/SignUpp.jsx";
 import SignIn from "./pages/SignIn.jsx";
-
+import Error404 from "./pages/Error404.jsx";
 
 const router = createBrowserRouter([
   {
@@ -120,7 +120,6 @@ const router = createBrowserRouter([
         {
         path: "/licensing",
         element: <LicensingPage />,
-
       },
       {
         path: "/profile",
@@ -158,6 +157,10 @@ const router = createBrowserRouter([
       </AuthLayout>
     ),
   },
+  {
+        path: "*",
+        element: <Error404 />,
+      },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
