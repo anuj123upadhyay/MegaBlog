@@ -31,19 +31,14 @@ import HelpPage from "./pages/HelpPage.jsx";
 
 import ProfilePage from "./pages/ProfilePage.jsx";
 import SignUp from "./pages/SignUpp.jsx";
-
-
-
-
+import SignIn from "./pages/SignIn.jsx";
+import Error404 from "./pages/Error404.jsx";
 
 const router = createBrowserRouter([
-
-
   {
     path: "/",
     element: <App />,
     children: [
-
       {
         store,
         path: "/",
@@ -52,12 +47,9 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: (
-
           <AuthLayout authentication={false}>
             <ContactPage />
           </AuthLayout>
-
-
         ),
       },
       {
@@ -128,7 +120,6 @@ const router = createBrowserRouter([
         {
         path: "/licensing",
         element: <LicensingPage />,
-
       },
       {
         path: "/profile",
@@ -139,34 +130,37 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
-      },
+      // {
+      //   path: "/signup",
+      //   element: (
+      //     <AuthLayout authentication={false}>
+      //       <Signup />
+      //     </AuthLayout>
+      //   ),
+      // },
     ],
   },
   {
     path: "/login",
     element: (
       <AuthLayout authentication={false}>
-        <Login />
+        {/* <Login /> */}
+        <SignIn/>
       </AuthLayout>
     ),
   },
-
-
   {
-    path: "/signUp",
+    path: "/signup",
     element: (
       <AuthLayout authentication={false}>
         <SignUp />
       </AuthLayout>
     ),
   },
+  {
+        path: "*",
+        element: <Error404 />,
+      },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
