@@ -4,6 +4,7 @@ import { Button, Input, RTE } from "../index";
 import service from "../../appwrite/configAppwrite";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Controller } from "react-hook-form";
 import {
   Dialog,
   DialogContent,
@@ -34,7 +35,7 @@ export default function PostForm({ post }) {
       title: post?.title || "",
       slug: post?.$id || "",
       content: post?.content || "",
-      status: post?.status || "active",
+      status: post?.status || "",
     },
   });
 
@@ -228,7 +229,7 @@ export default function PostForm({ post }) {
                   className="mb-4"
                   {...register("status", { required: true })}
                 /> */}
-                <div className="grid w-full gap-2">
+                {/* <div className="grid w-full gap-2">
                   <Label htmlFor="message-2 ">Post Now/Save as Draft:</Label>
                   <Select
                     {...register("status", { required: true })}
@@ -242,6 +243,31 @@ export default function PostForm({ post }) {
                       <SelectItem value="inactive">Draft</SelectItem>
                     </SelectContent>
                   </Select>
+                </div> */}
+                <div className="grid w-full gap-2">
+                  <Label htmlFor="status">Post Now/Save as Draft:</Label>
+                  <Controller
+                    name="status"
+                    control={control} // Pass the control object
+                    rules={{ required: true }} // Set validation rules
+                    render={({ field: { onChange, onBlur, value, ref } }) => (
+                      <Select
+                        onValueChange={onChange} // Handle value change
+                        onBlur={onBlur} // Handle blur event
+                        value={value} // Controlled value
+                        ref={ref} // Ref for focus management
+                        className="mb-4"
+                      >
+                        <SelectTrigger className="w-full mb-4">
+                          <SelectValue placeholder="Status" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="active">Post Now</SelectItem>
+                          <SelectItem value="inactive">Draft</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
                 </div>
                 <Button
                   type="submit"
