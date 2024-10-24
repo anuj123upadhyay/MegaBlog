@@ -22,17 +22,16 @@ import PressKit from "./pages/Presskit.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import SupportPage from "./pages/SupportPage.jsx";
 
-
 import LicensingPage from "./pages/LicensingPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 import HelpPage from "./pages/HelpPage.jsx";
 
-
 import ProfilePage from "./pages/ProfilePage.jsx";
 import SignUp from "./pages/SignUpp.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import Error404 from "./pages/Error404.jsx";
+import Features from "./pages/Features.jsx";
 
 const router = createBrowserRouter([
   {
@@ -104,20 +103,19 @@ const router = createBrowserRouter([
         element: <SupportPage />,
       },
       {
-
         path: "/termsandconditions",
         element: <TermsAndConditions />,
-        },
+      },
 
-        {
+      {
         path: "/helpPage",
         element: <HelpPage />,
-        },
-        {
-          path: "/frequently-asked-questions",
-          element: <FAQ />,
-        },
-        {
+      },
+      {
+        path: "/frequently-asked-questions",
+        element: <FAQ />,
+      },
+      {
         path: "/licensing",
         element: <LicensingPage />,
       },
@@ -129,6 +127,10 @@ const router = createBrowserRouter([
             <ProfilePage />
           </AuthLayout>
         ),
+      },
+      {
+        path: "/features",
+        element: <Features />,
       },
       // {
       //   path: "/signup",
@@ -145,7 +147,7 @@ const router = createBrowserRouter([
     element: (
       <AuthLayout authentication={false}>
         {/* <Login /> */}
-        <SignIn/>
+        <SignIn />
       </AuthLayout>
     ),
   },
@@ -158,13 +160,12 @@ const router = createBrowserRouter([
     ),
   },
   {
-        path: "*",
-        element: <Error404 />,
-      },
+    path: "*",
+    element: <Error404 />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
