@@ -3,11 +3,8 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import GoogleTranslate from "../GoogleTranslator";
 
-
-
 function Footer() {
   return (
- 
     <footer className="custom-theme w-full bg-gray-300 border-t-1 border-t-black py-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center md:text-left">
@@ -29,27 +26,36 @@ function Footer() {
             <nav>
               <ul className="space-y-4">
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/">
+                  <Link
+                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/features"
+                  >
                     Features
                   </Link>
- 
                 </li>
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/pricing">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/pricing"
+                  >
                     Pricing
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/affiliate-program">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/affiliate-program"
+                  >
                     Affiliate Program
                   </Link>
                 </li>
                 <li>
- 
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/"
+                  >
                     Press Kit
                   </Link>
- 
                 </li>
               </ul>
             </nav>
@@ -63,29 +69,43 @@ function Footer() {
             <nav>
               <ul className="space-y-4">
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/"
+                  >
                     Account
                   </Link>
                 </li>
- 
+
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/">
- 
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/"
+                  >
                     Help
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/contactus">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/contactus"
+                  >
                     Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/customer-support">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/customer-support"
+                  >
                     Customer Support
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/frequently-asked-questions">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/frequently-asked-questions"
+                  >
                     FAQ
                   </Link>
                 </li>
@@ -101,17 +121,26 @@ function Footer() {
             <nav>
               <ul className="space-y-4">
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/termsandconditions">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/termsandconditions"
+                  >
                     Terms & Conditions
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/privacypolicy">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/privacypolicy"
+                  >
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-base font-medium text-gray-900 hover:text-gray-700" to="/licensing">
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/licensing"
+                  >
                     Licensing
                   </Link>
                 </li>
