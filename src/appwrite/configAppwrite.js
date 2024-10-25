@@ -96,6 +96,7 @@ export class Service{
         }
     }
 
+
     async getCurrentUsersPosts(userId) {
         try {
             const queries = [Query.equal("userId", userId)];
@@ -132,7 +133,6 @@ export class Service{
         }
     }
 
-    
 
     // file upload service
 
