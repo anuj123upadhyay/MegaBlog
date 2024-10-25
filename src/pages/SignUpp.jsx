@@ -278,6 +278,13 @@ export default function SignUp() {
                   </Button>
                 </div>
               </form>
+              <div className="text-center mt-6">
+                <Link to="/">
+                  <Button className="w-auto px-8 py-2 border border-gray-600 bg-blue-900 text-white hover:bg-gray-300 hover:text-blue-900 transition rounded-lg">
+                    Back to Home
+                  </Button>
+                </Link>
+              </div>
             </div>
           </main>
         </div>

@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import authService from "../appwrite/auth";
 import service from "../appwrite/configAppwrite";
+import { Badge } from "../components/ui/badge";
 
 const ProfilePage = () => {
   const [drafts, setDrafts] = useState([]);
   const [myBlogs, setMyBlogs] = useState([]);
   const [profile, setProfile] = useState({
-    name: "Sawan Kushwah",
-    bio: "A passionate software developer working on multiple tech stacks.",
+    name: "",
+    bio: "A passionate blog Writer",
   });
+  const [userId, setUserId] = useState(null);
   const [newDraftTitle, setNewDraftTitle] = useState("");
   const [newDraftDetails, setNewDraftDetails] = useState("");
   const [posts, setPosts] = useState([]);
-
 
   // Fetch current user data
   useEffect(() => {
@@ -26,6 +27,8 @@ const ProfilePage = () => {
             name: user.name || "", // Adjust according to your user object structure
             bio: user.bio || "No bio available.", // Adjust according to your user object structure
           });
+          setUserId(user.$id);
+          console.log("firstuser", userId);
         }
         console.log("first", user);
       } catch (error) {
@@ -36,13 +39,26 @@ const ProfilePage = () => {
     fetchCurrentUser();
   }, []);
 
+  // Fetch posts related to the current user
   useEffect(() => {
-    service.getPosts([]).then((posts) => {
-      if (posts) {
-        setPosts(posts.documents);
+    const fetchPosts = async () => {
+      if (userId) {
+        try {
+          console.log("Fetching posts for userId:", userId); // Make sure this prints the correct userId
+          const posts = await service.getCurrentUsersPosts(userId);
+          if (posts) {
+            console.log("Fetched posts:", posts);
+            setPosts(posts.documents);
+            setMyBlogs(posts.documents);
+          }
+        } catch (error) {
+          console.error("Error fetching posts:", error);
+        }
       }
-    });
-  }, []);
+    };
+
+    fetchPosts();
+  }, [userId]);
 
   // Handle input changes
   const handleChange = (e) => {
@@ -81,6 +97,35 @@ const ProfilePage = () => {
   const handlePostDraft = (draft) => {
     setMyBlogs([...myBlogs, { title: draft.title, excerpt: draft.details }]);
     setDrafts(drafts.filter((d) => d !== draft)); // Remove the posted draft
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    if (isNaN(date)) return "Invalid Date";
+
+    // Get day, month, and year parts
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "short" });
+    const year = date.getFullYear();
+
+    // Determine ordinal suffix for the day
+    const ordinalSuffix = (day) => {
+      if (day > 3 && day < 21) return "th"; // covers 11th, 12th, 13th, etc.
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    };
+
+    // Return formatted date
+    return `${day}${ordinalSuffix(day)}-${month}'${year}`;
   };
 
   return (
@@ -208,16 +253,91 @@ const ProfilePage = () => {
       <div className="mt-6">
         <h2 className="text-xl font-semibold mb-4 text-gray-800">MY Blogs</h2>
         <ul className="space-y-4">
+          {/* {myBlogs.length ? (
+            myBlogs.map((blog, index) => (
+              <li
+                key={index}
+                className="border-b border-gray-200 pb-4 hover:bg-gray-50 transition-all duration-300 rounded-lg shadow-sm p-4"
+              >
+                <div className="flex flex-col">
+                <img
+                      src={service.getFilePreview(blog.featuredImage)}
+                      alt={blog.title}
+                      className="rounded-lg shadow-md w-[150px]"
+                    />
+                <h3 className="text-xl font-medium text-blue-600 hover:text-blue-800 transition-colors duration-300">
+                  {blog.title}
+                </h3>
+                <p className="text-sm text-gray-400">{blog.slug || blog.title}</p>
+                <p className="text-gray-600 mt-2">{blog.slug}</p>
+                </div>
+              </li>
+            ))
+          ) : (
+            <p className="text-gray-500">No blogs available.</p>
+          )} */}
+
           {myBlogs.length ? (
             myBlogs.map((blog, index) => (
               <li
                 key={index}
                 className="border-b border-gray-200 pb-4 hover:bg-gray-50 transition-all duration-300 rounded-lg shadow-sm p-4"
               >
-                <h3 className="text-xl font-medium text-blue-600 hover:text-blue-800 transition-colors duration-300">
-                  {blog.title}
-                </h3>
-                <p className="text-gray-600 mt-2">{blog.excerpt}</p>
+                <div className="flex justify-between items-start">
+                  {/* Image and title/slug on the left */}
+                  <div className="flex space-x-4 items-center">
+                    {/* Blog image */}
+                    <img
+                      src={service.getFilePreview(blog.featuredImage)}
+                      alt={blog.title}
+                      className="rounded-lg shadow-md w-[100px] h-[100px] object-cover"
+                    />
+
+                    {/* Blog title and slug */}
+                    <div className="flex flex-col">
+                      <h3
+                        className="text-3xl font-extrabold transition-colors duration-300 truncate"
+                        style={{ color: "black" }} // Default text color is black
+                      >
+                        <span
+                          className="hover:text-[#4f46e5]" // Change text color to #4f46e5 on hover
+                          style={{ transition: "color 0.3s" }} // Optional: smooth transition for hover effect
+                        >
+                          {blog.title}
+                        </span>
+                      </h3>
+
+                      <p className="text-sm text-gray-400">
+                        {blog.slug || blog.title}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* CreatedAt date aligned to the right */}
+                  <div className="text-gray-500 text-sm">
+                    {formatDate(blog.$createdAt)}
+                  </div>
+                </div>
+
+                {/* Metadata or default text */}
+                <div className="mt-2 text-sm text-gray-600">
+                  {blog.metadata ? (
+                    <div>
+                      <strong>Metadata:</strong> {blog.metadata}
+                    </div>
+                  ) : (
+                    <span className="italic text-gray-400">
+                      No metadata available
+                    </span>
+                  )}
+                </div>
+
+                {/* Blog category in badge below the title */}
+                <div className="mt-3">
+                  <Badge className="p-1 px-2">
+                    {blog.category || "Uncategorized"}
+                  </Badge>
+                </div>
               </li>
             ))
           ) : (

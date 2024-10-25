@@ -88,8 +88,7 @@ export class Service{
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries,
-                
-
+            
             )
         } catch (error) {
             console.log("Appwrite service :: getPosts :: error", error);
@@ -113,6 +112,7 @@ export class Service{
         }
     }
 
+
     async getCurrentUsersDraftPosts(userId) {
         try {
             const queries = [
@@ -131,6 +131,7 @@ export class Service{
             return false;
         }
     }
+
     
 
     // file upload service
