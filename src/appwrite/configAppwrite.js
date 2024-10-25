@@ -88,14 +88,31 @@ export class Service{
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries,
-                
-
+            
             )
         } catch (error) {
             console.log("Appwrite service :: getPosts :: error", error);
             return false
         }
     }
+
+
+    async getCurrentUsersPosts(userId) {
+        try {
+            const queries = [Query.equal("userId", userId)];
+            console.log('first appwrite id',queries);
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                queries
+            );
+
+        } catch (error) {
+            console.log("Appwrite service :: getCurrentUsersPosts :: error", error);
+            return false;
+        }
+    }
+
 
     async getCurrentUsersDraftPosts(userId) {
         try {
@@ -115,6 +132,7 @@ export class Service{
             return false;
         }
     }
+
 
     // file upload service
 
