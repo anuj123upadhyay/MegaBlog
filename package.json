@@ -31,9 +31,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-
     "embla-carousel-react": "^8.3.0",
-
     "framer-motion": "^11.11.7",
     "html-react-parser": "^5.1.1",
     "lucide-react": "^0.447.0",
