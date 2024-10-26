@@ -109,6 +109,14 @@ function Footer() {
                     FAQ
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    to="/Feedback"
+                  >
+                    Feedback
+                  </Link>
+                </li>
               </ul>
             </nav>
           </section>
