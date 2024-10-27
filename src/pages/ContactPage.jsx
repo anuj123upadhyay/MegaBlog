@@ -86,6 +86,9 @@ const ContactPage = () => {
                                 value={formData.phone}
                                 onChange={handleChange}
                                 required
+                                pattern="[0-9]{10}" 
+                                maxlength="10" 
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '');"
                             />
                         </div>
                     </div>
