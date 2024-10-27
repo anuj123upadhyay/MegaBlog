@@ -5,6 +5,10 @@
 - 🔗 **Check out the project:** [MegaBlog GitHub Repository](https://github.com/anuj123upadhyay/MegaBlog)
 - 🌐 **Live Website**: [MegaBlog Live](mega-blog-8587.vercel.app/)
 
+## ✨ Project Structure 
+
+Check the project structure here [Project Structure](PROJECT_STRUCTURE.md)
+
 ## 🌟 Features
 
 - 🖊️ **Create & Edit** your personal blog posts
