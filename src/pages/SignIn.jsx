@@ -37,6 +37,15 @@ export default function SignIn() {
     setIsForgotPasswordOpen(true);
   };
 
+  //custom function for a specific provider
+  const login_with_ = async (provider) => {
+    authService.account.createOAuth2Session(
+      provider,
+      "http://localhost:5173/",
+      "http://localhost:5173/error"
+    );
+  };
+
   return (
     <>
       <section className="bg-white">
@@ -162,6 +171,59 @@ export default function SignIn() {
                   >
                     Forgot Password
                   </button>
+                </div>
+                <div className="col-span-6">
+                  <div className="w-full">
+                    <p className="mt-1 text-center text-sm text-gray-500">
+                      Or Sign In using
+                    </p>
+                    <div className="mt-3 flex justify-around">
+                      <Button
+                        className="p-2 outline-none border-none rounded bg-slate-200"
+                        onClick={() =>login_with_("google")}
+                        title="SignIn with google"
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                          alt="google"
+                          className="w-[25px]"
+                        />
+                      </Button>
+                      <Button
+                        className="p-2 outline-none border-none rounded bg-slate-200"
+                        onClick={() =>login_with_("facebook")}
+                        title="SignIn with facebook"
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg"
+                          alt="facebook"
+                          className="w-[25px]"
+                        />
+                      </Button>
+                      <Button
+                        className="p-2 outline-none border-none rounded bg-slate-200"
+                        onClick={() =>login_with_("linkedin")}
+                        title="SignIn with linkedin"
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                          alt="linkedin"
+                          className="w-[25px]"
+                        />
+                      </Button>
+                      <Button
+                        className="p-2 outline-none border-none rounded bg-slate-200"
+                        onClick={() =>login_with_("github")}
+                        title="SignIn with github"
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg"
+                          alt="github"
+                          className="w-[25px]"
+                        />
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </form>
 
