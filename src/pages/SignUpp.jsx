@@ -53,11 +53,16 @@ export default function SignUp() {
 
   //custom function for a specific provider
   const signup_with_=async(provider)=>{
-     authService.account.createOAuth2Session(
-      provider,
-      "http://localhost:5173/",
-      "http://localhost:5173/error"
-    );
+    try {
+      await authService.account.createOAuth2Session(
+        provider,
+        "http://localhost:5173/",
+        "http://localhost:5173/error"
+      );
+    } catch (error) {
+      setError("OAuth signup failed. Please try again.");
+      console.error("OAuth error:", error);
+    }
   }
 
   
