@@ -30,8 +30,7 @@ git clone https://github.com/anuj123upadhyay/MegaBlog.git
 2. Install dependencies:
 
 ```bash
-cd frontend && npm install
-cd ../backend && npm install
+npm install
 ```
 
 3. Set up environment variables in the `.env` file for MongoDB URI, JWT secret, etc.
@@ -39,8 +38,7 @@ cd ../backend && npm install
 4. Start the application:
 
 ```bash
-cd frontend && npm start
-cd ../backend && npm run dev
+npm run dev
 ```
 
 5. Visit `http://localhost:3000` to explore!
