@@ -56,7 +56,7 @@ export default function SignUp() {
     try {
       await authService.account.createOAuth2Session(
         provider,
-        "http://localhost:5173/",
+        "https://mega-blog-8587.vercel.app/",
         "http://localhost:5173/error"
       );
     } catch (error) {
