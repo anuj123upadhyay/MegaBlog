@@ -10,7 +10,6 @@ import Chatbot from './componenets/Chatbot'
 import Hero from './componenets/Hero/Hero'
 
 
-
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
