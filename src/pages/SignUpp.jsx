@@ -56,7 +56,7 @@ export default function SignUp() {
     try {
       await authService.account.createOAuth2Session(
         provider,
-        "http://localhost:5173/",
+        "https://mega-blog-8587.vercel.app/",
         "http://localhost:5173/error"
       );
     } catch (error) {
@@ -118,15 +118,22 @@ export default function SignUp() {
                     htmlFor="FirstName"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    First Name
+                    Full Name
                   </label>
 
                   <Input
                     placeholder="Enter your full name"
                     {...register("name", {
                       required: true,
+                      pattern: {
+                      value: /^[a-zA-Z ]+$/,
+                      message: 'Numbers and Symbols are not allowed'
+                      }
                     })}
                     className="mt-1 w-full border border-black rounded-md bg-white text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    pattern="[a-zA-Z ]+"
+                    onInvalid={(e) => e.target.setCustomValidity('Numbers and Symbols are not allowed')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                   />
                 </div>
 
