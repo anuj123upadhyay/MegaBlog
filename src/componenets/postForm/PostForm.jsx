@@ -58,6 +58,8 @@ export default function PostForm({ post }) {
 
   const submit = async (data) => {
     if (post) {
+    console.log(data)
+
       const file = data.image[0]
         ? await service.uploadFile(data.image[0])
         : null;
@@ -70,7 +72,7 @@ export default function PostForm({ post }) {
         ...data,
         featuredImage: file ? file.$id : undefined,
       });
-
+      console.log(dbPost)
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`);
       }
@@ -80,6 +82,7 @@ export default function PostForm({ post }) {
       if (file) {
         const fileId = file.$id;
         data.featuredImage = fileId;
+        console.log(data)
         const dbPost = await service.createPost({
           ...data,
           userId: userData.$id,
@@ -195,8 +198,8 @@ export default function PostForm({ post }) {
               <DialogDescription>
                 This action is to post the blog.
                 <Input
-                  label="Featured Image :"
                   type="file"
+                  label="Featured Image :"
                   className="mb-4"
                   accept="image/png, image/jpg, image/jpeg, image/gif"
                   {...register("image", { required: !post })}

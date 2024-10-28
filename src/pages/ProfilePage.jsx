@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import authService from "../appwrite/auth";
 import service from "../appwrite/configAppwrite";
 import { Badge } from "../components/ui/badge";
+import { Input } from "../componenets";
+import toast, { Toaster } from "react-hot-toast";
 
 const ProfilePage = () => {
   const [drafts, setDrafts] = useState([]);
@@ -9,10 +11,13 @@ const ProfilePage = () => {
   const [profile, setProfile] = useState({
     name: "",
     bio: "A passionate blog Writer",
+    image: "",
   });
   const [userId, setUserId] = useState(null);
   const [newDraftTitle, setNewDraftTitle] = useState("");
   const [newDraftDetails, setNewDraftDetails] = useState("");
+  const [imagePreview, setImagePreview] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   // Fetch current user data
   useEffect(() => {
@@ -25,6 +30,7 @@ const ProfilePage = () => {
           setProfile({
             name: user.name || "", // Adjust according to your user object structure
             bio: user.bio || "No bio available.", // Adjust according to your user object structure
+            image: user.prefs.image || "no image available",
           });
           setUserId(user.$id);
           console.log("firstuser", userId);
@@ -58,26 +64,25 @@ const ProfilePage = () => {
     fetchPosts();
   }, [userId]);
 
-    // Fetch posts related to the current user
-    useEffect(() => {
-      const fetchDraftPosts = async () => {
-        if (userId) {
-          try {
-            console.log("Fetching posts for userId:", userId); // Make sure this prints the correct userId
-            const posts = await service.getCurrentUsersDraftPosts(userId);
-            if (posts) {
-              console.log("Fetched posts:", posts);
-              setDrafts(posts.documents);
-            }
-          } catch (error) {
-            console.error("Error fetching posts:", error);
+  // Fetch posts related to the current user
+  useEffect(() => {
+    const fetchDraftPosts = async () => {
+      if (userId) {
+        try {
+          console.log("Fetching posts for userId:", userId); // Make sure this prints the correct userId
+          const posts = await service.getCurrentUsersDraftPosts(userId);
+          if (posts) {
+            console.log("Fetched posts:", posts);
+            setDrafts(posts.documents);
           }
+        } catch (error) {
+          console.error("Error fetching posts:", error);
         }
-      };
-  
-      fetchDraftPosts();
-    }, [userId]);
+      }
+    };
 
+    fetchDraftPosts();
+  }, [userId]);
 
   // Handle input changes
   const handleChange = (e) => {
@@ -88,11 +93,50 @@ const ProfilePage = () => {
     }));
   };
 
-  // Handle saving changes (this can be modified to include API calls)
-  const handleSave = () => {
-    console.log("Profile saved:", profile);
-    alert("Profile changes saved successfully!");
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(file); // Store the selected file
+      const reader = new FileReader();
+      reader.onloadend = () => setImagePreview(reader.result); // Preview the image
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null); // Clear preview if no file is selected
+    }
   };
+
+  const handleSave = async () => {
+    try {
+      if (selectedFile) {
+        // Upload image to Appwrite
+        const fileResponse = await service.uploadFile(selectedFile);
+        const fileId = fileResponse.$id;
+
+        // Update user profile with new image URL
+        await authService.updateUserProfile({
+          image: service.getFilePreview(fileId), // Store the image preview URL
+        });
+        
+        toast.success("Profile Photo updated successfully!");
+      } else {
+        // If no image selected, just update the name and bio
+        // await authService.updateUser(userId, {
+        //   name: profile.name,
+        //   bio: profile.bio,
+        // });
+        toast.success("No selected file");
+      }
+    } catch (error) {
+      console.error("Error saving profile:", error);
+      toast.error("Failed to update profile.");
+    }
+  };
+
+  // Handle saving changes (this can be modified to include API calls)
+  // const handleSave = () => {
+  //   console.log("Profile saved:", profile);
+  //   alert("Profile changes saved successfully!");
+  // };
 
   // Simulating data fetching from API with dummy data
   // useEffect(() => {
@@ -149,6 +193,7 @@ const ProfilePage = () => {
 
   return (
     <div className="w-4/5 mx-auto p-6 pb-20">
+      <Toaster/>
       <div className="flex w-full justify-between">
         {/* Profile Settings */}
         <div className="mt-6 p-6 bg-white rounded-lg shadow-md w-3/5">
@@ -189,6 +234,23 @@ const ProfilePage = () => {
               className="border border-gray-300 p-3 w-full rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 h-32"
             ></textarea>
           </div>
+          <input
+            label="Upload Profile Picture:"
+            type="file"
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            onChange={handleImageChange}
+            className="mb-4"
+          />
+
+          {imagePreview && (
+            <div className="mb-4">
+              <img
+                src={imagePreview}
+                alt="Image Preview"
+                className="rounded-lg shadow-md w-[100px] h-[100px] object-cover"
+              />
+            </div>
+          )}
 
           <button
             onClick={handleSave}
@@ -201,7 +263,7 @@ const ProfilePage = () => {
         {/* Profile Header */}
         <div className="bg-white p-6 rounded-lg border-2 border-blue-300 shadow-lg w-1/3 h-64 flex flex-col items-center transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
           <img
-            src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            src={profile.image|| "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
             alt="Profile"
             className="rounded-full object-cover w-28 h-28 border-4 border-gray-200 shadow-sm transition-transform duration-300 hover:scale-105"
           />
