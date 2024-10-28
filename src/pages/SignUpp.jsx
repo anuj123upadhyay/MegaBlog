@@ -317,17 +317,7 @@ export default function SignUp() {
                       className="w-[25px]"
                     />
                   </Button>
-                  <Button
-                    className="p-2 outline-none border-none rounded bg-slate-200"
-                    onClick={() => signup_with_("facebook")}
-                    title="Signup with facebook"
-                  >
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg"
-                      alt="facebook"
-                      className="w-[25px]"
-                    />
-                  </Button>
+                  
                   <Button
                     className="p-2 outline-none border-none rounded bg-slate-200"
                     onClick={() => signup_with_("linkedin")}
