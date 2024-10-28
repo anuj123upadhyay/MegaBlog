@@ -7,10 +7,9 @@ import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import ForgotPasswordModal from "../componenets/ForgotPasswordModal";
-import { Account } from 'appwrite';
 
-// Initialize Appwrite account for OAuth and normal login
-const account = new Account(authService);
+
+
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -44,10 +43,10 @@ export default function SignIn() {
   // Custom function for specific OAuth providers
   const login_with_ = async (provider) => {
     try {
-      await account.createOAuth2Session(
+      await authService.account.createOAuth2Session(
         provider,
-        `${window.location.origin}/`, // Dynamic redirect after success
-        `${window.location.origin}/error` // Redirect on error
+        "https://mega-blog-8587.vercel.app/", // Dynamic redirect after success  https://mega-blog-8587.vercel.app/
+        "http://localhost:5173/error"  // Redirect on error
       );
     } catch (error) {
       console.error(`Failed to log in with ${provider}:`, error);
