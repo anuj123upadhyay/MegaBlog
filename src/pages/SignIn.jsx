@@ -181,13 +181,7 @@ export default function SignIn() {
                       >
                         <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="google" className="w-[25px]" />
                       </Button>
-                      <Button
-                        className="p-2 outline-none border-none rounded bg-slate-200"
-                        onClick={() => login_with_("facebook")}
-                        title="SignIn with facebook"
-                      >
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="facebook" className="w-[25px]" />
-                      </Button>
+                      
                       <Button
                         className="p-2 outline-none border-none rounded bg-slate-200"
                         onClick={() => login_with_("linkedin")}
