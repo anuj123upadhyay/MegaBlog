@@ -51,6 +51,22 @@ export default function SignUp() {
     }
   };
 
+  //custom function for a specific provider
+  const signup_with_=async(provider)=>{
+    try {
+      await authService.account.createOAuth2Session(
+        provider,
+        "http://localhost:5173/",
+        "http://localhost:5173/error"
+      );
+    } catch (error) {
+      setError("OAuth signup failed. Please try again.");
+      console.error("OAuth error:", error);
+    }
+  }
+
+  
+
   return (
     <>
       <section className="bg-white">
@@ -102,15 +118,22 @@ export default function SignUp() {
                     htmlFor="FirstName"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    First Name
+                    Full Name
                   </label>
 
                   <Input
                     placeholder="Enter your full name"
                     {...register("name", {
                       required: true,
+                      pattern: {
+                      value: /^[a-zA-Z ]+$/,
+                      message: 'Numbers and Symbols are not allowed'
+                      }
                     })}
                     className="mt-1 w-full border border-black rounded-md bg-white text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    pattern="[a-zA-Z ]+"
+                    onInvalid={(e) => e.target.setCustomValidity('Numbers and Symbols are not allowed')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                   />
                 </div>
 
@@ -278,6 +301,57 @@ export default function SignUp() {
                   </Button>
                 </div>
               </form>
+              <div className="w-full">
+                <p className="mt-4  text-center text-sm text-gray-500">
+                  Or SignUp using
+                </p>
+                <div className="mt-2 flex justify-around">
+                  <Button
+                    className="p-2 outline-none border-none rounded bg-slate-200"
+                    onClick={() => signup_with_("google")}
+                    title="Signup with google"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                      alt="google"
+                      className="w-[25px]"
+                    />
+                  </Button>
+                  <Button
+                    className="p-2 outline-none border-none rounded bg-slate-200"
+                    onClick={() => signup_with_("facebook")}
+                    title="Signup with facebook"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg"
+                      alt="facebook"
+                      className="w-[25px]"
+                    />
+                  </Button>
+                  <Button
+                    className="p-2 outline-none border-none rounded bg-slate-200"
+                    onClick={() => signup_with_("linkedin")}
+                    title="Signup with linkedin"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                      alt="linkedin"
+                      className="w-[25px]"
+                    />
+                  </Button>
+                  <Button
+                    className="p-2 outline-none border-none rounded bg-slate-200"
+                    onClick={() => signup_with_("github")}
+                    title="Signup with github"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg"
+                      alt="github"
+                      className="w-[25px]"
+                    />
+                  </Button>
+                </div>
+              </div>
               <div className="text-center mt-6">
                 <Link to="/">
                   <Button className="w-auto px-8 py-2 border border-gray-600 bg-blue-900 text-white hover:bg-gray-300 hover:text-blue-900 transition rounded-lg">
