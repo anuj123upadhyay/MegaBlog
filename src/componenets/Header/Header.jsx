@@ -63,7 +63,7 @@ export default function Header() {
     },
     {
       name: "Signup",
-      slug: "/signUp",
+      slug: "/signup",
       active: !authStatus,
       description: "Sign up for an account",
     },
@@ -400,8 +400,12 @@ const ListItem = React.forwardRef(
               padding: "12px",
               borderRadius: "8px",
               backgroundColor: "white",
-              transition: "background-color 0.2s",
+              transition: "none", 
               textDecoration: "none",
+              boxShadow: "none", 
+              '&:hover': {
+                backgroundColor: 'none', 
+              }
             }}
             {...props}
           >

@@ -36,6 +36,9 @@ export default function PostForm({ post }) {
       slug: post?.$id || "",
       content: post?.content || "",
       status: post?.status || "",
+      category: post?.category || "",
+      metaData: post?.metaData || "",
+      tags: post?.tags || [],
     },
   });
 
@@ -57,8 +60,10 @@ export default function PostForm({ post }) {
   };
 
   const submit = async (data) => {
+    data.tags = data.tags.split(",").map(tag => tag.trim()).filter(tag => tag !== "");
+    
     if (post) {
-    console.log(data)
+      console.log(data);
 
       const file = data.image[0]
         ? await service.uploadFile(data.image[0])
@@ -72,7 +77,7 @@ export default function PostForm({ post }) {
         ...data,
         featuredImage: file ? file.$id : undefined,
       });
-      console.log(dbPost)
+      console.log(dbPost);
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`);
       }
@@ -82,7 +87,7 @@ export default function PostForm({ post }) {
       if (file) {
         const fileId = file.$id;
         data.featuredImage = fileId;
-        console.log(data)
+        console.log(data);
         const dbPost = await service.createPost({
           ...data,
           userId: userData.$id,
@@ -223,30 +228,10 @@ export default function PostForm({ post }) {
                       src={imagePreview}
                       alt="Selected"
                       className="rounded-lg shadow-lg"
+                      style={{ maxWidth: "80px", maxHeight: "80px" }}
                     />
                   </div>
                 )}
-                {/* <Select
-                  options={["active", "inactive"]}
-                  label="Status"
-                  className="mb-4"
-                  {...register("status", { required: true })}
-                /> */}
-                {/* <div className="grid w-full gap-2">
-                  <Label htmlFor="message-2 ">Post Now/Save as Draft:</Label>
-                  <Select
-                    {...register("status", { required: true })}
-                    className="mb-4"
-                  >
-                    <SelectTrigger className="w-full mb-4">
-                      <SelectValue placeholder="Status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="active">Post Now</SelectItem>
-                      <SelectItem value="inactive">Draft</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div> */}
                 <div className="grid w-full gap-2">
                   <Label htmlFor="status">Post Now/Save as Draft:</Label>
                   <Controller
@@ -272,6 +257,37 @@ export default function PostForm({ post }) {
                     )}
                   />
                 </div>
+
+                <Input
+                  label="Category :"
+                  placeholder="Category"
+                  className="mb-4"
+                  {...register("category", { required: true })}
+                />
+
+                {/* New Input for Metadata */}
+                <Input
+                  label="Metadata (max 150 chars):"
+                  placeholder="Enter metadata..."
+                  className="mb-4"
+                  {...register("metaData", {
+                    maxLength: { value: 150, message: "Max length is 150 characters" },
+                  })}
+                />
+
+                {/* New Input for Tags */}
+                <Input
+                  label="Tags (comma-separated):"
+                  placeholder="Tag1, Tag2, Tag3..."
+                  className="mb-4"
+                  {...register("tags", {
+                    validate: value => {
+                      const tagsArray = value.split(',').map(tag => tag.trim());
+                      return tagsArray.length <= 5 || "You can add up to 5 tags.";
+                    }
+                  })}
+                />
+
                 <Button
                   type="submit"
                   bgColor={post ? "bg-green-500" : undefined}
