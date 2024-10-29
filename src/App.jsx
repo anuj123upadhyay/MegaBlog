@@ -8,7 +8,8 @@ import { Outlet, useLocation} from 'react-router-dom'
 import BackToTopButton from './components/ui/BackToTopButton'
 import Chatbot from './componenets/Chatbot'
 import Hero from './componenets/Hero/Hero'
-
+import React from 'react';
+import Chatbot from './components/Chatbot';
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -46,6 +47,13 @@ function App() {
   ) : null;
 }
 
+function App() {
+  return (
+    <div className="App">
+      {/* Other components */}
+      <Chatbot />
+    </div>
+  );
+}
 
-
-export default App
+export default App;
