@@ -47,14 +47,19 @@ function AllPosts() {
             <p className="text-lg text-gray-600 text-center mb-2 leading-relaxed">
               Have a look at our Blog Posts.
             </p>
-            <hr className="mt-2"/>
+            {/* <hr className="mt-2" /> */}
           </div>
 
-
-          <div className="p-4 w-full">
+          <div className="px-4 mb-4 w-full">
             {Object.keys(categorizedPosts).map((category) => (
               <div key={category} className="mb-8">
-                <h2 className="text-3xl font-bold mb-4 mt-4 text-black text-center">{category}</h2>
+                <h2 class="flex flex-row flex-nowrap items-center mt-16 mb-16">
+                  <span class="flex-grow block border-t border-black"></span>
+                  <span class="flex-none block mx-4 px-4 py-2.5 text-xl rounded leading-none font-medium bg-black text-white">
+                  {category}
+                  </span>
+                  <span class="flex-grow block border-t border-black"></span>
+                </h2>
 
                 {/* Conditional Rendering of Carousel */}
                 {categorizedPosts[category].length > 5 ? (
@@ -74,20 +79,20 @@ function AllPosts() {
                     <CarouselPrevious
                       style={{
                         position: "absolute",
-                        width: "40px", 
-                        height: "40px", 
+                        width: "40px",
+                        height: "40px",
                         top: "50%",
-                        left: "10px", 
+                        left: "10px",
                         transform: "translateY(-50%)",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
                         transition:
-                          "background-color 0.3s ease, color 0.3s ease", 
-                        zIndex: 10, 
-                        backgroundColor: "rgba(0, 0, 0, 0.5)", 
-                        color: "white", 
-                        borderRadius: "50%", 
+                          "background-color 0.3s ease, color 0.3s ease",
+                        zIndex: 10,
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
+                        color: "white",
+                        borderRadius: "50%",
                       }}
                       onMouseEnter={(e) =>
                         (e.currentTarget.style.backgroundColor =
@@ -96,30 +101,30 @@ function AllPosts() {
                       onMouseLeave={(e) =>
                         (e.currentTarget.style.backgroundColor =
                           "rgba(0, 0, 0, 0.5)")
-                      } 
+                      }
                     />
                     <CarouselNext
                       style={{
                         position: "absolute",
-                        width: "40px", 
-                        height: "40px", 
+                        width: "40px",
+                        height: "40px",
                         top: "50%",
-                        right: "10px", 
+                        right: "10px",
                         transform: "translateY(-50%)",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
                         transition:
-                          "background-color 0.3s ease, color 0.3s ease", 
-                        zIndex: 10, 
-                        backgroundColor: "rgba(0, 0, 0, 0.5)", 
+                          "background-color 0.3s ease, color 0.3s ease",
+                        zIndex: 10,
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
                         color: "white",
                         borderRadius: "50%",
                       }}
                       onMouseEnter={(e) =>
                         (e.currentTarget.style.backgroundColor =
                           "rgba(0, 0, 0, 0.7)")
-                      } 
+                      }
                       onMouseLeave={(e) =>
                         (e.currentTarget.style.backgroundColor =
                           "rgba(0, 0, 0, 0.5)")
