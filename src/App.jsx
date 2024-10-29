@@ -15,13 +15,6 @@ function App() {
   const dispatch = useDispatch()
   const location = useLocation();
 
-  return (
-    <div className="App">
-      {/* Other components */}
-      <Chatbot />
-    </div>
-  );
-
   useEffect(() => {
     authService.getCurrentUser()
       .then((userData) => {
@@ -38,6 +31,12 @@ function App() {
     <div className='custom-theme min-h-screen flex flex-wrap content-between '>
       <div className='w-full block'>
         <BackToTopButton />
+        return (
+      <div className="App">
+      {/* Other components */}
+        <Chatbot />
+      </div>
+      );
         {/* <Chatbot /> */}
         <Header />
         <main>
