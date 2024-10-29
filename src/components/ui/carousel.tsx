@@ -11,8 +11,8 @@ const PostCarousel = ({ posts }) => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const isSmallScreen = useMediaQuery({ query: '(max-width: 640px)' });
-  const isLargeScreen = useMediaQuery({ query: '(min-width: 641px)' });
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 940px)' });
+  const isLargeScreen = useMediaQuery({ query: '(min-width: 941px)' });
   const postsWidth = isSmallScreen ? 100 : 100 / 3;
 
   const nextPost = useCallback(() => {
@@ -71,7 +71,7 @@ const PostCarousel = ({ posts }) => {
               onMouseLeave={handleMouseLeave}
             >
               {posts.map((post, index) => (
-                <div key={index} className={`w-full ${isSmallScreen ? 'flex-shrink-0' : 'sm:w-1/3 flex-shrink-0'} px-2 justify-center items-center` }>
+                <div key={index} className={`w-full ${isSmallScreen ? 'flex-shrink-0' : 'sm:w-1/3 flex-shrink-0'} px-2 justify-center items-center px-1` }>
                   <PostCard key={index} {...post} />
                 </div>
               ))}
