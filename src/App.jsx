@@ -31,12 +31,10 @@ function App() {
     <div className='custom-theme min-h-screen flex flex-wrap content-between '>
       <div className='w-full block'>
         <BackToTopButton />
-        return (
       <div className="App">
       {/* Other components */}
         <Chatbot />
       </div>
-      );
         {/* <Chatbot /> */}
         <Header />
         <main>
