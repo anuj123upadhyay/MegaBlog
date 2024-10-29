@@ -9,12 +9,18 @@ import BackToTopButton from './components/ui/BackToTopButton'
 import Chatbot from './componenets/Chatbot'
 import Hero from './componenets/Hero/Hero'
 import React from 'react';
-import Chatbot from './components/Chatbot';
 
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   const location = useLocation();
+
+  return (
+    <div className="App">
+      {/* Other components */}
+      <Chatbot />
+    </div>
+  );
 
   useEffect(() => {
     authService.getCurrentUser()
@@ -45,15 +51,6 @@ function App() {
       </div>
     </div>
   ) : null;
-}
-
-function App() {
-  return (
-    <div className="App">
-      {/* Other components */}
-      <Chatbot />
-    </div>
-  );
 }
 
 export default App;
