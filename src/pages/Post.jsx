@@ -21,6 +21,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import PostCommentSection from "../componenets/CommentSection/CommentSection";
 
 export default function Post() {
   const [post, setPost] = useState(null);
@@ -130,6 +131,12 @@ export default function Post() {
           <div className="lg:w-11/12 w-full bg-white p-6 rounded-lg shadow-md">
             {post.content && parse(post.content)}
           </div>
+
+
+          <div>
+            <PostCommentSection/>
+          </div>
+        
 
           <div className="bg-gray-100 w-full">
             <h2 className="text-3xl font-bold text-center my-8">
