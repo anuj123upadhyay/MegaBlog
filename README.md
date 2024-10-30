@@ -8,7 +8,7 @@
 | GSSoC'2024-Extd       | <img src="assets/GSSoC-Ext.png" width="120px" alt="GSSoC Logo">       | A coding period from October 1st to October 30th, inviting contributions and offering a rewarding experience. |
 | Hacktoberfest 2024    | <img src="assets/hacktoberfest.png" width="120px" alt="Hacktoberfest Logo"> | Hacktoberfest celebrates open-source, welcoming participants of all levels throughout October.                |
 
----
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 📊 Project Metrics
 
@@ -33,7 +33,8 @@
     </tbody>
 </table>
 
----
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
 
 **MegaBlog** is a dynamic, responsive platform for sharing your thoughts and ideas. Built with **React** and **Node.js**, it allows users to write, manage, and comment on blog posts effortlessly.
 
