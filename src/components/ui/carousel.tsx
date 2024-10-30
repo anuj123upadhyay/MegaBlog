@@ -1,260 +1,113 @@
-import * as React from "react"
-import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons"
-import useEmblaCarousel, {
-  type UseEmblaCarouselType,
-} from "embla-carousel-react"
 
-import { cn } from "../../lib/utils"
-import { Button } from "./button"
+import PostCard from "../../componenets/PostCard"; // Assuming 'components' is the correct path
+// components/PostCarousel.js
+import React, { useState, useEffect, useCallback } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useMediaQuery } from 'react-responsive';
 
-type CarouselApi = UseEmblaCarouselType[1]
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-type CarouselOptions = UseCarouselParameters[0]
-type CarouselPlugin = UseCarouselParameters[1]
 
-type CarouselProps = {
-  opts?: CarouselOptions
-  plugins?: CarouselPlugin
-  orientation?: "horizontal" | "vertical"
-  setApi?: (api: CarouselApi) => void
-}
 
-type CarouselContextProps = {
-  carouselRef: ReturnType<typeof useEmblaCarousel>[0]
-  api: ReturnType<typeof useEmblaCarousel>[1]
-  scrollPrev: () => void
-  scrollNext: () => void
-  canScrollPrev: boolean
-  canScrollNext: boolean
-} & CarouselProps
+const PostCarousel = ({ posts }) => {
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 940px)' });
+  const isLargeScreen = useMediaQuery({ query: '(min-width: 941px)' });
+  const postsWidth = isSmallScreen ? 100 : 100 / 3;
 
-const CarouselContext = React.createContext<CarouselContextProps | null>(null)
-
-function useCarousel() {
-  const context = React.useContext(CarouselContext)
-
-  if (!context) {
-    throw new Error("useCarousel must be used within a <Carousel />")
-  }
-
-  return context
-}
-
-const Carousel = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & CarouselProps
->(
-  (
-    {
-      orientation = "horizontal",
-      opts,
-      setApi,
-      plugins,
-      className,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const [carouselRef, api] = useEmblaCarousel(
-      {
-        ...opts,
-        axis: orientation === "horizontal" ? "x" : "y",
-      },
-      plugins
-    )
-    const [canScrollPrev, setCanScrollPrev] = React.useState(false)
-    const [canScrollNext, setCanScrollNext] = React.useState(false)
-
-    const onSelect = React.useCallback((api: CarouselApi) => {
-      if (!api) {
-        return
-      }
-
-      setCanScrollPrev(api.canScrollPrev())
-      setCanScrollNext(api.canScrollNext())
-    }, [])
-
-    const scrollPrev = React.useCallback(() => {
-      api?.scrollPrev()
-    }, [api])
-
-    const scrollNext = React.useCallback(() => {
-      api?.scrollNext()
-    }, [api])
-
-    const handleKeyDown = React.useCallback(
-      (event: React.KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === "ArrowLeft") {
-          event.preventDefault()
-          scrollPrev()
-        } else if (event.key === "ArrowRight") {
-          event.preventDefault()
-          scrollNext()
+  const nextPost = useCallback(() => {
+    if (!isHovered) {
+      setIsTransitioning(true);
+      setCurrentIndex((prevIndex) => {
+        // When at the last post, reset to the first post
+        if (prevIndex === posts.length - 2) {
+          setTimeout(() => {
+            setIsTransitioning(false);
+            setCurrentIndex(1); // Reset to the first post
+          }, 500);
+          return prevIndex; // Prevent updating immediately
         }
-      },
-      [scrollPrev, scrollNext]
-    )
+        return prevIndex + 1; // Move to the next post
+      });
+    }
+  }, [isHovered, posts.length]);
 
-    React.useEffect(() => {
-      if (!api || !setApi) {
-        return
-      }
+  const prevPost = useCallback(() => {
+    if (!isHovered) {
+      setIsTransitioning(true);
+      setCurrentIndex((prevIndex) => {
+        // If at the first post, loop back to the second last post
+        if (prevIndex === 1) {
+          setTimeout(() => {
+            setIsTransitioning(false);
+            setCurrentIndex(posts.length - 1); // Set to the last post
+          }, 500);
+          return prevIndex; // Prevent updating immediately
+        }
+        return prevIndex - 1; // Move to the previous post
+      });
+    }
+  }, [isHovered, posts.length]);
 
-      setApi(api)
-    }, [api, setApi])
+  useEffect(() => {
+    const timer = setInterval(nextPost, 4000);
+    return () => clearInterval(timer);
+  }, [nextPost]);
 
-    React.useEffect(() => {
-      if (!api) {
-        return
-      }
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
-      onSelect(api)
-      api.on("reInit", onSelect)
-      api.on("select", onSelect)
+  return (
+    <section className="py-2 px-8 rounded-lg shadow-md max-w-5xl mx-auto overflow-hidden bg-indigo-100">
+      <div className="max-w-7xl mx-auto  ">
+        <div className="relative mt-5  border border-b-indigo-500 shadow-b-lg">
+          <div className="overflow-hidden ">
+            <div
+              className={`flex transition-transform duration-500 ease-in-out ${!isTransitioning ? 'transition-none' : ''}`}
+              style={{
+                transform: `translateX(-${(currentIndex - 1) * postsWidth}%)`,
+              }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              {posts.map((post, index) => (
+                <div key={index} className={`w-full ${isSmallScreen ? 'flex-shrink-0' : 'sm:w-1/3 flex-shrink-0'} px-2 justify-center items-center px-1` }>
+                  <PostCard key={index} {...post} />
+                </div>
+              ))}
+            </div>
+          </div>
 
-      return () => {
-        api?.off("select", onSelect)
-      }
-    }, [api, onSelect])
+          {currentIndex > 1 && (
+            <button
+              onClick={prevPost}
+              className="absolute top-1/2 -left-4 ml-1 bg-indigo-600 rounded-full p-2 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 hover:shadow-lg hover:bg-indigo-700"
+            >
+              <ChevronLeft className="w-6 h-6 text-white" />
+            </button>
+          )}
 
-    return (
-      <CarouselContext.Provider
-        value={{
-          carouselRef,
-          api: api,
-          opts,
-          orientation:
-            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
-          scrollPrev,
-          scrollNext,
-          canScrollPrev,
-          canScrollNext,
-        }}
-      >
-        <div
-          ref={ref}
-          onKeyDownCapture={handleKeyDown}
-          className={cn("relative", className)}
-          role="region"
-          aria-roledescription="carousel"
-          {...props}
-        >
-          {children}
+          {currentIndex < posts.length - 2 && (
+            <button
+              onClick={nextPost}
+              className="absolute top-1/2 -right-4 mr-1 bg-indigo-600 rounded-full p-2 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 hover:shadow-lg hover:bg-indigo-700"
+            >
+              <ChevronRight className="w-6 h-6 text-white" />
+            </button>
+          )}
         </div>
-      </CarouselContext.Provider>
-    )
-  }
-)
-Carousel.displayName = "Carousel"
+        <div className="flex justify-center mt-8">
+          {posts.slice(1, isLargeScreen ? posts.length - 1 : posts.length).map((_, index) => (
+            <div
+              key={index}
+              onClick={() => setCurrentIndex(index + 1)}
+              className={`w-2 h-2 mx-1 rounded-full ${currentIndex === index + 1 ? 'bg-indigo-600' : 'bg-gray-400'}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
-const CarouselContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  const { carouselRef, orientation } = useCarousel()
-
-  return (
-    <div ref={carouselRef} className="overflow-hidden">
-      <div
-        ref={ref}
-        className={cn(
-          "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
-          className
-        )}
-        {...props}
-      />
-    </div>
-  )
-})
-CarouselContent.displayName = "CarouselContent"
-
-const CarouselItem = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  const { orientation } = useCarousel()
-
-  return (
-    <div
-      ref={ref}
-      role="group"
-      aria-roledescription="slide"
-      className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
-        className
-      )}
-      {...props}
-    />
-  )
-})
-CarouselItem.displayName = "CarouselItem"
-
-const CarouselPrevious = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
-
-  return (
-    <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        "absolute  h-8 w-8 rounded-full",
-        orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
-      )}
-      disabled={!canScrollPrev}
-      onClick={scrollPrev}
-      {...props}
-    >
-      <ArrowLeftIcon className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
-    </Button>
-  )
-})
-CarouselPrevious.displayName = "CarouselPrevious"
-
-const CarouselNext = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel()
-
-  return (
-    <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        "absolute h-8 w-8 rounded-full",
-        orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
-      )}
-      disabled={!canScrollNext}
-      onClick={scrollNext}
-      {...props}
-    >
-      <ArrowRightIcon className="h-4 w-4" />
-      <span className="sr-only">Next slide</span>
-    </Button>
-  )
-})
-CarouselNext.displayName = "CarouselNext"
-
-export {
-  type CarouselApi,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-}
+export default PostCarousel;
