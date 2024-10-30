@@ -29,7 +29,7 @@ const ProfilePage = () => {
         if (user) {
           setProfile({
             name: user.name || "", // Adjust according to your user object structure
-            bio: user.bio || "No bio available.", // Adjust according to your user object structure
+            bio: user.prefs.bio || "No bio available.", // Adjust according to your user object structure
             image: user.prefs.image || "no image available",
           });
           setUserId(user.$id);
@@ -105,33 +105,6 @@ const ProfilePage = () => {
     }
   };
 
-  const handleSave = async () => {
-    try {
-      if (selectedFile) {
-        // Upload image to Appwrite
-        const fileResponse = await service.uploadFile(selectedFile);
-        const fileId = fileResponse.$id;
-
-        // Update user profile with new image URL
-        await authService.updateUserProfile({
-          image: service.getFilePreview(fileId), // Store the image preview URL
-        });
-        
-        toast.success("Profile Photo updated successfully!");
-      } else {
-        // If no image selected, just update the name and bio
-        // await authService.updateUser(userId, {
-        //   name: profile.name,
-        //   bio: profile.bio,
-        // });
-        toast.success("No selected file");
-      }
-    } catch (error) {
-      console.error("Error saving profile:", error);
-      toast.error("Failed to update profile.");
-    }
-  };
-
   // Handle saving changes (this can be modified to include API calls)
   // const handleSave = () => {
   //   console.log("Profile saved:", profile);
@@ -144,6 +117,50 @@ const ProfilePage = () => {
   // setDrafts(drafts)
   // }, []);
 
+  const handleSave = async () => {
+    try {
+      if (selectedFile) {
+        // Upload image to Appwrite
+        const fileResponse = await service.uploadFile(selectedFile);
+        const fileId = fileResponse.$id;
+
+        const res1 = await authService.updateUserProfile({
+          image: service.getFilePreview(fileId), // Store the image preview URL
+          bio: profile.bio,
+        });
+
+        const res2 = await authService.updateName(profile.name);
+        if (res1 && res2) {
+          toast.success("Profile Photo updated successfully!");
+          setProfile({
+            name: res2.name,
+            bio: res1.bio,
+            image: res1.image,
+          });
+        } else {
+          toast.error("some error occured");
+        }
+      } else {
+        // If no image selected, just update the name and bio
+        const res1 = await authService.updateUserProfile({
+          bio: profile.bio,
+          image: profile.image,
+        });
+        const res2 = await authService.updateName(profile.name);
+
+        setProfile({
+          name: res2.name,
+          bio: res1.bio,
+          image: profile.image,
+        });
+
+        toast.success("Updated bio and name");
+      }
+    } catch (error) {
+      console.error("Error saving profile:", error);
+      toast.error("Failed to update profile.");
+    }
+  };
   // Save draft (simulated)
   const handleSaveDraft = () => {
     if (newDraftTitle.trim() && newDraftDetails.trim()) {
@@ -193,7 +210,7 @@ const ProfilePage = () => {
 
   return (
     <div className="w-4/5 mx-auto p-6 pb-20">
-      <Toaster/>
+      <Toaster />
       <div className="flex w-full justify-between">
         {/* Profile Settings */}
         <div className="mt-6 p-6 bg-white rounded-lg shadow-md w-3/5">
@@ -263,7 +280,10 @@ const ProfilePage = () => {
         {/* Profile Header */}
         <div className="bg-white p-6 rounded-lg border-2 border-blue-300 shadow-lg w-1/3 h-64 flex flex-col items-center transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
           <img
-            src={profile.image|| "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
+            src={
+              profile.image ||
+              "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            }
             alt="Profile"
             className="rounded-full object-cover w-28 h-28 border-4 border-gray-200 shadow-sm transition-transform duration-300 hover:scale-105"
           />

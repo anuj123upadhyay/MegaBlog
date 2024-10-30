@@ -46,6 +46,10 @@ export class AuthService {
         return await this.account.getPrefs();
     }
 
+    async updateName(data){
+        return await this.account.updateName(data);
+    };
+
     async getCurrentUser() {
         try {
             return await this.account.get();
