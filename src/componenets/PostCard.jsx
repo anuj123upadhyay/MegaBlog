@@ -21,12 +21,12 @@ function PostCard({
   };
 
   return (
-    <article className="overflow-hidden rounded-lg shadow-lg shadow transition hover:shadow-lg">
+    <article className="flex flex-col  overflow-hidden w-fit text-center m-auto my-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
       {/* Image section */}
       <img
         alt={title}
-        src={service.getFilePreview(featuredImage)} // Using the provided image URL
-        className="h-56 w-full object-cover"
+        src={featuredImage} // Using the provided image URL
+        className="h-56 w-64 object-cover"
       />
       {/* Content section */}
       <div className="bg-white p-4 sm:p-6">
@@ -51,7 +51,7 @@ function PostCard({
 
         {/* Title section */}
         <Link to={`/post/${$id}`}>
-          <h3 className="mt-0.5 text-lg text-gray-900">
+          <h3 className="mt-0.5 text-lg text-gray-900 line-clamp-2">
             {toPascalCase(title)}
           </h3>
         </Link>
@@ -68,6 +68,7 @@ function PostCard({
               <Link to={`/post/${$id}`}>Read full blog</Link>
             </a>
           </div>
+
         </div>
       </div>
     </article>

@@ -42,9 +42,11 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.3.0",
     "react-redux": "^9.1.0",
+    "react-responsive": "^10.0.0",
     "react-router-dom": "^6.21.2",
     "react-share": "^5.1.0",
     "react-simple-chatbot": "^0.5.0",
+    "styled-components": "^4.0.0",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -59,6 +61,6 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
-    "vite": "^5.0.8"
+    "vite": "^5.4.10"
   }
 }

@@ -2,13 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, PostCard } from "../componenets"; // Assuming typo fix for 'components'
 import service from "../appwrite/configAppwrite";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../components/ui/carousel";
+import PostCarousel from "../components/ui/carousel";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
