@@ -111,3 +111,34 @@
 }
 
 /* Toggle Theme */
+
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.chat-window {
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.message {
+  margin: 5px 0;
+}
+
+.message.user {
+  text-align: right;
+  color: #007bff;
+}
+
+.message.bot {
+  text-align: left;
+  color: #333;
+}
