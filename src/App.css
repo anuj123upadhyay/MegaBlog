@@ -112,7 +112,7 @@
 
 /* Toggle Theme */
 
-.chatbot {
+/* .chatbot {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -121,7 +121,7 @@
   border-radius: 8px;
   overflow: hidden;
   background: #fff;
-}
+} */
 
 .chat-window {
   height: 300px;
