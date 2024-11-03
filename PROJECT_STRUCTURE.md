@@ -5,16 +5,25 @@
 ├── CODE_OF_CONDUCT.md
 ├── PROJECT_STRUCTURE.md
 ├── README.md
+├── assets/
+│   ├── GSSoC-Ext.png
+│   ├── hacktoberfest.png
+│   └── image
 ├── components.json
 ├── env.md
 ├── index.html
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.js
+├── public/
+│   ├── offline.html
+│   └── service-worker.js
 ├── repo_structure.txt
 ├── src/
 │   ├── App.css
 │   ├── App.jsx
+│   ├── api/
+│   │   └── chatbot.js
 │   ├── appwrite/
 │   │   ├── auth.js
 │   │   └── configAppwrite.js
@@ -49,6 +58,7 @@
 │   ├── components/
 │   │   └── ui/
 │   │       ├── BackToTopButton.tsx
+│   │       ├── Chatbot.jsx
 │   │       ├── accordion.tsx
 │   │       ├── alert-dialog.tsx
 │   │       ├── badge.tsx

@@ -209,11 +209,11 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="w-4/5 mx-auto p-6 pb-20">
+    <div className="md:w-4/5 w-full mx-auto p-6 pb-20">
       <Toaster />
-      <div className="flex w-full justify-between">
+      <div className="flex w-full justify-between md:flex-row flex-col-reverse items-center">
         {/* Profile Settings */}
-        <div className="mt-6 p-6 bg-white rounded-lg shadow-md w-3/5">
+        <div className="mt-6 p-6 bg-white rounded-lg shadow-md md:w-3/5 w-[90%]">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800">
             Profile Settings
           </h2>
@@ -278,7 +278,7 @@ const ProfilePage = () => {
         </div>
 
         {/* Profile Header */}
-        <div className="bg-white p-6 rounded-lg border-2 border-blue-300 shadow-lg w-1/3 h-64 flex flex-col items-center transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+        <div className="bg-white p-6 rounded-lg border-2 border-blue-300 shadow-lg md:w-1/3 h-64 flex flex-col items-center transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
           <img
             src={
               profile.image ||
