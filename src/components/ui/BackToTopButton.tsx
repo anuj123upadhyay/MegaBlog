@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+
 const BackToTopButton: React.FC = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const [shouldRender, setShouldRender] = useState<boolean>(false); // To control button rendering
@@ -48,12 +49,11 @@ const BackToTopButton: React.FC = () => {
                     style={{
                         background: "linear-gradient(135deg, #2c3e50, #34495e)", // dark gradient
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)", // slightly darker shadow for depth
+                        right: '6rem',
                     }}
                 >
                     ↑
                 </button>
-
-
             )}
         </>
     );
