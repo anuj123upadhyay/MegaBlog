@@ -5,7 +5,7 @@ import GoogleTranslate from "../GoogleTranslator";
 
 function Footer() {
   return (
-    <footer className="custom-theme w-full bg-gray-300 border-t-1 border-t-black py-10">
+    <footer className="custom-theme w-full  border-t-1 border-t-black py-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center md:text-left">
           {/* Logo and Copyright */}
@@ -13,21 +13,21 @@ function Footer() {
             <div className="mb-4">
               <Logo width="100px" />
             </div>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm">
               &copy; 2023 DevUI. All Rights Reserved.
             </p>
           </section>
 
           {/* Company Links */}
           <section className="p-6">
-            <h3 className="text-xs font-semibold uppercase text-gray-500 mb-6">
+            <h3 className="text-xs font-semibold uppercase mb-6 text-gray-500">
               Company
             </h3>
             <nav>
               <ul className="space-y-4">
                 <li>
                   <Link
-                    className="toggle text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="toggle text-base font-medium  hover:text-gray-700"
                     to="/features"
                   >
                     Features
@@ -35,7 +35,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/pricing"
                   >
                     Pricing
@@ -43,7 +43,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/affiliate-program"
                   >
                     Affiliate Program
@@ -51,7 +51,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/"
                   >
                     Press Kit
@@ -70,7 +70,7 @@ function Footer() {
               <ul className="space-y-4">
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/"
                   >
                     Account
@@ -79,7 +79,7 @@ function Footer() {
 
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/"
                   >
                     Help
@@ -87,7 +87,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/contactus"
                   >
                     Contact Us
@@ -95,7 +95,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/customer-support"
                   >
                     Customer Support
@@ -103,7 +103,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/frequently-asked-questions"
                   >
                     FAQ
@@ -111,7 +111,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/Feedback"
                   >
                     Feedback
@@ -130,7 +130,7 @@ function Footer() {
               <ul className="space-y-4">
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/termsandconditions"
                   >
                     Terms & Conditions
@@ -138,7 +138,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/privacypolicy"
                   >
                     Privacy Policy
@@ -146,7 +146,7 @@ function Footer() {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base font-medium  hover:text-gray-700"
                     to="/licensing"
                   >
                     Licensing
@@ -167,7 +167,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                className=" hover:text-gray-700 transition ease-in-out duration-150"
               >
                 <i className="fab fa-facebook text-2xl"></i>
               </a>
@@ -176,7 +176,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
-                className="text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                className=" hover:text-gray-700 transition ease-in-out duration-150"
               >
                 <i className="fab fa-twitter text-2xl"></i>
               </a>
@@ -185,7 +185,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                className=" hover:text-gray-700 transition ease-in-out duration-150"
               >
                 <i className="fab fa-instagram text-2xl"></i>
               </a>
@@ -194,7 +194,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                className=" hover:text-gray-700 transition ease-in-out duration-150"
               >
                 <i className="fab fa-linkedin text-2xl"></i>
               </a>
