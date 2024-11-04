@@ -14,7 +14,7 @@ function Hero() {
               </strong>
             </h1>
 
-            <p className="black-text sm:text-xl/relaxed">
+            <p className="sm:text-xl/relaxed">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
               illo tenetur fuga ducimus numquam ea!
             </p>
