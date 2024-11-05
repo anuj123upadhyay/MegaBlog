@@ -104,11 +104,11 @@
 } 
 body.dark-mode{
   color: white;
-  background-color: #000;
+  background-color: #212330;
 }
 body .header.dark-mode{
   color: white;
-  background-color: #000;
+  background-color: #b70000;
 }
 .dark-bg {
   background-color: #0000004f;
