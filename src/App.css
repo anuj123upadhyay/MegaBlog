@@ -87,6 +87,7 @@
 /* New classes for background and text color toggling */
 .dark-mode-bg {
   background-color: rgba(0, 0, 0, 0.612) !important;
+  color: white;
   /* Dark mode background */
 }
 
@@ -100,8 +101,15 @@
 .dark-mode-bg,
 .light-text {
   transition: color 0.3s ease, background-color 0.3s ease;
+} 
+body.dark-mode{
+  color: white;
+  background-color: #212330;
 }
-
+body .header.dark-mode{
+  color: white;
+  background-color: #b70000;
+}
 .dark-bg {
   background-color: #0000004f;
 }

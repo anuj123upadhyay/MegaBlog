@@ -129,13 +129,13 @@ export default function Header() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header className={`header bg-white shadow ${isSticky ? "sticky" : ""}`}>
-      <Container>
+    <header className={`header ${isSticky ? "sticky top-0 shadow-xl" : "shadow-lg"} rounded-xl transition-all duration-300`}>
+<Container>
         <nav className="flex justify-between items-center p-4">
           {/* Logo with Shell icon */}
           <div className=" ml-4 mr-4 flex">
             <Link to="/">
-              <Shell size={40} className="text-black" />{" "}
+              <Shell size={40} className="" />{" "}
               {/* Lucide React Shell Icon */}
             </Link>
             <div className="text-2xl mb-1 ml-2 font-bold">MegaBlog</div>
@@ -182,6 +182,7 @@ export default function Header() {
                               background:
                                 "linear-gradient(to bottom, rgba(229, 231, 235, 0.5), rgba(229, 231, 235, 1))",
                               textDecoration: "none",
+                              
                             }}
                           >
                             <ShellIcon
@@ -192,12 +193,12 @@ export default function Header() {
                                 marginBottom: "8px",
                                 marginTop: "16px",
                                 fontSize: "18px",
-                                fontWeight: "500",
+                                fontWeight: "500", 
                               }}
                             >
                               MegaBlog
                             </div>
-                            <p style={{ fontSize: "14px", color: "gray" }}>
+                            <p style={{ fontSize: "14px" }}>
                               Beautifully designed blogs built with love and
                               modern thinking.
                             </p>
@@ -341,7 +342,7 @@ export default function Header() {
                 <NavigationMenuLink>
                   <button
                     onClick={toggleTheme}
-                    className="bg-gray-200 p-2 rounded-md"
+                    className="p-2 rounded-md"
                   >
                     {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
                   </button>
@@ -399,7 +400,7 @@ const ListItem = React.forwardRef(
               display: "block",
               padding: "12px",
               borderRadius: "8px",
-              backgroundColor: "white",
+              // backgroundColor: "white",
               transition: "none", 
               textDecoration: "none",
               boxShadow: "none", 
