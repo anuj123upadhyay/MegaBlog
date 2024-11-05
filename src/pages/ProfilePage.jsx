@@ -4,7 +4,6 @@ import service from "../appwrite/configAppwrite";
 import { Badge } from "../components/ui/badge";
 import { Input } from "../componenets";
 import toast, { Toaster } from "react-hot-toast";
-import ProfileHeader from "../componenets/ProfileHeader";
 import { Delete, Edit } from "lucide-react";
 
 const ProfilePage = () => {
