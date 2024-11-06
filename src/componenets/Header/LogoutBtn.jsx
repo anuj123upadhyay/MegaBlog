@@ -1,17 +1,29 @@
+// src/components/LogoutBtn.js
+
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import authService from "../../appwrite/auth";
 import { logout } from "../../store/authSlice";
+import { setLoadingAuth, unSetLoadingAuth } from "../../store/loadingSlice";
+import LoadingSpinner from "../LoadingSpinner";
 
 function LogoutBtn() {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.loading.loading);
 
-  const logoutHandler = () => {
-    authService.logout().then(() => {
+  const logoutHandler = async () => {
+    setShowModal(false); // Close modal after logout confirmation
+    dispatch(setLoadingAuth()); // Start loading
+
+    try {
+      await authService.logout();
       dispatch(logout());
-    });
-    setShowModal(false); // Close modal after logout
+    } catch (error) {
+      console.error("Logout failed:", error.message);
+    } finally {
+      dispatch(unSetLoadingAuth()); // End loading
+    }
   };
 
   return (
@@ -39,15 +51,27 @@ function LogoutBtn() {
                 Cancel
               </button>
 
-              {/* Confirm Logout Button */}
+              {/* Confirm Logout Button with Loading Indicator */}
               <button
-                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 flex items-center"
                 onClick={logoutHandler}
+                disabled={isLoading} // Disable while loading
               >
-                Confirm Logout
+                {isLoading ? (
+                  <LoadingSpinner /> // Show loading spinner while logging out
+                ) : (
+                  "Confirm Logout"
+                )}
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Full-page Loading Spinner */}
+      {isLoading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <LoadingSpinner />
         </div>
       )}
     </>

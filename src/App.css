@@ -150,3 +150,26 @@ body .header.dark-mode{
   text-align: left;
   color: #333;
 }
+
+/* loading spinner */
+
+/* Loading Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid transparent; /* Transparent border for the spinner */
+  border-top-color: #3498db; /* Set a color for the top part of the spinner (primary blue) */
+  border-radius: 50%; /* Make it a circle */
+  animation: spin 1s linear infinite; /* Spin animation */
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
