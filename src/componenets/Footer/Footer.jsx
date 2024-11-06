@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Footer() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/newsletter/suscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email }),
+      });
+
+      if (response.ok) {
+        toast.success("Subscription successful!");
+        setName("");
+        setEmail("");
+      } else {
+        toast.error("Failed to subscribe.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+    }
+  };
   return (
     <footer className="custom-theme w-full bottom-0 py-10 bg-gray-300 border-t-1 border-t-black">
       <div className="z-10 mx-auto px-4">
@@ -18,7 +46,7 @@ function Footer() {
                 </p>
               </div>
             </div>
-          </div>  
+          </div>
           <div className="p-6 w-full md:w-3/12 lg:w-2/12">
             <div className="h-full flex flex-col items-center md:items-start">
               <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
@@ -87,6 +115,32 @@ function Footer() {
               </ul>
             </div>
           </div>
+          {/* Newsletter Section */}
+          <div className="p-6 w-full flex flex-col items-center justify-center">
+            <form onSubmit={handleSubmit} className="w-full md:w-8/12 flex flex-col items-center md:flex-row">
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="mb-4 md:mb-0 md:mr-2 px-4 py-2 w-full md:w-1/2 rounded-md border border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="mb-4 md:mb-0 md:mr-2 px-4 py-2 w-full md:w-1/2 rounded-md border border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              />
+              <button
+                type="submit"
+                className="px-6 py-2 text-white bg-black rounded-md hover:bg-gray-800 transition-colors duration-200"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+          {/* Social Media Links */}
           <div className="p-6 w-full flex justify-center items-center">
             <h3 className="tracking-px mb-9 text-xs font-semibold uppercase text-gray-500">
               Follow Us
@@ -108,6 +162,7 @@ function Footer() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </footer>
   );
 }
