@@ -37,13 +37,13 @@ import Features from "./pages/Features.jsx";
 // Add this at the top of your existing index.js
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => {
-              console.log('ServiceWorker registration successful');
-          })
-          .catch(err => {
-              console.log('ServiceWorker registration failed: ', err);
-          });
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('ServiceWorker registration successful');
+      })
+      .catch(err => {
+        console.log('ServiceWorker registration failed: ', err);
+      });
   });
 }
 
