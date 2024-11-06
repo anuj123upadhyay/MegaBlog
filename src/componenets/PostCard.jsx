@@ -1,16 +1,8 @@
 import React from "react";
 import service from "../appwrite/configAppwrite";
-import image from "../assets/favicon.png";
 import { Link } from "react-router-dom";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
 
-function PostCard({ $id, title, featuredImage }) {
+function PostCard({ $id, title, featuredImage, date }) {
   const toPascalCase = (str) => {
     return str
       .toLowerCase()
@@ -20,33 +12,44 @@ function PostCard({ $id, title, featuredImage }) {
   };
 
   return (
-    <>
-      
+    <article className="flex flex-col  overflow-hidden w-fit text-center m-auto my-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
+      {/* Image section */}
+      <img
+        alt={title}
+        src={featuredImage} // Using the provided image URL
+        className="h-56 w-64 object-cover"
+      />
 
-      <Card className="bg-white shadow-lg hover:shadow-2xl transition-shadow duration-300 rounded-lg overflow-hidden w-full flex flex-col items-center sm:mt-2 mt-5">
-        <CardHeader className="p-6">
-          <CardTitle className="text-3xl font-bold text-gray-900">
+      {/* Content section */}
+      <div className="flex-grow bg-white p-4 sm:p-6 w-64"> {/* Use flex-grow to fill available space */}
+        {/* Date section */}
+        <time dateTime={date} className="block text-xs text-gray-500">
+          {new Date(date).toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          })}
+        </time>
+
+        {/* Title section */}
+        <Link to={`/post/${$id}`}>
+          <h3 className="mt-0.5 text-lg text-gray-900 line-clamp-2">
             {toPascalCase(title)}
-          </CardTitle>
-          <CardDescription className="text-gray-500 text-center">
-            with @MegaBlog
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <img src={service.getFilePreview(featuredImage)} alt={title} className="rounded-xl w-[280px]" />
-          <p className="text-gray-700 mt-2 mb-2 text-center">
-            Don&apos;t miss out on Reading!!!
-          </p>
-          <div className="flex justify-center">
-            <a className="mt-3 block rounded-full border border-indigo-600 bg-gradient-to-r cursor-pointer from-green-400 to-blue-500 px-12 py-3 text-center text-sm font-semibold text-white transition-colors duration-300 hover:bg-opacity-80 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
-              <Link to={`/post/${$id}`}>Read full blog</Link>
-            </a>
-          </div>
-        </CardContent>
-      </Card>
+          </h3>
+        </Link>
 
+        {/* Description section */}
+        <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+          Don&apos;t miss out on reading this amazing blog at @MegaBlog!
+        </p>
 
-    </>
+        <div className="flex justify-center">
+          <Link to={`/post/${$id}`} className="mt-3 w-full block rounded-md border border-indigo-600 bg-gradient-to-r cursor-pointer from-green-400 to-blue-500 px-12 py-3 text-center text-sm font-semibold text-white transition-colors duration-300 hover:bg-opacity-80 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
+            Read full blog
+          </Link>
+        </div>
+      </div>
+    </article>
   );
 }
 

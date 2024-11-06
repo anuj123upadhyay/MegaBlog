@@ -4,13 +4,16 @@ import './App.css'
 import authService from "./appwrite/auth"
 import { login, logout } from "./store/authSlice"
 import { Footer, Header } from './componenets'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation} from 'react-router-dom'
 import BackToTopButton from './components/ui/BackToTopButton'
 import Chatbot from './componenets/Chatbot'
+import Hero from './componenets/Hero/Hero'
+import React from 'react';
 
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
+  const location = useLocation();
 
   useEffect(() => {
     authService.getCurrentUser()
@@ -28,10 +31,18 @@ function App() {
     <div className='custom-theme min-h-screen flex flex-wrap content-between '>
       <div className='w-full block'>
         <BackToTopButton />
+      <div className="App">
+      {/* Other components */}
         <Chatbot />
+      </div>
+        {/* <Chatbot /> */}
         <Header />
         <main>
-          <Outlet />
+        {location.pathname === "/" ? (
+            <Hero /> 
+          ) : (
+            <Outlet /> 
+          )}
         </main>
         <Footer />
       </div>
@@ -39,4 +50,4 @@ function App() {
   ) : null;
 }
 
-export default App
+export default App;

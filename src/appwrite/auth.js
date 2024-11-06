@@ -14,8 +14,11 @@ export class AuthService {
 
     }
 
-    async createAccount({ email, password, name }) {
-        try {
+ 
+    async createAccount({email, password, name}) {
+        console.log(conf)
+        console.log(conf.appwriteUrl)
+         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
                 // call another method
@@ -36,6 +39,18 @@ export class AuthService {
             throw error;
         }
     }
+
+    async updateUserProfile(data) {
+        return await this.account.updatePrefs(data); // Modify this based on Appwrite's user structure
+    }
+
+    async getUserProfile(){
+        return await this.account.getPrefs();
+    }
+
+    async updateName(data){
+        return await this.account.updateName(data);
+    };
 
     async getCurrentUser() {
         try {

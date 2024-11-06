@@ -279,22 +279,31 @@ const Chatbot = () => {
         setshowChatbot(true);
     };
 
+    const ChatIcon = () => (
+        <svg height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="white" />
+            <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+    );
+
     return (
         <>
             <button
                 onClick={openChatbot}
-                className={`chatbot-button ${showChatbot ? 'hidden' : 'flex'} bg-gray-900 text-white text-base py-3 px-9 rounded-full shadow-lg fixed top-24 right-0 hover:bg-gray-900 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300`}>
-                <i className="fa fa-commenting" aria-hidden="true"></i> Chat
+                style={{ background: 'linear-gradient(135deg, #2c3e50, #34495e)' }}
+                className={`chatbot-button ${showChatbot ? 'hidden' : 'flex'} text-white text-base py-3 px-3 rounded-full shadow-lg fixed bottom-12 right-8 hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300`}
+                >
+                <ChatIcon />
             </button>
-
-            <div className={`chatbot-container ${showChatbot ? 'flex opacity-100' : 'hidden opacity-0'} flex-col items-center mx-auto bg-gray-100 rounded-xl shadow-lg fixed top-20 right-12 z-50 transition-opacity duration-300`}>
-                <div className='chatbot-header flex justify-between items-center w-full text-xl p-3 bg-gray-900 text-white rounded-tl-xl rounded-tr-xl'>
-                    <div className="header">MegaBlog</div>
-                    <div id='close-chatbot' onClick={closeChatbot} className="cursor-pointer">X</div>
-                </div>
-                <ChatBot steps={steps} className="chatbot" />
+            <div className={`chatbot-container ${showChatbot ? 'flex opacity-100' : 'hidden opacity-0'} flex-col items-center mx-auto rounded-xl shadow-lg fixed top-28 right-12 z-50 transition-opacity duration-300`}
+                style={{ background: 'linear-gradient(135deg, #2c3e50, #34495e)' }}>
+            <div className='chatbot-header flex justify-between items-center w-full text-xl p-3 text-white rounded-tl-xl rounded-tr-xl'
+                style={{ background: 'linear-gradient(135deg, #2c3e50, #34495e)' }}>
+            <div className="header">MegaBlog</div>
+            <div id='close-chatbot' onClick={closeChatbot} className="cursor-pointer">X</div>
             </div>
-
+    <ChatBot steps={steps} className="chatbot" />
+</div>
         </>
     );
 };

@@ -17,6 +17,7 @@ function Signup() {
   const [passwordStrength, setPasswordStrength] = useState("");
 
   const create = async (data) => {
+    // console.log(data);
     setError("");
     if (data.password !== data.confirmPassword) {
       setError("Passwords do not match");
@@ -25,7 +26,7 @@ function Signup() {
 
     try {
       const userData = await authService.createAccount(data);
-      console.log(userData);
+ 
       if (userData) {
         const currentUser = await authService.getCurrentUser();
         if (currentUser) dispatch(login(currentUser));

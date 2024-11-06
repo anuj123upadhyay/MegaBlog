@@ -16,18 +16,38 @@ import AddPost from "./pages/AddPost.jsx";
 import Pricing from "./pages/Pricing.jsx";
 import AffiliateProgram from "./pages/AffiliateProgram.jsx";
 import TermsAndConditions from "./pages/TermsAndCondition.jsx";
+import Feedback from "./pages/Feedback.jsx";
 import FAQ from "./pages/FAQ.jsx";
+import PressKit from "./pages/Presskit.jsx";
+
 import ContactPage from "./pages/ContactPage.jsx";
 import SupportPage from "./pages/SupportPage.jsx";
+
 import LicensingPage from "./pages/LicensingPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 import HelpPage from "./pages/HelpPage.jsx";
 
 import ProfilePage from "./pages/ProfilePage.jsx";
+import SignUp from "./pages/SignUpp.jsx";
+import SignIn from "./pages/SignIn.jsx";
+import Error404 from "./pages/Error404.jsx";
+import Features from "./pages/Features.jsx";
+
+// Add this at the top of your existing index.js
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+              console.log('ServiceWorker registration successful');
+          })
+          .catch(err => {
+              console.log('ServiceWorker registration failed: ', err);
+          });
+  });
+}
 
 const router = createBrowserRouter([
-
   {
     path: "/",
     element: <App />,
@@ -38,28 +58,11 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/login",
+        path: "/contactus",
         element: (
           <AuthLayout authentication={false}>
-            <Login />
+            <ContactPage />
           </AuthLayout>
-        ),
-      },
-      {
-        path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <Signup />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/contact-us",
-        element: (
-            <AuthLayout authentication={false}>
-             <ContactPage />
-          </AuthLayout>
-           
         ),
       },
       {
@@ -90,6 +93,10 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/presskit",
+        element: <PressKit />,
+      },
+      {
         path: "/post/:slug",
         element: <Post />,
       },
@@ -108,6 +115,10 @@ const router = createBrowserRouter([
       {
         path: "/customer-support",
         element: <SupportPage />,
+      },
+      {
+        path: "/feedback",
+        element: <Feedback />,
       },
       {
         path: "/termsandconditions",
@@ -135,10 +146,42 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
+      {
+        path: "/features",
+        element: <Features />,
+      },
+      // {
+      //   path: "/signup",
+      //   element: (
+      //     <AuthLayout authentication={false}>
+      //       <Signup />
+      //     </AuthLayout>
+      //   ),
+      // },
     ],
   },
+  {
+    path: "/login",
+    element: (
+      <AuthLayout authentication={false}>
+        {/* <Login /> */}
+        <SignIn />
+      </AuthLayout>
+    ),
+  },
+  {
+    path: "/signup",
+    element: (
+      <AuthLayout authentication={false}>
+        <SignUp />
+      </AuthLayout>
+    ),
+  },
+  {
+    path: "*",
+    element: <Error404 />,
+  },
 ]);
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

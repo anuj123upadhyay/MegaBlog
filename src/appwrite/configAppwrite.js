@@ -14,8 +14,9 @@ export class Service{
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId}){
+    async createPost({title, slug, content, featuredImage, status, userId, category, metaData, tags}){
         try {
+            console.log(slug)
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
@@ -26,6 +27,9 @@ export class Service{
                     featuredImage,
                     status,
                     userId,
+                    category,
+                    metaData, 
+                    tags,
                 }
             )
         } catch (error) {
@@ -33,7 +37,7 @@ export class Service{
         }
     }
 
-    async updatePost(slug, {title, content, featuredImage, status}){
+    async updatePost(slug, {title, content, featuredImage, status ,category, metaData, tags}){
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
@@ -44,7 +48,9 @@ export class Service{
                     content,
                     featuredImage,
                     status,
-
+                    category,
+                    metaData, 
+                    tags,
                 }
             )
         } catch (error) {
@@ -87,14 +93,51 @@ export class Service{
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries,
-                
-
+            
             )
         } catch (error) {
             console.log("Appwrite service :: getPosts :: error", error);
             return false
         }
     }
+
+
+    async getCurrentUsersPosts(userId) {
+        try {
+            const queries = [Query.equal("userId", userId)];
+            console.log('first appwrite id',queries);
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                queries
+            );
+
+        } catch (error) {
+            console.log("Appwrite service :: getCurrentUsersPosts :: error", error);
+            return false;
+        }
+    }
+
+
+    async getCurrentUsersDraftPosts(userId) {
+        try {
+            const queries = [
+                Query.equal("userId", userId),
+                Query.equal("status", "inactive"),
+            ];
+            console.log('first appwrite id',queries);
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                queries
+            );
+
+        } catch (error) {
+            console.log("Appwrite service :: getCurrentUsersDraftPosts :: error", error);
+            return false;
+        }
+    }
+
 
     // file upload service
 

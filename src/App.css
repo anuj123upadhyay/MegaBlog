@@ -87,6 +87,7 @@
 /* New classes for background and text color toggling */
 .dark-mode-bg {
   background-color: rgba(0, 0, 0, 0.612) !important;
+  color: white;
   /* Dark mode background */
 }
 
@@ -100,8 +101,15 @@
 .dark-mode-bg,
 .light-text {
   transition: color 0.3s ease, background-color 0.3s ease;
+} 
+body.dark-mode{
+  color: white;
+  background-color: #212330;
 }
-
+body .header.dark-mode{
+  color: white;
+  background-color: #b70000;
+}
 .dark-bg {
   background-color: #0000004f;
 }
@@ -112,23 +120,33 @@
 
 /* Toggle Theme */
 
+/* .chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+} */
 
-/* Chatbot css */
-.glfuN {
-  background-color: #111827 !important;
+.chat-window {
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;
 }
 
-.hQsUiY,
-.ipSaXD {
-  background: #312e81 !important;
+.message {
+  margin: 5px 0;
 }
 
-.dPdbIW {
-  border-radius: 0px 0px 18px 18px !important;
-  width: 400px !important;
-  height: 550px !important;
+.message.user {
+  text-align: right;
+  color: #007bff;
 }
 
-.fBGGBn {
-  height: calc(550px - 112px) !important;
+.message.bot {
+  text-align: left;
+  color: #333;
 }
