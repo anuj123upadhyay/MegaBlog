@@ -129,9 +129,9 @@ export default function Header() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header className={`header ${isSticky ? "sticky top-0 shadow-xl" : "shadow-lg"} rounded-xl transition-all duration-300`}>
+    <header className={`header ${isSticky ? "sticky top-0 shadow-xl z-50" : "shadow-lg"} rounded-xl transition-all duration-300`}>
 <Container>
-        <nav className="flex justify-between items-center p-4">
+        <nav className="flex justify-between items-center p-4 z-50 sticky top-0 bg-white">
           {/* Logo with Shell icon */}
           <div className=" ml-4 mr-4 flex">
             <Link to="/">
