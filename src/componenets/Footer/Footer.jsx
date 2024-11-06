@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AiChatbot from "../AiChatbot";
 
 function Footer() {
   const [name, setName] = useState("");
@@ -163,6 +164,7 @@ function Footer() {
         </div>
       </div>
       <ToastContainer />
+      <AiChatbot />
     </footer>
   );
 }
