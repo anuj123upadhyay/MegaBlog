@@ -130,7 +130,7 @@ export default function Header() {
 
   return (
     <header className={`header ${isSticky ? "sticky top-0 shadow-xl" : "shadow-lg"} rounded-xl transition-all duration-300`}>
-<Container>
+      <Container>
         <nav className="flex justify-between items-center p-4">
           {/* Logo with Shell icon */}
           <div className=" ml-4 mr-4 flex">
@@ -182,7 +182,7 @@ export default function Header() {
                               background:
                                 "linear-gradient(to bottom, rgba(229, 231, 235, 0.5), rgba(229, 231, 235, 1))",
                               textDecoration: "none",
-                              
+
                             }}
                           >
                             <ShellIcon
@@ -193,7 +193,7 @@ export default function Header() {
                                 marginBottom: "8px",
                                 marginTop: "16px",
                                 fontSize: "18px",
-                                fontWeight: "500", 
+                                fontWeight: "500",
                               }}
                             >
                               MegaBlog
@@ -401,11 +401,11 @@ const ListItem = React.forwardRef(
               padding: "12px",
               borderRadius: "8px",
               // backgroundColor: "white",
-              transition: "none", 
+              transition: "none",
               textDecoration: "none",
-              boxShadow: "none", 
+              boxShadow: "none",
               '&:hover': {
-                backgroundColor: 'none', 
+                backgroundColor: 'none',
               }
             }}
             {...props}
