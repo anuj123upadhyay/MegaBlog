@@ -5,6 +5,10 @@
 ├── CODE_OF_CONDUCT.md
 ├── PROJECT_STRUCTURE.md
 ├── README.md
+├── assets/
+│   ├── GSSoC-Ext.png
+│   ├── hacktoberfest.png
+│   └── image
 ├── components.json
 ├── env.md
 ├── index.html

@@ -7,7 +7,8 @@ import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import ForgotPasswordModal from "../componenets/ForgotPasswordModal";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -198,6 +199,11 @@ export default function SignIn() {
                       </Button>
                     </div>
                   </div>
+                  <div style={{ position: "absolute", top: "80px", right: "40px" }}>
+            <Link to="/">
+              <FontAwesomeIcon icon={faHome} style={{ fontSize: "24px", color: "#1D4ED8" }} />
+            </Link>
+          </div>
                 </div>
               </form>
             </div>
