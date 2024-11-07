@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
 import cors from "cors";
 import newsletterRoutes from "./routes/newsletterRoute.js";
+import contactRoute from "./routes/contactRoute.js";
 
 dotenv.config();
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 
 // Use the imported routes
 app.use("/api/newsletter", newsletterRoutes);
+app.use("/api/contact", contactRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
