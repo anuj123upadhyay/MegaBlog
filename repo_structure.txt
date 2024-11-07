@@ -15,6 +15,25 @@
 │   ├── offline.html
 │   └── service-worker.js
 ├── repo_structure.txt
+├── server/
+│   ├── app.js
+│   ├── controller/
+│   │   ├── contactController.js
+│   │   ├── feedbackController.js
+│   │   └── newsletterController.js
+│   ├── models/
+│   │   ├── Newsletter.js
+│   │   ├── contact.js
+│   │   └── feedback.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── routes/
+│   │   ├── contactRoute.js
+│   │   ├── feedbackRoute.js
+│   │   └── newsletterRoute.js
+│   ├── sendSuscribedMail.js
+│   └── utils/
+│       └── db.js
 ├── src/
 │   ├── App.css
 │   ├── App.jsx
@@ -27,9 +46,9 @@
 │   │   ├── contactPageBg.jpg
 │   │   └── favicon.png
 │   ├── componenets/
+│   │   ├── AiChatbot.jsx
 │   │   ├── AuthLayout.jsx
 │   │   ├── Button.jsx
-│   │   ├── Chatbot.jsx
 │   │   ├── Footer/
 │   │   │   └── Footer.jsx
 │   │   ├── ForgotPasswordModal.jsx
