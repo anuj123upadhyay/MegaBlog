@@ -3,14 +3,14 @@ import { sendMailToSubscriber } from "../sendSuscribedMail.js";
 
 export async function saveNewsletter(req, res) {
     try {
-        const { name, email } = req.body;
+        const { email } = req.body;
 
-        if (!name || !email) {
+        if (!email) {
             return res.status(400).json({ message: "All fields are required." });
         }
 
         // Create new contact document
-        const newNewsLetter = new NewsLetter({ name, email });
+        const newNewsLetter = new NewsLetter({ email });
         sendMailToSubscriber(newNewsLetter)
         await newNewsLetter.save();
         res
