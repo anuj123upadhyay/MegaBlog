@@ -35,6 +35,7 @@ import Error404 from "./pages/Error404.jsx";
 import Features from "./pages/Features.jsx";
 import DiscussionForum from "./pages/DiscussionForum.jsx";
 import TermsOfUse from "./componenets/TermsOfUse.jsx";
+import About from "./pages/About.jsx";
 
 // Add this at the top of your existing index.js
 if ('serviceWorker' in navigator) {
@@ -159,6 +160,10 @@ const router = createBrowserRouter([
       {
         path: "/features",
         element: <Features />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       // {
       //   path: "/signup",
