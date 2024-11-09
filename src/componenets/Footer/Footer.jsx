@@ -237,7 +237,7 @@ function Footer() {
 
                   <li>
                     <a
-                      href="/help"
+                      href="/helpPage"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
