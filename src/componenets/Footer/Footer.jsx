@@ -221,7 +221,7 @@ function Footer() {
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
-                      Contact{" "}
+                      Contact Us{" "}
                     </a>
                   </li>
 

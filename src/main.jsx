@@ -37,6 +37,7 @@ import DiscussionForum from "./pages/DiscussionForum.jsx";
 import TermsOfUse from "./componenets/TermsOfUse.jsx";
 import About from "./pages/About.jsx";
 import FeedbackPage from "./pages/FeedBackPage.jsx";
+import ContactUsBg from "./pages/ContactUsBG.jsx";
 
 // Add this at the top of your existing index.js
 if ('serviceWorker' in navigator) {
@@ -64,9 +65,7 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: (
-          <AuthLayout authentication={false}>
-            <ContactPage />
-          </AuthLayout>
+            <ContactUsBg />
         ),
       },
       {
