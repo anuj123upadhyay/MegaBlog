@@ -3,46 +3,89 @@ import { useState, useEffect } from 'react';
 const DiscussionForum = () => {
     const [questions, setQuestions] = useState([]);
 
-    // Fetch questions from local storage (if available)
+    // Fetch questions from the backend API
     useEffect(() => {
-        const storedQuestions = JSON.parse(localStorage.getItem('questions')) || [];
-        setQuestions(storedQuestions);
+        const fetchQuestions = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/discussion/getQuestion');
+                if (response.ok) {
+                    const data = await response.json();
+                    setQuestions(data);
+                } else {
+                    console.error('Failed to fetch questions');
+                }
+            } catch (error) {
+                console.error('Error fetching questions:', error);
+            }
+        };
+
+        fetchQuestions();
     }, []);
 
-    // Helper function to save questions to local storage
-    const saveQuestionsToLocalStorage = (questions) => {
-        localStorage.setItem('questions', JSON.stringify(questions));
-    };
-
-    // Helper function to add a new question
-    const addQuestion = (content) => {
+    // Helper function to save a new question
+    const addQuestion = async (content) => {
         const newQuestion = {
-            id: Date.now(), // unique id
-            content: content,
+            content,
             answered: false,
             answer: '',
         };
 
-        const updatedQuestions = [...questions, newQuestion];
-        setQuestions(updatedQuestions);
-        saveQuestionsToLocalStorage(updatedQuestions);
+        try {
+            const response = await fetch('http://localhost:5000/api/discussion/postQuestion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newQuestion),
+            });
+
+            if (response.ok) {
+                const savedQuestion = await response.json();
+                setQuestions((prevQuestions) => [...prevQuestions, savedQuestion]);
+            } else {
+                console.error('Failed to add question');
+            }
+        } catch (error) {
+            console.error('Error adding question:', error);
+        }
     };
 
     // Helper function to add an answer to a question
-    const addAnswer = (questionId, answerContent) => {
-        const updatedQuestions = questions.map((question) =>
-            question.id === questionId
-                ? { ...question, answered: true, answer: answerContent }
-                : question
-        );
-        setQuestions(updatedQuestions);
-        saveQuestionsToLocalStorage(updatedQuestions);
+    const addAnswer = async (questionId, answerContent) => {
+        console.log(questionId + " " + answerContent)
+        try {
+            const response = await fetch(`http://localhost:5000/api/discussion/${questionId}/answer`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ answer: answerContent }),
+            });
+
+            if (response.ok) {
+                const updatedQuestion = await response.json();
+                setQuestions((prevQuestions) =>
+                    prevQuestions.map((question) =>
+                        question._id === questionId
+                            ? { ...question, ...updatedQuestion }
+                            : question
+                    )
+                );
+            } else {
+                console.error('Failed to add answer');
+            }
+        } catch (error) {
+            console.error('Error adding answer:', error);
+        }
     };
 
     // Function to render the Question Card
     const renderQuestionCard = (question) => {
         return (
-            <div className="bg-white p-6 rounded-lg shadow-lg mb-6 w-full md:w-[48%] lg:w-[30%] transition-transform transform hover:scale-105" key={question.id}>
+            <div
+                className="bg-white p-6 rounded-lg shadow-lg mb-6 w-full md:w-[48%] lg:w-[30%] transition-transform transform hover:scale-105"
+                key={question._id}
+            >
                 <p className="text-xl font-semibold text-gray-800">{question.content}</p>
                 {question.answered ? (
                     <div className="mt-4 bg-white p-4 rounded-md shadow-md">
@@ -50,7 +93,7 @@ const DiscussionForum = () => {
                         <p className="text-gray-700">{question.answer}</p>
                     </div>
                 ) : (
-                    <AnswerForm questionId={question.id} />
+                    <AnswerForm questionId={question._id} />
                 )}
             </div>
         );
