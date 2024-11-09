@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import TrendingTitles from "../TrendingTitle";
+
+import Testimonial from "../Testimonial";
+
 function Hero() {
   return (
     <div>
-      <section className="bg-gray-50">
+      <section className="section">
         <div className="mx-auto  px-4 py-32 lg:flex lg:items-center">
           <div className="mx-auto max-w-xl text-center toggleBg">
             <h1 className="toggle text-3xl font-extrabold sm:text-5xl">
@@ -14,7 +19,7 @@ function Hero() {
               </strong>
             </h1>
 
-            <p className="black-text sm:text-xl/relaxed">
+            <p className="sm:text-xl/relaxed">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
               illo tenetur fuga ducimus numquam ea!
             </p>
@@ -72,7 +77,7 @@ function Hero() {
       <section>
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           <header className="text-center">
-            <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
+            <h2 className="text-xl font-bold sm:text-3xl">
               New Collection
             </h2>
 
@@ -179,10 +184,14 @@ function Hero() {
 
       <hr />
 
-      <section className="bg-gray-50">
+      <Testimonial />
+
+      <hr />
+
+      <section className="">
         <div className="p-8 md:p-12 lg:px-16 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
-            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            <h2 className="text-2xl font-bold md:text-3xl">
               Sign Up to our Newsletter
             </h2>
 
@@ -235,6 +244,7 @@ function Hero() {
       </section>
 
       <hr />
+      <TrendingTitles />
     </div>
   );
 }

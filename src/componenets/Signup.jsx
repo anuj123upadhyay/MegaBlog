@@ -26,7 +26,7 @@ function Signup() {
 
     try {
       const userData = await authService.createAccount(data);
-      // console.log(userData)
+ 
       if (userData) {
         const currentUser = await authService.getCurrentUser();
         if (currentUser) dispatch(login(currentUser));
@@ -121,13 +121,12 @@ function Signup() {
                   )}
                 </button>
                 <p
-                  className={`mt-1 text-sm ${
-                    passwordStrength === "Strong"
-                      ? "text-green-500"
-                      : passwordStrength === "Medium"
+                  className={`mt-1 text-sm ${passwordStrength === "Strong"
+                    ? "text-green-500"
+                    : passwordStrength === "Medium"
                       ? "text-yellow-500"
                       : "text-red-500"
-                  }`}
+                    }`}
                 >
                   Strength: {passwordStrength}
                 </p>
