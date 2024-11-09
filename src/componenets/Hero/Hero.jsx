@@ -207,7 +207,8 @@ function Hero() {
         </div>
       </section>
 
-      <hr />
+      <TrendingTitles />
+
 
       <Testimonial />
 
@@ -271,7 +272,7 @@ function Hero() {
       </section>
 
       <hr />
-      <TrendingTitles />
+
     </div>
   );
 }
