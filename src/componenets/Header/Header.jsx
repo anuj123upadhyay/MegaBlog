@@ -1,10 +1,9 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Container, Logo, LogoutBtn } from "../index"; // Ensure your custom components are correctly imported
+import { Container, LogoutBtn } from "../index"; // Ensure your custom components are correctly imported
 import { FaBars, FaTimes } from "react-icons/fa"; // Hamburger icon for smaller screens
 import {
   NavigationMenu,
@@ -13,7 +12,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "../../components/ui/navigation-menu"; // Ensure proper import
 import { Sun, Moon, Shell, ShellIcon } from "lucide-react"; // Icons from lucide-react
 // import Button from "../../components/ui/button";
@@ -129,15 +127,17 @@ export default function Header() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header className={`header ${isSticky ? "sticky top-0 shadow-xl" : "shadow-lg"} rounded-xl transition-all duration-300`}>
+    <header
+      className={`header ${
+        isSticky ? "sticky top-0 shadow-md" : "shadow-lg"
+      } transition-all duration-300 z-[999] backdrop-blur-3xl`}
+    >
       <Container>
         <nav className="flex justify-between items-center p-4">
-
           {/* Logo with Shell icon */}
           <div className=" ml-4 mr-4 flex">
             <Link to="/">
-              <Shell size={40} className="" />{" "}
-              {/* Lucide React Shell Icon */}
+              <Shell size={40} className="" /> {/* Lucide React Shell Icon */}
             </Link>
             <div className="text-2xl mb-1 ml-2 font-bold">MegaBlog</div>
           </div>
@@ -183,7 +183,6 @@ export default function Header() {
                               background:
                                 "linear-gradient(to bottom, rgba(229, 231, 235, 0.5), rgba(229, 231, 235, 1))",
                               textDecoration: "none",
-
                             }}
                           >
                             <ShellIcon
@@ -341,10 +340,7 @@ export default function Header() {
 
               <NavigationMenuItem>
                 <NavigationMenuLink>
-                  <button
-                    onClick={toggleTheme}
-                    className="p-2 rounded-md"
-                  >
+                  <button onClick={toggleTheme} className="p-2 rounded-md">
                     {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
                   </button>
                 </NavigationMenuLink>
@@ -405,9 +401,9 @@ const ListItem = React.forwardRef(
               transition: "none",
               textDecoration: "none",
               boxShadow: "none",
-              '&:hover': {
-                backgroundColor: 'none',
-              }
+              "&:hover": {
+                backgroundColor: "none",
+              },
             }}
             {...props}
           >
