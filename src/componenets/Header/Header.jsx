@@ -89,39 +89,39 @@ export default function Header() {
 
   const components = [
     {
-      title: "Alert Dialog",
-      href: "/docs/primitives/alert-dialog",
+      title: "All Categories",
+      href: "/all-posts",
       description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
+        "A treasure to be visited by all those hungry for wisdom and words.",
     },
     {
-      title: "Hover Card",
-      href: "/docs/primitives/hover-card",
+      title: "Technology",
+      href: "/category/Tech",
       description:
-        "For sighted users to preview content available behind a link.",
+        "Covers the latest trends, innovations, and insights in tech, from AI to software development.",
     },
     {
-      title: "Progress",
-      href: "/docs/primitives/progress",
+      title: "Health & Wellness",
+      href: "/category/Health",
       description:
-        "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+        "Focuses on physical, mental, and emotional well-being, offering tips for a balanced lifestyle.",
     },
     {
-      title: "Scroll-area",
-      href: "/docs/primitives/scroll-area",
-      description: "Visually or semantically separates content.",
+      title: "Travel",
+      href: "/category/Travel",
+      description: "Shares guides, tips, and experiences for exploring new destinations and cultures worldwide.",
     },
     {
-      title: "Tabs",
-      href: "/docs/primitives/tabs",
+      title: "Finance & Investing",
+      href: "/category/Finance",
       description:
-        "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+        "Provides insights on managing money, budgeting, and making informed investment choices.",
     },
     {
-      title: "Tooltip",
-      href: "/docs/primitives/tooltip",
+      title: "Personal Development",
+      href: "/category/Personal_Development",
       description:
-        "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+        "Offers guidance on self-improvement, goal setting, and skills to help readers grow personally and professionally.",
     },
   ];
 

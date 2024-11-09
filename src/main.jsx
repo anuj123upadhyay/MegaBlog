@@ -33,6 +33,7 @@ import SignUp from "./pages/SignUpp.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import Error404 from "./pages/Error404.jsx";
 import Features from "./pages/Features.jsx";
+import CategoryPosts from "./pages/Category.jsx";
 
 // Add this at the top of your existing index.js
 if ('serviceWorker' in navigator) {
@@ -89,6 +90,15 @@ const router = createBrowserRouter([
           <AuthLayout authentication>
             {" "}
             <EditPost />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/category/:category",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <CategoryPosts />
           </AuthLayout>
         ),
       },
