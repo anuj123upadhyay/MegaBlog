@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TrendingTitles from "../TrendingTitle";
 function Hero() {
   return (
     <div>
@@ -235,6 +236,7 @@ function Hero() {
       </section>
 
       <hr />
+      <TrendingTitles />
     </div>
   );
 }
