@@ -44,8 +44,11 @@ export default function Header() {
 
   /* Toggle theme between dark and light mode */
   const toggleTheme = () => {
+    const newMode = isDarkMode ? "light" : "dark";
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle("dark-mode"); // Ensure dark-mode CSS is applied
+    document.body.classList.toggle("dark-mode", newMode === "dark");
+
+    localStorage.setItem("mode", newMode);
   };
 
   const navItems = [
