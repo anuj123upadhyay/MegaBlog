@@ -1,5 +1,5 @@
 {
-    "compilerOptions": {
+     "compilerOptions": {
       "target": "es5", // For broader browser compatibility
       "module": "commonjs", // For Node.js compatibility
       "outDir": "./dist", // Output directory for compiled JavaScript
