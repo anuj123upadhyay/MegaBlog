@@ -1,4 +1,5 @@
 import Contact from "../models/contact.js";
+import { sendMailToAdmin } from "../sendContactDetailsToAdmin.js";
 
 export async function saveContact(req, resp) {
     try {
@@ -15,6 +16,8 @@ export async function saveContact(req, resp) {
 
         // Save contact form data to the database
         await newContact.save();
+
+        sendMailToAdmin(newContact)
 
         // Respond with success message
         resp
