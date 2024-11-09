@@ -91,8 +91,11 @@ function Footer() {
                 <li className="mb-4">
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/customer-support">Customer Support</Link>
                 </li>
-                <li>
+                <li className="mb-4">
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/frequently-asked-questions">FAQ</Link>
+                </li>
+                <li>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/discussion">Discussion forum</Link>
                 </li>
               </ul>
             </div>
@@ -109,8 +112,11 @@ function Footer() {
                 <li className="mb-4">
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/privacypolicy">Privacy Policy</Link>
                 </li>
-                <li>
+                <li className="mb-4">
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/licensing">Licensing</Link>
+                </li>
+                <li>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/termsofuse">Terms of use</Link>
                 </li>
               </ul>
             </div>
