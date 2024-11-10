@@ -33,17 +33,20 @@ import SignUp from "./pages/SignUpp.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import Error404 from "./pages/Error404.jsx";
 import Features from "./pages/Features.jsx";
+import DiscussionForum from "./pages/DiscussionForum.jsx";
+import TermsOfUse from "./componenets/TermsOfUse.jsx";
+import Contributor from "./componenets/Contributor.jsx";
 
 // Add this at the top of your existing index.js
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => {
-              console.log('ServiceWorker registration successful');
-          })
-          .catch(err => {
-              console.log('ServiceWorker registration failed: ', err);
-          });
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('ServiceWorker registration successful');
+      })
+      .catch(err => {
+        console.log('ServiceWorker registration failed: ', err);
+      });
   });
 }
 
@@ -132,6 +135,18 @@ const router = createBrowserRouter([
       {
         path: "/frequently-asked-questions",
         element: <FAQ />,
+      },
+      {
+        path: "/discussion",
+        element: <DiscussionForum />,
+      },
+      {
+        path: "/termsofuse",
+        element: <TermsOfUse />,
+      },
+      {
+        path: "/contributor",
+        element: <Contributor />,
       },
       {
         path: "/licensing",
