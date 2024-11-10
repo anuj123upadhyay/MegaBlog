@@ -6,6 +6,7 @@ import newsletterRoutes from "./routes/newsletterRoute.js";
 import feedbackRoutes from "./routes/feedbackRoute.js";
 import contactRoute from "./routes/contactRoute.js";
 import discussion from "./routes/discussionRoutes.js";
+import stories from "./routes/storiesRoutes.js";
 
 
 dotenv.config();
@@ -22,6 +23,7 @@ app.use("/api/newsletter", newsletterRoutes);
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/contact", contactRoute);
 app.use("/api/discussion", discussion);
+app.use("/api/stories", stories);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

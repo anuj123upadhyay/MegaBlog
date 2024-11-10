@@ -94,8 +94,11 @@ function Footer() {
                 <li className="mb-4">
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/frequently-asked-questions">FAQ</Link>
                 </li>
-                <li>
+                <li className="mb-4">
                   <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/discussion">Discussion forum</Link>
+                </li>
+                <li>
+                  <Link className="toggle text-base font-medium text-gray-900 hover:text-gray-700" to="/stories">Explore stories</Link>
                 </li>
               </ul>
             </div>
