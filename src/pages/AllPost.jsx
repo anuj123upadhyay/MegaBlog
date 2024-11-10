@@ -8,7 +8,8 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../components/ui/carousel"
+} from "../components/ui/carousel";
+import SearchBar from "../componenets/SearchBar";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
@@ -48,6 +49,8 @@ function AllPosts() {
               Have a look at our Blog Posts.
             </p>
             {/* <hr className="mt-2" /> */}
+
+            <SearchBar/>
           </div>
 
           <div className="px-4 mb-4 w-full">
@@ -56,7 +59,7 @@ function AllPosts() {
                 <h2 class="flex flex-row flex-nowrap items-center mt-16 mb-16">
                   <span class="flex-grow block border-t border-black"></span>
                   <span class="flex-none block mx-4 px-4 py-2.5 text-xl rounded leading-none font-medium bg-black text-white">
-                  {category}
+                    {category}
                   </span>
                   <span class="flex-grow block border-t border-black"></span>
                 </h2>

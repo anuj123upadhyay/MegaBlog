@@ -126,6 +126,31 @@ export class Service {
     }
   }
 
+  async searchPosts(searchTerm) {
+    try {
+      console.log("Search Term:", searchTerm);
+      const queries = [
+        Query.search("title", searchTerm),  // Convert to lowercase for consistent searching
+        Query.search("content", searchTerm),
+        Query.search("tags", searchTerm),
+        Query.search("category", searchTerm),
+      ];
+      
+      const response = await this.databases.listDocuments(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
+        queries
+      );
+  
+      console.log("Search Results:", response);
+      return response;
+    } catch (error) {
+      console.log("Appwrite service :: searchPosts :: error", error);
+      return false;
+    }
+  }  
+  
+
   async getCurrentUsersPosts(userId) {
     try {
       const queries = [Query.equal("userId", userId)];
