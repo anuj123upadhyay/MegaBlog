@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors());
 
 // Use the imported routes
-app.use("/api/newsletter", newsletterRoutes);
+app.use("/api/v1/newsletter", newsletterRoutes);
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/contact", contactRoute);
 app.use("/api/discussion", discussion);

@@ -7,6 +7,7 @@ const Stories = () => {
     const [category, setCategory] = useState('');
 
     useEffect(() => {
+
         // Fetch posts from the backend API
         const fetchPosts = async () => {
             try {
@@ -26,10 +27,12 @@ const Stories = () => {
     }, []);
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
 
         if (title && content && category) {
             const newPost = { title, content, category, date: new Date().toISOString() };
+
 
             try {
                 const response = await fetch('http://localhost:5000/api/stories/saveposts', {
@@ -51,6 +54,7 @@ const Stories = () => {
             }
 
             // Clear form fields
+
             setTitle('');
             setContent('');
             setCategory('');
