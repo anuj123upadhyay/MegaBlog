@@ -3,7 +3,7 @@ import service from "../appwrite/configAppwrite";
 import { Link } from "react-router-dom";
 import { Badge } from "../components/ui/badge";
 
-function PostCard({
+export default function PostCard({
   $id,
   title,
   featuredImage,
@@ -80,4 +80,3 @@ function PostCard({
   );
 }
 
-export default PostCard;
