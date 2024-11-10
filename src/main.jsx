@@ -196,36 +196,28 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
-      // {
-      //   path: "/signup",
-      //   element: (
-      //     <AuthLayout authentication={false}>
-      //       <Signup />
-      //     </AuthLayout>
-      //   ),
-      // },
+      
+      {
+        path: "/login",
+        element: (
+          <AuthLayout authentication={false}>
+            <SignIn />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/signup",
+        element: (
+          <AuthLayout authentication={false}>
+            <SignUp />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "*",
+        element: <Error404 />,
+      },
     ],
-  },
-  {
-    path: "/login",
-    element: (
-      <AuthLayout authentication={false}>
-        {/* <Login /> */}
-        <SignIn />
-      </AuthLayout>
-    ),
-  },
-  {
-    path: "/signup",
-    element: (
-      <AuthLayout authentication={false}>
-        <SignUp />
-      </AuthLayout>
-    ),
-  },
-  {
-    path: "*",
-    element: <Error404 />,
   },
 ]);
 
