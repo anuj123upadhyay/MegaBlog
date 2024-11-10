@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 
 import PostCard from "../componenets/PostCard.jsx"; // Assuming typo fix for 'components'
-import  Container  from "../componenets/container/Container";
+import  Container  from "../componenets/container/Container.jsx";
 
 
 import service from "../appwrite/configAppwrite";
@@ -15,29 +15,29 @@ import {
   CarouselPrevious,
 } from "../components/ui/carousel";
 
-import SearchBar from "../componenets/SearchBar";
+
+
+import SearchBar from "../componenets/SearchBar.jsx";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true); // State to track loading
 
   useEffect(() => {
-    // Simulate 2 seconds loading
-    setTimeout(() => {
-      service.getPosts([]).then((posts) => {
-        if (posts) {
-          setPosts(posts.documents);
-        }
-        setLoading(false); // Set loading to false after 2 seconds
-      });
-    }, 2000); // Delay of 2 seconds
+
+    service.getPosts().then((response) => {
+      if (response && response.documents) {
+        setPosts(response.documents);
+      } else {
+        setPosts([]); // Set an empty array if response is undefined or does not have documents
+      }
+    });
 
   }, []);
 
-  // Helper function to group posts by category
   const groupPostsByCategory = (posts) => {
     return posts.reduce((acc, post) => {
-      const category = post.category || "Uncategorized"; // Fallback to 'Uncategorized' if no category
+      const category = post.category || "Uncategorized";
       if (!acc[category]) {
         acc[category] = [];
       }
@@ -48,33 +48,9 @@ function AllPosts() {
 
   const categorizedPosts = groupPostsByCategory(posts);
 
-  return loading ? (
-    // Skeleton Loading UI while loading state is true
-    <div className="animate-pulse block-item shadow-md max-w-full mx-auto mt-4 max-h-4xl">
-      <div className="bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 h-6 rounded-t-3xl"></div>
-      <div className="py-4 px-6">
-        <div className="flex items-center space-x-2">
-          <div className="h-7 w-7 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full"></div>
-          <div className="h-3 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-1/3"></div>
-        </div>
-        <div className="my-6">
-          <div className="h-5 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-3/4"></div>
-          <div className="my-4">
-            <div className="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-full"></div>
-            <div className="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-5/6"></div>
-            <div className="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-4/6"></div>
-            <div className="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-5/6"></div>
-            <div className="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-3/6"></div>
-            <div className="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-2/6"></div>
-          </div>
-        </div>
-        <div className="my-4">
-          <div className="h-11 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-lg w-full"></div>
-          <div className="h-3 my-4 mx-auto bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-1/2"></div>
-        </div>
-      </div>
-    </div>
-  ) : (
+
+  return (
+          
     <div className="w-full py-8">
       <Container>
         <div className="min-h-screen flex flex-col flex-wrap items-center p-4">
@@ -89,7 +65,9 @@ function AllPosts() {
           </div>
 
           <div className="px-4 mb-4 w-full">
-            {Object.keys(categorizedPosts).length > 0 &&
+
+            {posts && Object.keys(categorizedPosts).length > 0 ? (
+
               Object.keys(categorizedPosts).map((category) => (
                 <div key={category} className="mb-8">
                   <h2 className="flex flex-row flex-nowrap items-center mt-16 mb-16">
@@ -99,7 +77,6 @@ function AllPosts() {
                     </span>
                     <span className="flex-grow block border-t border-black"></span>
                   </h2>
-
 
                   {categorizedPosts[category].length > 5 ? (
                     <Carousel>
@@ -131,6 +108,16 @@ function AllPosts() {
                           color: "white",
                           borderRadius: "50%",
                         }}
+
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.backgroundColor =
+                            "rgba(0, 0, 0, 0.7)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.backgroundColor =
+                            "rgba(0, 0, 0, 0.5)")
+                        }
+
                       />
                       <CarouselNext
                         style={{
@@ -150,6 +137,16 @@ function AllPosts() {
                           color: "white",
                           borderRadius: "50%",
                         }}
+
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.backgroundColor =
+                            "rgba(0, 0, 0, 0.7)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.backgroundColor =
+                            "rgba(0, 0, 0, 0.5)")
+                        }
+
                       />
                     </Carousel>
                   ) : (
@@ -160,7 +157,12 @@ function AllPosts() {
                     </div>
                   )}
                 </div>
-              ))}
+
+              ))
+            ) : (
+              <p>No posts available at the moment.</p>
+            )}
+
           </div>
         </div>
       </Container>
