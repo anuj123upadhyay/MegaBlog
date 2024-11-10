@@ -10,6 +10,8 @@ import {
   CarouselPrevious,
 } from "../components/ui/carousel";
 
+import SearchBar from "../componenets/SearchBar";
+
 function AllPosts() {
   const [posts, setPosts] = useState([]);
 
@@ -48,6 +50,8 @@ function AllPosts() {
               Have a look at our Blog Posts.
             </p>
             {/* <hr className="mt-2" /> */}
+
+            <SearchBar/>
           </div>
 
           <div className="px-4 mb-4 w-full">
