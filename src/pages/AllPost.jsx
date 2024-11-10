@@ -25,11 +25,15 @@ function AllPosts() {
       if (response && response.documents) {
         setPosts(response.documents);
       } else {
-        setPosts([]); // Set an empty array if response is undefined or does not have documents
+        setPosts([]); // Set as empty array if response is undefined or does not have documents
       }
+    }).catch(error => {
+      console.error("Error fetching posts:", error);
+      setPosts([]); // In case of an error, set posts as an empty array
     });
   }, []);
 
+  // Helper function to group posts by category
   const groupPostsByCategory = (posts) => {
     return posts.reduce((acc, post) => {
       const category = post.category || "Uncategorized";
@@ -58,7 +62,7 @@ function AllPosts() {
           </div>
 
           <div className="px-4 mb-4 w-full">
-            {posts && Object.keys(categorizedPosts).length > 0 ? (
+            {posts && posts.length > 0 ? (
               Object.keys(categorizedPosts).map((category) => (
                 <div key={category} className="mb-8">
                   <h2 className="flex flex-row flex-nowrap items-center mt-16 mb-16">
@@ -92,20 +96,16 @@ function AllPosts() {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
-                          transition:
-                            "background-color 0.3s ease, color 0.3s ease",
                           zIndex: 10,
                           backgroundColor: "rgba(0, 0, 0, 0.5)",
                           color: "white",
                           borderRadius: "50%",
                         }}
                         onMouseEnter={(e) =>
-                          (e.currentTarget.style.backgroundColor =
-                            "rgba(0, 0, 0, 0.7)")
+                          (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.7)")
                         }
                         onMouseLeave={(e) =>
-                          (e.currentTarget.style.backgroundColor =
-                            "rgba(0, 0, 0, 0.5)")
+                          (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")
                         }
                       />
                       <CarouselNext
@@ -119,20 +119,16 @@ function AllPosts() {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
-                          transition:
-                            "background-color 0.3s ease, color 0.3s ease",
                           zIndex: 10,
                           backgroundColor: "rgba(0, 0, 0, 0.5)",
                           color: "white",
                           borderRadius: "50%",
                         }}
                         onMouseEnter={(e) =>
-                          (e.currentTarget.style.backgroundColor =
-                            "rgba(0, 0, 0, 0.7)")
+                          (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.7)")
                         }
                         onMouseLeave={(e) =>
-                          (e.currentTarget.style.backgroundColor =
-                            "rgba(0, 0, 0, 0.5)")
+                          (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")
                         }
                       />
                     </Carousel>
@@ -156,3 +152,4 @@ function AllPosts() {
 }
 
 export default AllPosts;
+
