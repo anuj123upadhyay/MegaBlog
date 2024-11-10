@@ -129,7 +129,7 @@ export default function Header() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header className={`header ${isSticky ? "sticky top-0 shadow-xl" : "shadow-lg"} rounded-xl transition-all duration-300`}>
+    <header className={`header ${isSticky ? "sticky top-0 shadow-xl bg-white text-black" : "shadow-lg"} rounded-xl transition-all duration-300 z-50 `}>
       <Container>
         <nav className="flex justify-between items-center p-4">
 
