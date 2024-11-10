@@ -37,31 +37,24 @@ import CategoryPosts from "./pages/Category.jsx";
 import DiscussionForum from "./pages/DiscussionForum.jsx";
 import TermsOfUse from "./componenets/TermsOfUse.jsx";
 
-
 import Stories from "./pages/Stories.jsx";
-
-
-
-
 
 import About from "./pages/About.jsx";
 import FeedbackPage from "./pages/FeedBackPage.jsx";
 import ContactUsBg from "./pages/ContactUsBG.jsx";
 
-
-
 import Contributor from "./componenets/Contributor.jsx";
 
-
 // Add this at the top of your existing index.js
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(registration => {
-        console.log('ServiceWorker registration successful');
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        console.log("ServiceWorker registration successful");
       })
-      .catch(err => {
-        console.log('ServiceWorker registration failed: ', err);
+      .catch((err) => {
+        console.log("ServiceWorker registration failed: ", err);
       });
   });
 }
@@ -78,9 +71,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/contactus",
-        element: (
-            <ContactUsBg />
-        ),
+        element: <ContactUsBg />,
       },
       {
         path: "/all-posts",
@@ -120,7 +111,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/presskit",
-        element: <PressKit />,
+        element: (
+          <AuthLayout authentication={false}>
+            <PressKit />
+          </AuthLayout>
+        ),
       },
       {
         path: "/post/:slug",
@@ -128,7 +123,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/pricing",
-        element: <Pricing />,
+        element: (
+          <AuthLayout authentication={false}>
+            <Pricing />
+          </AuthLayout>
+        ),
       },
       {
         path: "/privacypolicy",
@@ -136,48 +135,92 @@ const router = createBrowserRouter([
       },
       {
         path: "/affiliate-program",
-        element: <AffiliateProgram />,
+        element: (
+          <AuthLayout authentication={false}>
+            <AffiliateProgram />
+          </AuthLayout>
+        ),
       },
       {
         path: "/customer-support",
-        element: <SupportPage />,
+        element: (
+          <AuthLayout authentication={false}>
+            <SupportPage />
+          </AuthLayout>
+        ),
       },
       {
         path: "/feedback",
-        element: <FeedbackPage />,
+        element: (
+          <AuthLayout authentication={false}>
+            <FeedbackPage />
+          </AuthLayout>
+        ),
       },
       {
         path: "/termsandconditions",
-        element: <TermsAndConditions />,
+        element: (
+          <AuthLayout authentication={false}>
+            <TermsAndConditions />
+          </AuthLayout>
+        ),
       },
 
       {
         path: "/helpPage",
-        element: <HelpPage />,
+        element: (
+          <AuthLayout authentication={false}>
+            <HelpPage />
+          </AuthLayout>
+        ),
       },
       {
         path: "/frequently-asked-questions",
-        element: <FAQ />,
+        element: (
+          <AuthLayout authentication={false}>
+            <FAQ />
+          </AuthLayout>
+        ),
       },
       {
         path: "/discussion",
-        element: <DiscussionForum />,
+        element: (
+          <AuthLayout authentication={false}>
+            <DiscussionForum />
+          </AuthLayout>
+        ),
       },
       {
         path: "/termsofuse",
-        element: <TermsOfUse />,
+        element: (
+          <AuthLayout authentication={false}>
+            <TermsOfUse />
+          </AuthLayout>
+        ),
       },
       {
         path: "/contributor",
-        element: <Contributor />,
+        element: (
+          <AuthLayout authentication={false}>
+            <Contributor />
+          </AuthLayout>
+        ),
       },
       {
         path: "/licensing",
-        element: <LicensingPage />,
+        element: (
+          <AuthLayout authentication={false}>
+            <LicensingPage />
+          </AuthLayout>
+        ),
       },
       {
         path: "/stories",
-        element: <Stories />,
+        element: (
+          <AuthLayout authentication={false}>
+            <Stories />
+          </AuthLayout>
+        ),
       },
       {
         path: "/profile",
@@ -190,27 +233,26 @@ const router = createBrowserRouter([
       },
       {
         path: "/features",
-        element: <Features />,
+        element: (
+          <AuthLayout authentication={false}>
+            <Features />
+          </AuthLayout>
+        ),
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <AuthLayout authentication={false}>
+            <About />
+          </AuthLayout>
+        ),
       },
-      // {
-      //   path: "/signup",
-      //   element: (
-      //     <AuthLayout authentication={false}>
-      //       <Signup />
-      //     </AuthLayout>
-      //   ),
-      // },
     ],
   },
   {
     path: "/login",
     element: (
       <AuthLayout authentication={false}>
-        {/* <Login /> */}
         <SignIn />
       </AuthLayout>
     ),
