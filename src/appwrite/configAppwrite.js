@@ -107,7 +107,7 @@ export class Service {
       );
     } catch (error) {
       console.log("Appwrite service :: getPosts :: error", error);
-      return false;
+      return { documents: [] };
     }
   }
 
@@ -122,7 +122,7 @@ export class Service {
       return response.documents; // Returns only the documents array
     } catch (error) {
       console.error("Appwrite service :: getCategory :: error", error);
-      return false;
+      return [];
     }
   }
 
