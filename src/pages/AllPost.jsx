@@ -15,7 +15,7 @@ import {
 
 
 
-import SearchBar from "../components/SearchBar.jsx";
+import SearchBar from "../componenets/SearchBar.jsx";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
