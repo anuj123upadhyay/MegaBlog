@@ -44,8 +44,11 @@ export default function Header() {
 
   /* Toggle theme between dark and light mode */
   const toggleTheme = () => {
+    const newMode = isDarkMode ? "light" : "dark";
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle("dark-mode"); // Ensure dark-mode CSS is applied
+    document.body.classList.toggle("dark-mode", newMode === "dark");
+
+    localStorage.setItem("mode", newMode);
   };
 
   const navItems = [
@@ -129,7 +132,7 @@ export default function Header() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header className={`header ${isSticky ? "sticky top-0 shadow-xl" : "shadow-lg"} rounded-xl transition-all duration-300`}>
+    <header className={`header ${isSticky ? "sticky top-0 shadow-xl bg-white text-black" : "shadow-lg"} rounded-xl transition-all duration-300 z-50 `}>
       <Container>
         <nav className="flex justify-between items-center p-4">
 
