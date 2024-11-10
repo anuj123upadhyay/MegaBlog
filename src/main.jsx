@@ -37,6 +37,7 @@ import DiscussionForum from "./pages/DiscussionForum.jsx";
 import TermsOfUse from "./componenets/TermsOfUse.jsx";
 
 import About from "./pages/About.jsx";
+import FeedbackPage from "./pages/FeedBackPage.jsx";
 
 import Contributor from "./componenets/Contributor.jsx";
 
@@ -125,7 +126,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/feedback",
-        element: <Feedback />,
+        element: <FeedbackPage />,
       },
       {
         path: "/termsandconditions",
