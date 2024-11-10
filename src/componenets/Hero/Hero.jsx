@@ -12,7 +12,7 @@ function Hero() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5173/api/v1/newsletter/suscribe", {
+      const response = await fetch("http://localhost:5000/api/v1/newsletter/suscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
