@@ -33,10 +33,17 @@ import SignUp from "./pages/SignUpp.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import Error404 from "./pages/Error404.jsx";
 import Features from "./pages/Features.jsx";
+import CategoryPosts from "./pages/Category.jsx";
 import DiscussionForum from "./pages/DiscussionForum.jsx";
 import TermsOfUse from "./componenets/TermsOfUse.jsx";
 
+
 import Stories from "./pages/Stories.jsx";
+
+import About from "./pages/About.jsx";
+import FeedbackPage from "./pages/FeedBackPage.jsx";
+import ContactUsBg from "./pages/ContactUsBG.jsx";
+
 
 import Contributor from "./componenets/Contributor.jsx";
 
@@ -67,9 +74,7 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: (
-          <AuthLayout authentication={false}>
-            <ContactPage />
-          </AuthLayout>
+            <ContactUsBg />
         ),
       },
       {
@@ -100,6 +105,15 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/category/:category",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <CategoryPosts />
+          </AuthLayout>
+        ),
+      },
+      {
         path: "/presskit",
         element: <PressKit />,
       },
@@ -125,7 +139,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/feedback",
-        element: <Feedback />,
+        element: <FeedbackPage />,
       },
       {
         path: "/termsandconditions",
@@ -172,6 +186,10 @@ const router = createBrowserRouter([
       {
         path: "/features",
         element: <Features />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       // {
       //   path: "/signup",
