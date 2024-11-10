@@ -14,6 +14,7 @@ function Footer() {
                 <Logo width="100px" />
               </div>
 
+
               <p className="mt-4 max-w-xs text-gray-500">
                 MegaBlog is a blog post website user by beginners and creators
                 staring out on their Journey.
@@ -26,6 +27,7 @@ function Footer() {
                     rel="noreferrer"
                     target="_blank"
                     className="text-gray-700 transition hover:opacity-75"
+
                   >
                     <span className="sr-only">Facebook</span>
 
