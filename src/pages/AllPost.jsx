@@ -19,6 +19,8 @@ function AllPosts() {
     service.getPosts([]).then((posts) => {
       if (posts) {
         setPosts(posts.documents);
+      }else{
+        setPosts([])//set as empty array if response is undefined
       }
     });
   }, []);
@@ -55,6 +57,8 @@ function AllPosts() {
           </div>
 
           <div className="px-4 mb-4 w-full">
+            //TODO//
+            
             {Object.keys(categorizedPosts).map((category) => (
               <div key={category} className="mb-8">
                 <h2 class="flex flex-row flex-nowrap items-center mt-16 mb-16">
