@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 import PostCard from "../componenets/PostCard.jsx"; // Assuming typo fix for 'components'
-import  Container  from "../componenets/container/Container";
+import  Container  from "../componenets/container/Container.jsx";
 
 import service from "../appwrite/configAppwrite";
 import {
@@ -15,7 +15,7 @@ import {
 
 
 
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/SearchBar.jsx";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
