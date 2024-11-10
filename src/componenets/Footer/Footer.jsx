@@ -82,7 +82,7 @@ function Footer() {
 
                 <li>
                   <a
-                    href="#"
+                    href="https://x.com/anuj123upadhyay"
                     rel="noreferrer"
                     target="_blank"
                     className="text-gray-700 transition hover:opacity-75"
@@ -192,33 +192,33 @@ function Footer() {
 
                 <ul className="mt-6 space-y-4 text-sm">
                   <li>
-                    <a
-                      href="/about"
+                    <Link
+                      to="/about"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       About{" "}
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="/contributors"
+                    <Link
+                      to="/contributors"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       Meet the Team{" "}
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="/presskit"
+                    <Link
+                      to="/presskit"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       Press Kit{" "}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -228,53 +228,53 @@ function Footer() {
 
                 <ul className="mt-6 space-y-4 text-sm">
                   <li>
-                    <a
-                      href="/contactus"
+                    <Link
+                      to="/contactus"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       Contact Us{" "}
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="/frequently-asked-questions"
+                    <Link
+                      to="/frequently-asked-questions"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       FAQs{" "}
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="/helpPage"
+                    <Link
+                      to="/helpPage"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       Help{" "}
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="/customer-support"
+                    <Link
+                      to="/customer-support"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       Customer Support{" "}
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="/Feedback"
+                    <Link
+                      to="/Feedback"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       Feedback{" "}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -284,33 +284,33 @@ function Footer() {
 
                 <ul className="mt-6 space-y-4 text-sm">
                   <li>
-                    <a
-                      href="/termsandconditions"
+                    <Link
+                      to="/termsandconditions"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       Terms & Conditions{" "}
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="/privacypolicy"
+                    <Link
+                      to="/privacypolicy"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       Privacy Policy{" "}
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="/licensing"
+                    <Link
+                      to="/licensing"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
                       Licensing{" "}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
