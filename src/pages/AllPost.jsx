@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../components/ui/carousel";
+
 import SearchBar from "../componenets/SearchBar";
 
 function AllPosts() {
@@ -36,7 +37,7 @@ function AllPosts() {
 
   const categorizedPosts = groupPostsByCategory(posts);
 
-  return (
+  return posts ? (
     <div className="w-full py-8">
       <Container>
         <div className="min-h-screen flex flex-col flex-wrap items-center p-4">
@@ -54,7 +55,8 @@ function AllPosts() {
           </div>
 
           <div className="px-4 mb-4 w-full">
-            {Object.keys(categorizedPosts).map((category) => (
+            {/* {Object.keys(categorizedPosts).map((category) => ( */}
+            {Object.keys(categorizedPosts).length > 0 && Object.keys(categorizedPosts).map((category) => (
               <div key={category} className="mb-8">
                 <h2 class="flex flex-row flex-nowrap items-center mt-16 mb-16">
                   <span class="flex-grow block border-t border-black"></span>
@@ -148,6 +150,40 @@ function AllPosts() {
         </div>
       </Container>
     </div>
+  ) : (
+    <>
+      <div class="animate-pulse block-item shadow-md max-w-xl mx-auto mt-20">
+        {/* <!-- Head line --> */}
+        <div class="bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 h-6 rounded-t-3xl"></div>
+        <div class="py-4 px-6">
+          {/* <!-- User card (avatar + username) --> */}
+          <div class="flex items-center space-x-2">
+            <div class="h-7 w-7 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full"></div>
+            <div class="h-3 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-1/3"></div>
+          </div>
+          {/* <!-- Text block --> */}
+          <div class="my-6">
+            {/* <!-- Heading --> */}
+            <div class="h-5 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-3/4"></div>
+            {/* <!-- Description --> */}
+            <div class="my-4">
+              <div class="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-full"></div>
+              <div class="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-5/6"></div>
+              <div class="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-4/6"></div>
+              <div class="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-5/6"></div>
+              <div class="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-3/6"></div>
+              <div class="h-3 my-2 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-2/6"></div>
+            </div>
+          </div>
+          <div class="my-4">
+            {/* <!-- Button --> */}
+            <div class="h-11 bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-lg w-full"></div>
+            {/* <!-- Post data + time --> */}
+            <div class="h-3 my-4 mx-auto bg-gradient-to-t from-indigo-700 via-indigo-600 to-indigo-500 rounded-full w-1/2"></div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
