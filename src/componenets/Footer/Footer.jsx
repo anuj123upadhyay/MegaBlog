@@ -223,7 +223,7 @@ function Footer() {
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}
-                      Contact{" "}
+                      Contact Us{" "}
                     </a>
                   </li>
 
@@ -239,7 +239,7 @@ function Footer() {
 
                   <li>
                     <a
-                      href="/help"
+                      href="/helpPage"
                       className="text-gray-700 transition hover:opacity-75"
                     >
                       {" "}

@@ -38,6 +38,7 @@ import TermsOfUse from "./componenets/TermsOfUse.jsx";
 
 import About from "./pages/About.jsx";
 import FeedbackPage from "./pages/FeedBackPage.jsx";
+import ContactUsBg from "./pages/ContactUsBG.jsx";
 
 import Contributor from "./componenets/Contributor.jsx";
 
@@ -68,9 +69,7 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: (
-          <AuthLayout authentication={false}>
-            <ContactPage />
-          </AuthLayout>
+            <ContactUsBg />
         ),
       },
       {
