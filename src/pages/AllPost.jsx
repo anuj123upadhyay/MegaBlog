@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
+
 import PostCard from "../componenets/PostCard.jsx"; // Assuming typo fix for 'components'
 import  Container  from "../componenets/container/Container.jsx";
+
 
 import service from "../appwrite/configAppwrite";
 import {
@@ -19,8 +21,10 @@ import SearchBar from "../componenets/SearchBar.jsx";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true); // State to track loading
 
   useEffect(() => {
+
     service.getPosts().then((response) => {
       if (response && response.documents) {
         setPosts(response.documents);
@@ -31,6 +35,7 @@ function AllPosts() {
       console.error("Error fetching posts:", error);
       setPosts([]); // In case of an error, set posts as an empty array
     });
+
   }, []);
 
   // Helper function to group posts by category
@@ -47,7 +52,9 @@ function AllPosts() {
 
   const categorizedPosts = groupPostsByCategory(posts);
 
+
   return (
+          
     <div className="w-full py-8">
       <Container>
         <div className="min-h-screen flex flex-col flex-wrap items-center p-4">
@@ -62,7 +69,9 @@ function AllPosts() {
           </div>
 
           <div className="px-4 mb-4 w-full">
+
             {posts && posts.length > 0 ? (
+
               Object.keys(categorizedPosts).map((category) => (
                 <div key={category} className="mb-8">
                   <h2 className="flex flex-row flex-nowrap items-center mt-16 mb-16">
@@ -101,12 +110,14 @@ function AllPosts() {
                           color: "white",
                           borderRadius: "50%",
                         }}
+
                         onMouseEnter={(e) =>
                           (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.7)")
                         }
                         onMouseLeave={(e) =>
                           (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")
                         }
+
                       />
                       <CarouselNext
                         style={{
@@ -124,12 +135,14 @@ function AllPosts() {
                           color: "white",
                           borderRadius: "50%",
                         }}
+
                         onMouseEnter={(e) =>
                           (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.7)")
                         }
                         onMouseLeave={(e) =>
                           (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")
                         }
+
                       />
                     </Carousel>
                   ) : (
@@ -140,10 +153,12 @@ function AllPosts() {
                     </div>
                   )}
                 </div>
+
               ))
             ) : (
               <p>No posts available at the moment.</p>
             )}
+
           </div>
         </div>
       </Container>
