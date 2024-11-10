@@ -21,6 +21,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { Trash2, WandSparkles } from "lucide-react";
 
 export default function Post() {
   const [post, setPost] = useState(null);
@@ -64,6 +65,10 @@ export default function Post() {
     }
   };
 
+  const handleEditClick = async (blogId) => {
+    navigate(`/edit/${blogId}`);
+  };
+
   const toPascalCase = (str) => {
     return str
       .toLowerCase()
@@ -77,21 +82,24 @@ export default function Post() {
       <Container>
         <div className="min-h-screen flex flex-col items-center p-4 ">
           {isAuthor && (
-            <div className="absolute right-6">
-              <Link to={`/edit-post/${post.$id}`}>
-                <Button bgColor="bg-green-500" className="mr-3">
-                  Edit
-                </Button>
-              </Link>
+            <div className="absolute right-6 flex gap-2 mb-2 ">
+                
               <button
-                className="bg-red-500 p-2 rounded-md text-white font-medium px-3"
+                className="bg-red-500 flex items-center justify-cente gap-2 p-2 rounded-md text-white text-center font-medium px-3 mr-3"
                 onClick={() => {
                   console.log("Delete button clicked"); // Test if click works
                   deletePost(blogId, userData.$id);
                 }}
               >
-                Delete
+                Delete <Trash2 size={20}/>
               </button>
+              
+              <Link
+              to={`/edit/${blogId}`}
+              className="w-full block flex gap-2 rounded-md border border-indigo-600 bg-indigo-500 px-3 py-3 text-center text-sm font-semibold text-white "
+            >
+              Edit Post <WandSparkles size={20} />
+            </Link>
             </div>
           )}
           <div className="lg:w-11/12 w-full rounded-lg">
