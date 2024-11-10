@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import TrendingTitles from "../TrendingTitle";
@@ -6,6 +6,31 @@ import TrendingTitles from "../TrendingTitle";
 import Testimonial from "../Testimonial";
 
 function Hero() {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/v1/newsletter/suscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        toast.success("Subscription successful!");
+        setEmail("");
+      } else {
+        toast.error("Failed to subscribe.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+    }
+  };
+
   return (
     <div>
       <section className="section">
@@ -182,7 +207,8 @@ function Hero() {
         </div>
       </section>
 
-      <hr />
+      <TrendingTitles />
+
 
       <Testimonial />
 
@@ -203,7 +229,7 @@ function Hero() {
           </div>
 
           <div className="mx-auto mt-8 max-w-xl">
-            <form action="#" className="sm:flex sm:gap-4">
+            <form onSubmit={handleSubmit} className="sm:flex sm:gap-4">
               <div className="sm:flex-1">
                 <label htmlFor="email" className="sr-only">
                   Email
@@ -211,10 +237,12 @@ function Hero() {
 
                 <input
                   type="email"
-                  disabled
                   placeholder="Email address"
-                  className="w-full rounded-md border-gray-200 bg-white p-3 text-gray-700 shadow-sm transition focus:border-white focus:outline-none focus:ring focus:ring-yellow-400"
+                  value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                  className="w-full rounded-mdborder-black bg-white p-3 text-gray-700 shadow-sm transition focus:border-black focus:outline-none focus:ring focus:ring-red-400"
                 />
+                
               </div>
 
               <button
@@ -244,7 +272,7 @@ function Hero() {
       </section>
 
       <hr />
-      <TrendingTitles />
+
     </div>
   );
 }
