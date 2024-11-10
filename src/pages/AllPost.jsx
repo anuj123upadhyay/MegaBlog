@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Container, PostCard } from "../componenets"; // Assuming typo fix for 'components'
+import { PostCard } from "../componenets/PostCard"; // Assuming typo fix for 'components'
+import { Container } from "../componenets";
 import service from "../appwrite/configAppwrite";
 import {
   Carousel,
