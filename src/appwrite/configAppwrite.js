@@ -94,7 +94,7 @@ export class Service {
       );
     } catch (error) {
       console.log("Appwrite serive :: getPost :: error", error);
-      return false;
+      return null;
     }
   }
 
@@ -107,7 +107,7 @@ export class Service {
       );
     } catch (error) {
       console.log("Appwrite service :: getPosts :: error", error);
-      return { documents: [] };
+      return  [] ;
     }
   }
 
