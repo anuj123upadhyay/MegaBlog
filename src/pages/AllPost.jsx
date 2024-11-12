@@ -40,17 +40,20 @@ function AllPosts() {
 
   // Helper function to group posts by category
   const groupPostsByCategory = (posts) => {
-    return posts.reduce((acc, post) => {
+    // Ensure `posts` is an array, and initialize `acc` as an object
+    return (Array.isArray(posts) ? posts : []).reduce((acc, post) => {
       const category = post.category || "Uncategorized";
       if (!acc[category]) {
-        acc[category] = [];
+        acc[category] = []; // Initialize as an array for posts in each category
       }
-      acc[category].push(post);
-      return acc;
-    }, {});
+      acc[category].push(post); // Push post to the relevant category
+      return acc; // Return the accumulator as an object
+    }, {}); // Empty object for accumulating categories
   };
+  
 
   const categorizedPosts = groupPostsByCategory(posts);
+  console.log("Type of categorizedPosts:", typeof categorizedPosts);
 
 
   return (
