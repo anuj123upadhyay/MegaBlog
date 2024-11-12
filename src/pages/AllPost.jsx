@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 
 import PostCard from "../componenets/PostCard.jsx"; // Assuming typo fix for 'components'
-import  Container  from "../componenets/container/Container.jsx";
+import Container from "../componenets/container/Container.jsx";
 
 
 import service from "../appwrite/configAppwrite";
@@ -21,42 +21,37 @@ import SearchBar from "../componenets/SearchBar.jsx";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true); // State to track loading
-
+  const [categorizedPosts, setCategorizedPosts] = useState({});
+  
+  // Fetch posts on component mount
   useEffect(() => {
-
-    service.getPosts().then((response) => {
+    const fetchPosts = async () => {
+      const response = await service.getPosts();
       if (response && response.documents) {
+        const grouped = groupPostsByCategory(response.documents);
+        setCategorizedPosts(grouped);
         setPosts(response.documents);
       } else {
-        setPosts([]); // Set as empty array if response is undefined or does not have documents
+        setCategorizedPosts({});
+        setPosts([]);
       }
-    }).catch(error => {
-      console.error("Error fetching posts:", error);
-      setPosts([]); // In case of an error, set posts as an empty array
-    });
-
+    };
+    fetchPosts();
   }, []);
 
-  // Helper function to group posts by category
+  // Group posts by category, defaulting to "Uncategorized"
   const groupPostsByCategory = (posts) => {
-    // Ensure `posts` is an array, and initialize `acc` as an object
-    return (Array.isArray(posts) ? posts : []).reduce((acc, post) => {
+    return posts.reduce((acc, post) => {
       const category = post.category || "Uncategorized";
       if (!acc[category]) {
-        acc[category] = []; // Initialize as an array for posts in each category
+        acc[category] = [];
       }
-      acc[category].push(post); // Push post to the relevant category
-      return acc; // Return the accumulator as an object
-    }, {}); // Empty object for accumulating categories
+      acc[category].push(post);
+      return acc;
+    }, {});
   };
-  
-
-  const categorizedPosts = groupPostsByCategory(posts);
-
 
   return (
-          
     <div className="w-full py-8">
       <Container>
         <div className="min-h-screen flex flex-col flex-wrap items-center p-4">
@@ -71,9 +66,7 @@ function AllPosts() {
           </div>
 
           <div className="px-4 mb-4 w-full">
-
-            {posts && Object.keys(categorizedPosts || {}).length > 0 ? (
-
+            {Object.keys(categorizedPosts).length > 0 ? (
               Object.keys(categorizedPosts).map((category) => (
                 <div key={category} className="mb-8">
                   <h2 className="flex flex-row flex-nowrap items-center mt-16 mb-16">
@@ -107,19 +100,21 @@ function AllPosts() {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
+                          transition:
+                            "background-color 0.3s ease, color 0.3s ease",
                           zIndex: 10,
                           backgroundColor: "rgba(0, 0, 0, 0.5)",
                           color: "white",
                           borderRadius: "50%",
                         }}
-
                         onMouseEnter={(e) =>
-                          (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.7)")
+                          (e.currentTarget.style.backgroundColor =
+                            "rgba(0, 0, 0, 0.7)")
                         }
                         onMouseLeave={(e) =>
-                          (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")
+                          (e.currentTarget.style.backgroundColor =
+                            "rgba(0, 0, 0, 0.5)")
                         }
-
                       />
                       <CarouselNext
                         style={{
@@ -132,19 +127,21 @@ function AllPosts() {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
+                          transition:
+                            "background-color 0.3s ease, color 0.3s ease",
                           zIndex: 10,
                           backgroundColor: "rgba(0, 0, 0, 0.5)",
                           color: "white",
                           borderRadius: "50%",
                         }}
-
                         onMouseEnter={(e) =>
-                          (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.7)")
+                          (e.currentTarget.style.backgroundColor =
+                            "rgba(0, 0, 0, 0.7)")
                         }
                         onMouseLeave={(e) =>
-                          (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)")
+                          (e.currentTarget.style.backgroundColor =
+                            "rgba(0, 0, 0, 0.5)")
                         }
-
                       />
                     </Carousel>
                   ) : (
@@ -155,12 +152,10 @@ function AllPosts() {
                     </div>
                   )}
                 </div>
-
               ))
             ) : (
               <p>No posts available at the moment.</p>
             )}
-
           </div>
         </div>
       </Container>
@@ -169,4 +164,5 @@ function AllPosts() {
 }
 
 export default AllPosts;
+
 
