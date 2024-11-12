@@ -53,7 +53,6 @@ function AllPosts() {
   
 
   const categorizedPosts = groupPostsByCategory(posts);
-  console.log("Type of categorizedPosts:", typeof categorizedPosts);
 
 
   return (

@@ -10,19 +10,30 @@ import { motion } from 'framer-motion';
 function CategoryPosts() {
   const [posts, setPosts] = useState([]);
   const { category } = useParams();
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (category) {
       service.getCategory(category).then((post) => {
-        if (post) {
+        if (post && post.length>0) {
           setPosts(post);
           console.log("postssss", posts);
           toast.success("Posts loaded successfully!");
+        }else {
+          setPosts([])
+          toast.error("No posts found in this category.");
+          // navigate("/");
         }
-      });
-    } else {
-      navigate("/");
+      })
+      .catch((e)=>{
+        console.log("Faile dto loa dthe posts:", error);
+        toast.error("Failed to load posts.");
+      })
+      .finally(()=> setLoading(false) );
+
+    }else{
+      navigate('/')
     }
   }, [category, navigate]);
 
@@ -42,6 +53,9 @@ function CategoryPosts() {
       .join(" ");
   };
 
+  if(loading){
+    return <div> Loding posts.....</div>
+  }
 
   return posts && posts.length > 0 ? (
     <>
