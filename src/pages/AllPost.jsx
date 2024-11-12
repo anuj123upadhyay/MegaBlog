@@ -72,7 +72,7 @@ function AllPosts() {
 
           <div className="px-4 mb-4 w-full">
 
-            {posts && posts.length > 0 ? (
+            {posts && Object.keys(categorizedPosts || {}).length > 0 ? (
 
               Object.keys(categorizedPosts).map((category) => (
                 <div key={category} className="mb-8">
