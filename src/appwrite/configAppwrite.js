@@ -226,7 +226,7 @@ export class Service {
       const response = await this.databases.createDocument(
         conf.appwriteDatabaseId,  // Your database ID
         conf.appwriteNewsLetterCollectionId, 
-        'unique()',             
+        ID.unique(),            
         {
           email: email,         
           subscribedAt: new Date().toISOString(), 
