@@ -1,35 +1,37 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+
 import TrendingTitles from "../TrendingTitle";
 
 import Testimonial from "../Testimonial";
+import NewsLetter from "../NewsLetter";
 
 function Hero() {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      const response = await fetch("http://localhost:5000/api/v1/newsletter/suscribe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+  //   try {
+  //     const response = await fetch("http://localhost:5000/api/v1/newsletter/suscribe", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ email }),
+  //     });
 
-      if (response.ok) {
-        toast.success("Subscription successful!");
-        setEmail("");
-      } else {
-        toast.error("Failed to subscribe.");
-      }
-    } catch (error) {
-      toast.error("An error occurred. Please try again.");
-    }
-  };
+  //     if (response.ok) {
+  //       toast.success("Subscription successful!");
+  //       setEmail("");
+  //     } else {
+  //       toast.error("Failed to subscribe.");
+  //     }
+  //   } catch (error) {
+  //     toast.error("An error occurred. Please try again.");
+  //   }
+  // };
 
   return (
     <div>
@@ -213,8 +215,8 @@ function Hero() {
       <Testimonial />
 
       <hr />
-
-      <section className="">
+    <NewsLetter/>
+      {/* <section className="">
         <div className="p-8 md:p-12 lg:px-16 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
             <h2 className="text-2xl font-bold md:text-3xl">
@@ -269,7 +271,8 @@ function Hero() {
             </form>
           </div>
         </div>
-      </section>
+      </section> */}
+
 
       <hr />
 
