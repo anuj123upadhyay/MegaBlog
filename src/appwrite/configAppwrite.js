@@ -225,11 +225,11 @@ export class Service {
     try {
       const response = await this.databases.createDocument(
         conf.appwriteDatabaseId,  // Your database ID
-        conf.appwriteNewsLetterCollectionId, // The collection ID where you want to add the subscriber
-        'unique()',             // Document ID (you can use 'unique()' for auto-generated ID)
+        conf.appwriteNewsLetterCollectionId, 
+        'unique()',             
         {
-          email: email,         // Pass the email as part of the document data
-          subscribedAt: new Date().toISOString(), // You can add other fields as needed
+          email: email,         
+          subscribedAt: new Date().toISOString(), 
         }
       );
      
