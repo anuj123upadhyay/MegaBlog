@@ -12,6 +12,8 @@ export class Service {
       .setProject(conf.appwriteProjectId);
     this.databases = new Databases(this.client);
     this.bucket = new Storage(this.client);
+    this.functions = new Function(this.client);
+
   }
 
   async createPost({
@@ -215,6 +217,22 @@ export class Service {
   getFilePreview(fileId) {
     return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
   }
+  
+
+  //------Newsletter subscription service
+
+  async sendNewsletter() {
+    try {
+      const response = await this.functions.createExecution(conf.appwriteFunctionId); 
+      console.log('Newsletter sent:', response);
+      return response;
+    } catch (error) {
+      console.error('Error sending newsletter:', error);
+      throw error;
+    }
+  }
+
+
 }
 
 const service = new Service();
