@@ -224,11 +224,16 @@ export class Service {
   async addSubscriber(email) {
     try {
       const response = await this.databases.createDocument(
-        conf.appwriteDatabaseId,
-        conf.appwriteNewsLetterCollectionId,
-        
-        { email, createdAt: new Date() }
+        conf.appwriteDatabaseId,  // Your database ID
+        conf.appwriteNewsLetterCollectionId, // The collection ID where you want to add the subscriber
+        'unique()',             // Document ID (you can use 'unique()' for auto-generated ID)
+        {
+          email: email,         // Pass the email as part of the document data
+          subscribedAt: new Date().toISOString(), // You can add other fields as needed
+        }
       );
+     
+      
       return response;
     } catch (error) {
       console.error("Appwrite service :: addSubscriber :: error", error);

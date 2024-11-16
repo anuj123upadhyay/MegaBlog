@@ -92,6 +92,7 @@ function NewsLetter() {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
+      
       setEmail(e.target.value)
       try {
         const newSubscriber = await service.addSubscriber(email);
