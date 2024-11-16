@@ -92,21 +92,32 @@ function NewsLetter() {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-  
       try {
-        // Add email to the Appwrite Newsletter collection
+        const newSubscriber = await service.addSubscriber(email);
+        if (newSubscriber) {
+          toast.success("New subscriber has been added.");
+        } else {
+          toast.error("Failure in adding the subscriber.");
+          return; // Early exit if adding subscriber fails
+        }
+    
+        // Then send the newsletter
         const response = await service.sendNewsletter(email);
-        
         if (response) {
-          toast.success("Subscription successful!");
-          setEmail("");
+          toast.success("Subscription successful! Email has been sent.");
+          setEmail(""); // Reset email only after both actions are successful
         } else {
           toast.error("Failed to subscribe.");
         }
+    
       } catch (error) {
-        console.error("Subscription error:", error);
+        console.error("Error:", error);
         toast.error("An error occurred. Please try again.");
       }
+    
+      
+  
+    
     };
   
     return (

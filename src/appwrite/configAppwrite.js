@@ -221,6 +221,21 @@ export class Service {
 
   //------Newsletter subscription service
 
+  async addSubscriber(email) {
+    try {
+      const response = await this.databases.createDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteNewsLetterCollectionId,
+        
+        { email, createdAt: new Date() }
+      );
+      return response;
+    } catch (error) {
+      console.error("Appwrite service :: addSubscriber :: error", error);
+      return null;
+    }
+  }
+
   async sendNewsletter() {
     try {
       const response = await this.functions.createExecution(conf.appwriteFunctionId); 
