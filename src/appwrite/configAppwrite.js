@@ -257,30 +257,30 @@ export class Service {
 
   
 
-  async  fetchTrendingTopics(prompt) {
-      const response = await axios(
-          "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
-          {
-              method: "POST",
-              headers: {
-                  Authorization: `Bearer ${conf.appwriteHuggingFaceAcessToken}`, // Replace with your token
-                  "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                  inputs: `<s>[INST] ${prompt} [/INST]`,
-                  parameters: {
-                      max_new_tokens: 50,
-                  },
-              }),
-          }
-      );
+  // async  fetchTrendingTopics(prompt) {
+  //     const response = await axios(
+  //         "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
+  //         {
+  //             method: "POST",
+  //             headers: {
+  //                 Authorization: `Bearer ${conf.appwriteHuggingFaceAcessToken}`, // Replace with your token
+  //                 "Content-Type": "application/json",
+  //             },
+  //             body: JSON.stringify({
+  //                 inputs: `<s>[INST] ${prompt} [/INST]`,
+  //                 parameters: {
+  //                     max_new_tokens: 50,
+  //                 },
+  //             }),
+  //         }
+  //     );
   
-      if (!response.ok) {
-          throw new Error(`Error: ${response.status} ${response.statusText}`);
-      }
+  //     if (!response.ok) {
+  //         throw new Error(`Error: ${response.status} ${response.statusText}`);
+  //     }
   
-      return await response.json();
-  }
+  //     return await response.json();
+  // }
   
 
 }

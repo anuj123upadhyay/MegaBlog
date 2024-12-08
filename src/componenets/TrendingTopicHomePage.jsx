@@ -19,7 +19,7 @@ const TrendingTopicHomePage = () => {
         {/* Button to navigate to /gen-topic */}
         <div className="flex justify-center mt-8">
           <Link to="/gen-topic">
-            <Button className="bg-white text-blue-600 py-3 px-7 rounded-lg w-fit flex items-center hover:bg-blue-300 transition-all duration-300">
+            <Button className="bg-white text-blue-700 py-3 px-7 rounded-lg w-fit flex items-center hover:bg-blue-300 hover:text-white  transition-all duration-300">
               <span>Generate Trending Topics</span>
               <SparkelIcons height={20} className="ml-3" />
             </Button>
