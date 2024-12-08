@@ -7,7 +7,7 @@ const conf = {
     appwriteBucketId: String(import.meta.env.VITE_APPWRITE_BUCKET_ID),
     appwriteFunctionId:String(import.meta.env.VITE_APPWRITE_FUNCTION_ID),
     appwriteTrendinTopicCollectionId:String(import.meta.env.VITE_APPWRITE_TRENDING_TOPIC_COLLECTION_ID),
-    appwriteHuggingFaceAcessToken:String(import.meta.env.HUGGINGFACE_ACCESS_TOKEN)
+    appwriteHuggingFaceAcessToken:String(import.meta.env.VITE_HUGGINGFACE_ACCESS_TOKEN)
 }
 
 export default conf
