@@ -1,4 +1,6 @@
 import conf from "../config/config.js";
+import axios from "axios";
+
 import { Client, Databases, Functions, ID, Query, Storage } from "appwrite";
 
 export class Service {
@@ -251,7 +253,35 @@ export class Service {
       throw error;
     }
   }
+  ///////////////////////inferenceService 
 
+  
+
+  async  fetchTrendingTopics(prompt) {
+      const response = await axios(
+          "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
+          {
+              method: "POST",
+              headers: {
+                  Authorization: `Bearer ${conf.appwriteHuggingFaceAcessToken}`, // Replace with your token
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  inputs: `<s>[INST] ${prompt} [/INST]`,
+                  parameters: {
+                      max_new_tokens: 50,
+                  },
+              }),
+          }
+      );
+  
+      if (!response.ok) {
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+      }
+  
+      return await response.json();
+  }
+  
 
 }
 

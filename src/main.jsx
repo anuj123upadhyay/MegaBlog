@@ -45,6 +45,8 @@ import ContactUsBg from "./pages/ContactUsBG.jsx";
 
 import Contributor from "./componenets/Contributor.jsx";
 
+import TrendingTitles from "./componenets/TrendingTitle.jsx";
+
 // Add this at the top of your existing index.js
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -264,6 +266,14 @@ const router = createBrowserRouter([
         <SignUp />
       </AuthLayout>
     ),
+  },
+  {
+    path:"/gen-topic",
+    element:(
+      <AuthLayout authentication>
+        <TrendingTitles/>
+      </AuthLayout>
+    )
   },
   {
     path: "*",

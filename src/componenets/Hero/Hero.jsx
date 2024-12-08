@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-import TrendingTitles from "../TrendingTitle";
+import TrendingTopicHomePage from "../TrendingTopicHomePage"
+// import TrendingTitles from "../TrendingTitle";
 
 import Testimonial from "../Testimonial";
 import NewsLetter from "../NewsLetter";
@@ -208,8 +208,8 @@ function Hero() {
           </div>
         </div>
       </section>
-
-      <TrendingTitles />
+      <TrendingTopicHomePage/>
+      {/* <TrendingTitles /> */}
 
 
       <Testimonial />
