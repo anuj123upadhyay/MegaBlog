@@ -15,7 +15,7 @@ export const callAI = async (prompt) => {
             model: "mistralai/Mistral-7B-Instruct-v0.2",
             inputs: prompt,
             parameters: {
-                max_new_tokens: 150,  // Adjust the length as needed
+                max_new_tokens: 500,  // Adjust the length as needed
             }
         });
 
