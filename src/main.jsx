@@ -47,7 +47,6 @@ import Contributor from "./componenets/Contributor.jsx";
 
 import TrendingTitles from "./componenets/TrendingTitle.jsx";
 
-// Add this at the top of your existing index.js
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
