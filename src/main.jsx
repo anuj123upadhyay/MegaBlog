@@ -126,7 +126,7 @@ const router = createBrowserRouter([
       {
         path: "/pricing",
         element: (
-          <AuthLayout authentication={false}>
+          <AuthLayout authentication>
             <Pricing />
           </AuthLayout>
         ),
