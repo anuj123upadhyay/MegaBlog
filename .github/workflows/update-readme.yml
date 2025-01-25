@@ -1,5 +1,8 @@
 name: Update Repository structure
 
+permissions:
+  contents: write
+  
 on:
   schedule:
     - cron: '0 * * * *'  # Run every hour
